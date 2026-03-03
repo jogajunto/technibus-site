@@ -8,9 +8,10 @@ type PayloadImageProps = {
   width?: number;
   height?: number;
   loading?: "eager" | "lazy";
+  disableCaption?: boolean;
 };
 
-export function PayloadImage({ image, className, width, height, loading = "lazy" }: PayloadImageProps) {
+export function PayloadImage({ image, className, width, height, loading = "lazy", disableCaption = false }: PayloadImageProps) {
   if (!isMediaObject(image)) {
     return null;
   }
@@ -28,7 +29,7 @@ export function PayloadImage({ image, className, width, height, loading = "lazy"
         placeholder={image.blurhash ? "blur" : "empty"}
         blurDataURL={image.blurhash || undefined}
       />
-      {image.caption && <figcaption className="text-secondary pt-2 text-right italic">{image.caption}</figcaption>}
+      {!disableCaption && <>{image.caption && <figcaption className="text-secondary pt-2 text-right text-sm italic">{image.caption}</figcaption>}</>}
     </figure>
   );
 }

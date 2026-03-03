@@ -1,80 +1,98 @@
 import { createMetadata } from "@/utilities/create-metadata";
 
+import { fetchLatestPostsWithoutFeatureds, fetchPostsByCategorySlug, fetchPostsByTagSlug } from "@/collections/Posts/data";
 import { Card } from "@/components/Card";
+import { FeaturedPosts } from "@/components/FeaturedPosts";
 import MostRead from "@/components/MostRead";
+import { Category, Media } from "@/payload-types";
 
 export function generateMetadata() {
   return createMetadata({
     path: "/",
-    title: "Minha empresa | Slogan",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Technibus | Transporte coletivo e mobilidade urbana",
+    description: "A mais tradicional revista brasileira dedicada ao transporte de passageiros por ônibus.",
   });
 }
 
-export default function Page() {
+export default async function Page() {
+  const destaques = await fetchPostsByTagSlug("destaque", 3);
+  const destaquesIds = destaques.map((post) => post.id);
+
+  const subdestaques = await fetchPostsByTagSlug("subdestaque", 2, destaquesIds);
+  const subdestaquesIds = destaques.map((post) => post.id);
+
+  const technibusNaHistoria = await fetchPostsByCategorySlug("technibus-na-historia", 1);
+  const entrevistaOpniao = await fetchPostsByCategorySlug("entrevista-e-opiniao", 1);
+
+  const excludeIds = [...destaquesIds, ...subdestaquesIds, ...technibusNaHistoria.map((post) => post.id), ...entrevistaOpniao.map((post) => post.id)];
+
+  const latests = await fetchLatestPostsWithoutFeatureds(excludeIds);
+
   return (
     <main>
       <section className="relative z-0 pt-10 pb-24">
-        <div className="container grid grid-cols-12 gap-10">
-          <div className="col-span-9">
-            <h2 className="text-primary border-secondary mb-8 border-b pb-3 text-2xl font-medium">Destaques</h2>
-            <div className="mb-8 grid grid-cols-12 gap-x-6 gap-y-8">
-              <div className="col-span-8">
-                <Card
-                  url="/post/volvo"
-                  category="Transporte"
-                  title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus"
-                  description="Neste episódio do Podcast do Transporte a empresária Niege Chaves, da MobiBrasil, revela as experiências da empresa com diferentes matrizes energéticas, do etanol ao gás, até chegar à eletrificação em São Paulo."
-                  image={{ url: "/placeholder.jpg", alt: "Volvo", width: 1000, height: 1000 }}
-                  size="sm"
-                />
-              </div>
-              <div className="col-span-4 grid gap-8">
-                <Card
-                  url="/post/volvo"
-                  category="Transporte"
-                  title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus"
-                  image={{ url: "/placeholder.jpg", alt: "Volvo", width: 1000, height: 1000 }}
-                  size="sm"
-                />
-                <Card
-                  url="/post/volvo"
-                  category="Transporte"
-                  title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus"
-                  image={{ url: "/placeholder.jpg", alt: "Volvo", width: 1000, height: 1000 }}
-                  size="sm"
-                />
+        <div className="container grid gap-10 lg:grid-cols-12">
+          <div className="col-span-9 space-y-10">
+            <div className="space-y-3">
+              <h2 className="subheading border-secondary text-brand-primary border-b pb-3">Destaques</h2>
+              <div className="mb-8 grid gap-3 lg:grid-cols-12">
+                <div className="col-span-8">
+                  <FeaturedPosts posts={destaques} />
+                </div>
+                <div className="col-span-4 grid gap-3">
+                  {subdestaques.map((post) => (
+                    <Card
+                      key={post.id}
+                      url={post.relPermalink}
+                      categories={post.category as Category[]}
+                      title={post.title}
+                      description={post.excerpt}
+                      image={post.image as Media}
+                      size="sm"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-            <h2 className="text-primary border-secondary mb-8 border-b pb-3 text-2xl font-medium">Últimas publicações</h2>
-            <div className="grid auto-rows-min gap-x-6 gap-y-8 md:grid-cols-3">
-              <Card
-                url="/post/volvo"
-                category="Transporte"
-                title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus"
-                image={{ url: "/placeholder.jpg", alt: "Volvo", width: 1000, height: 1000 }}
-                size="sm"
-              />
-              <Card
-                url="/post/volvo"
-                category="Transporte"
-                title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus"
-                image={{ url: "/placeholder.jpg", alt: "Volvo", width: 1000, height: 1000 }}
-                size="sm"
-              />
-              <Card
-                url="/post/volvo"
-                category="Transporte"
-                title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus"
-                image={{ url: "/placeholder.jpg", alt: "Volvo", width: 1000, height: 1000 }}
-                size="sm"
-              />
-              <Card url="/post/volvo" category="Transporte" title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus" size="sm" />
-              <Card url="/post/volvo" category="Transporte" title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus" size="sm" />
-              <Card url="/post/volvo" category="Transporte" title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus" size="sm" />
-              <Card url="/post/volvo" category="Transporte" title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus" size="sm" />
-              <Card url="/post/volvo" category="Transporte" title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus" size="sm" />
-              <Card url="/post/volvo" category="Transporte" title="Volvo anuncia novo ciclo bilionário de investimentos e reforça estratégia em ônibus" size="sm" />
+
+            <div className="grid grid-cols-2 items-start gap-x-3">
+              <div className="space-y-3">
+                <h2 className="text-brand-primary border-secondary border-b pt-3 pb-3 text-xl font-medium">Technibus na história</h2>
+                {technibusNaHistoria.map((post) => (
+                  <Card
+                    key={post.id}
+                    url={post.relPermalink}
+                    categories={post.category as Category[]}
+                    title={post.title}
+                    description={post.excerpt}
+                    image={post.image as Media}
+                    size="lg"
+                  />
+                ))}
+              </div>
+              <div className="space-y-3">
+                <h2 className="text-brand-primary border-secondary border-b pt-3 pb-3 text-xl font-medium">Entrevista & Opinião</h2>
+                {entrevistaOpniao.map((post) => (
+                  <Card
+                    key={post.id}
+                    url={post.relPermalink}
+                    categories={post.category as Category[]}
+                    title={post.title}
+                    description={post.excerpt}
+                    image={post.image as Media}
+                    size="lg"
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-brand-primary border-secondary border-b pt-3 pb-3 text-xl font-medium">Últimas publicações</h2>
+              <div className="grid auto-rows-min gap-3 md:grid-cols-3">
+                {latests.docs.map((post) => (
+                  <Card key={post.id} url={post.relPermalink} categories={post.category as Category[]} title={post.title} description={post.excerpt} size="sm" />
+                ))}
+              </div>
             </div>
           </div>
           <div className="col-span-3">

@@ -57,7 +57,7 @@ export const fetchPaginatedPostsByCategory = async (categoryId: number, page: nu
   const { isEnabled: draft } = await draftMode();
   const data = await payload.find({
     collection: "posts",
-    depth: 1,
+    depth: 2,
     draft,
     limit: 9,
     page: page,
@@ -67,4 +67,88 @@ export const fetchPaginatedPostsByCategory = async (categoryId: number, page: nu
   });
 
   return data;
+};
+
+//
+//
+//
+
+export async function fetchPostsByTagSlug(slug: string, limit: number, excludeIds: (string | number)[] = []): Promise<Post[]> {
+  const { isEnabled: draft } = await draftMode();
+
+  const tagResult = await payload.find({
+    collection: "tags",
+    limit: 1,
+    where: { slug: { equals: slug } },
+  });
+
+  const tag = tagResult.docs[0];
+  if (!tag) return [];
+
+  const posts = await payload.find({
+    collection: "posts",
+    depth: 2,
+    draft,
+    limit,
+    sort: "-publishedDate",
+    where: {
+      and: [{ tag: { contains: tag.id } }, ...(excludeIds.length > 0 ? [{ id: { not_in: excludeIds } }] : []), ...(draft ? [] : [{ _status: { equals: "published" } }])],
+    },
+  });
+
+  return posts.docs;
+}
+
+export async function fetchPostsByCategorySlug(slug: string, limit: number, excludeIds: (string | number)[] = []): Promise<Post[]> {
+  const { isEnabled: draft } = await draftMode();
+
+  const categoryResult = await payload.find({
+    collection: "categories",
+    limit: 1,
+    where: {
+      slug: { equals: slug },
+    },
+  });
+
+  const category = categoryResult.docs[0];
+  if (!category) return [];
+
+  const posts = await payload.find({
+    collection: "posts",
+    depth: 2,
+    draft,
+    limit,
+    sort: "-publishedDate",
+    where: {
+      and: [
+        {
+          category: {
+            contains: category.id,
+          },
+        },
+        ...(excludeIds.length > 0 ? [{ id: { not_in: excludeIds } }] : []),
+        ...(draft ? [] : [{ _status: { equals: "published" } }]),
+      ],
+    },
+  });
+
+  return posts.docs;
+}
+
+export const fetchLatestPostsWithoutFeatureds = async (excludeIds: (string | number)[], page: number = 1): Promise<PaginatedDocs<Post>> => {
+  const { isEnabled: draft } = await draftMode();
+
+  const posts = await payload.find({
+    collection: "posts",
+    depth: 2,
+    draft,
+    limit: 9,
+    page,
+    sort: "-publishedDate",
+    where: {
+      and: [...(excludeIds.length > 0 ? [{ id: { not_in: excludeIds } }] : []), ...(draft ? [] : [{ _status: { equals: "published" } }])],
+    },
+  });
+
+  return posts;
 };

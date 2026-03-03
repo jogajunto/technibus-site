@@ -11,7 +11,7 @@ export function Topbar({ enable, content, countdownDate }: TopbarProps) {
   return (
     <div className="bg-brand-primary text-on-brand-primary py-3">
       <div className="container">
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="texst-xs flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
           {content && <RichText data={content} />}
           {countdownDate && <Countdown className="max-lg:order-last max-lg:basis-full" targetDate={countdownDate} />}
         </div>

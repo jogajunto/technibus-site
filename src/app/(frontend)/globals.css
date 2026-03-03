@@ -11,6 +11,10 @@
 @theme {
   --font-inter: var(--font-inter);
 
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-6xl: 4rem;
+
   --color-brand-orange-50: #fff8ee;
   --color-brand-orange-100: #fde7c2;
   --color-brand-orange-200: #fbcf90;
@@ -41,9 +45,20 @@
   --color-brand-blue-400: #56ccff;
   --color-brand-blue-500: #1499d1;
   --color-brand-blue-600: #00587d;
-  --color-brand-blue-700: #004866;
-  --color-brand-blue-800: #002433;
-  --color-regal-blue-900: #00121a;
+  --color-brand-blue-700: #00466b;
+  --color-brand-blue-800: #00304d;
+  --color-brand-blue-900: #001624;
+
+  --color-brand-midnight-50: #f5f6fb;
+  --color-brand-midnight-100: #d2d9ee;
+  --color-brand-midnight-200: #afbbde;
+  --color-brand-midnight-300: #8c9ecc;
+  --color-brand-midnight-400: #6982b8;
+  --color-brand-midnight-500: #4666a1;
+  --color-brand-midnight-600: #234a89;
+  --color-brand-midnight-700: #002e6e;
+  --color-brand-midnight-800: #001952;
+  --color-brand-midnight-900: #00071f;
 
   --color-neutral-0: #ffffff;
   --color-neutral-50: #f7f7f7;
@@ -103,12 +118,12 @@
   --color-system-warning-900: #79350c;
   --color-system-warning-1000: #451a03;
 
-  --semantic-color-background-brand-primary-hover: var(--color-brand-blue-800);
-  --semantic-color-background-brand-primary: var(--color-regal-blue-950);
+  --semantic-color-background-brand-primary-hover: var(--color-brand-midnight-600);
+  --semantic-color-background-brand-primary: var(--color-brand-midnight-700);
   --semantic-color-background-brand-secondary-hover: var(--color-brand-orange-700);
   --semantic-color-background-brand-secondary: var(--color-brand-orange-600);
-  --semantic-color-background-brand-tertiary-hover: var(--color-brand-blue-50);
-  --semantic-color-background-brand-tertiary: var(--color-brand-blue-100);
+  --semantic-color-background-brand-tertiary-hover: var(--color-brand-midnight-50);
+  --semantic-color-background-brand-tertiary: var(--color-brand-midnight-100);
   --semantic-color-background-danger-primary-hover: var(--color-system-danger-600);
   --semantic-color-background-danger-primary: var(--color-system-danger-500);
   --semantic-color-background-danger-secondary-hover: var(--color-system-danger-300);
@@ -121,7 +136,7 @@
   --semantic-color-background-secondary: var(--color-neutral-50);
   --semantic-color-background-tertiary-hover: var(--color-neutral-200);
   --semantic-color-background-tertiary: var(--color-neutral-100);
-  --semantic-color-background-disabled-default: var(--color-neutral-300);
+  --semantic-color-background-disabled: var(--color-neutral-300);
   --semantic-color-background-positive-primary-hover: var(--color-system-positive-600);
   --semantic-color-background-positive-primary: var(--color-system-positive-500);
   --semantic-color-background-positive-secondary-hover: var(--color-system-positive-300);
@@ -138,16 +153,17 @@
   --semantic-color-background-warning-secondary: var(--color-system-warning-200);
   --semantic-color-background-warning-tertiary-hover: var(--color-system-warning-200);
   --semantic-color-background-warning-tertiary: var(--color-system-warning-100);
-  --semantic-color-border-brand-primary: var(--color-regal-blue-900);
+
+  --semantic-color-border-brand-primary: var(--color-brand-midnight-700);
   --semantic-color-border-brand-secondary: var(--color-brand-orange-600);
-  --semantic-color-border-brand-tertiary: var(--color-brand-blue-200);
+  --semantic-color-border-brand-tertiary: var(--color-brand-midnight-200);
   --semantic-color-border-danger-primary: var(--color-system-danger-700);
   --semantic-color-border-danger-secondary: var(--color-system-danger-600);
   --semantic-color-border-danger-tertiary: var(--color-system-danger-500);
   --semantic-color-border-primary: var(--color-neutral-200);
   --semantic-color-border-secondary: var(--color-neutral-300);
   --semantic-color-border-tertiary: var(--color-neutral-400);
-  --semantic-color-border-disabled-default: var(--color-neutral-400);
+  --semantic-color-border-disabled: var(--color-neutral-400);
   --semantic-color-border-positive-primary: var(--color-system-positive-800);
   --semantic-color-border-positive-secondary: var(--color-system-positive-600);
   --semantic-color-border-positive-tertiary: var(--color-system-positive-500);
@@ -156,46 +172,48 @@
   --semantic-color-border-warning-primary: var(--color-system-warning-900);
   --semantic-color-border-warning-secondary: var(--color-system-warning-700);
   --semantic-color-border-warning-tertiary: var(--color-system-warning-600);
+
   --semantic-color-icon-on-brand-primary: var(--color-neutral-0);
   --semantic-color-icon-on-brand-secondary: var(--color-neutral-0);
-  --semantic-color-icon-on-brand-tertiary: var(--color-brand-blue-800);
-  --semantic-color-icon-brand-primary: var(--color-regal-blue-900);
+  --semantic-color-icon-on-brand-tertiary: var(--color-brand-midnight-700);
+  --semantic-color-icon-brand-primary: var(--color-brand-midnight-700);
   --semantic-color-icon-brand-secondary: var(--color-brand-orange-600);
-  --semantic-color-icon-brand-tertiary: var(--color-brand-blue-200);
-  --semantic-color-icon-danger-on-danger-primary: var(--color-system-danger-100);
-  --semantic-color-icon-danger-on-danger-secondary: var(--color-system-danger-700);
-  --semantic-color-icon-danger-on-danger-tertiary: var(--color-system-danger-700);
+  --semantic-color-icon-brand-tertiary: var(--color-brand-midnight-200);
+  --semantic-color-icon-on-danger-primary: var(--color-system-danger-100);
+  --semantic-color-icon-on-danger-secondary: var(--color-system-danger-700);
+  --semantic-color-icon-on-danger-tertiary: var(--color-system-danger-700);
   --semantic-color-icon-danger-primary: var(--color-system-danger-700);
   --semantic-color-icon-danger-secondary: var(--color-system-danger-600);
   --semantic-color-icon-danger-tertiary: var(--color-system-danger-500);
   --semantic-color-icon-primary: var(--color-neutral-900);
   --semantic-color-icon-secondary: var(--color-neutral-500);
   --semantic-color-icon-tertiary: var(--color-neutral-400);
-  --semantic-color-icon-disabled-default: var(--color-neutral-400);
-  --semantic-color-icon-disabled-on-disabled: var(--color-neutral-400);
-  --semantic-color-icon-positive-on-positive-primary: var(--color-system-positive-100);
-  --semantic-color-icon-positive-on-positive-secondary: var(--color-system-positive-800);
-  --semantic-color-icon-positive-on-positive-tertiary: var(--color-system-positive-900);
+  --semantic-color-icon-disabled: var(--color-neutral-400);
+  --semantic-color-icon-on-disabled: var(--color-neutral-400);
+  --semantic-color-icon-on-positive-primary: var(--color-system-positive-100);
+  --semantic-color-icon-on-positive-secondary: var(--color-system-positive-800);
+  --semantic-color-icon-on-positive-tertiary: var(--color-system-positive-900);
   --semantic-color-icon-positive-primary: var(--color-system-positive-800);
   --semantic-color-icon-positive-secondary: var(--color-system-positive-600);
   --semantic-color-icon-positive-tertiary: var(--color-system-positive-500);
   --semantic-color-icon-utilities-measurement: #d732a8;
   --semantic-color-icon-utilities-on-measurement: #8a226f;
-  --semantic-color-icon-warning-on-warning-primary: var(--color-system-warning-1000);
-  --semantic-color-icon-warning-on-warning-secondary: var(--color-system-warning-800);
-  --semantic-color-icon-warning-on-warning-tertiary: var(--color-system-warning-900);
+  --semantic-color-icon-on-warning-primary: var(--color-system-warning-1000);
+  --semantic-color-icon-on-warning-secondary: var(--color-system-warning-800);
+  --semantic-color-icon-on-warning-tertiary: var(--color-system-warning-900);
   --semantic-color-icon-warning-primary: var(--color-system-warning-900);
   --semantic-color-icon-warning-secondary: var(--color-system-warning-700);
   --semantic-color-icon-warning-tertiary: var(--color-system-warning-600);
+
   --semantic-color-text-on-brand-primary: var(--color-neutral-0);
   --semantic-color-text-on-brand-secondary: var(--color-neutral-0);
-  --semantic-color-text-on-brand-tertiary: var(--color-brand-blue-800);
-  --semantic-color-text-brand-primary: var(--color-regal-blue-900);
+  --semantic-color-text-on-brand-tertiary: var(--color-brand-midnight-700);
+  --semantic-color-text-brand-primary: var(--color-brand-midnight-700);
   --semantic-color-text-brand-secondary: var(--color-brand-orange-700);
-  --semantic-color-text-brand-tertiary: var(--color-brand-blue-100);
-  --semantic-color-text-danger-on-danger-primary: var(--color-system-danger-100);
-  --semantic-color-text-danger-on-danger-secondary: var(--color-system-danger-700);
-  --semantic-color-text-danger-on-danger-tertiary: var(--color-system-danger-700);
+  --semantic-color-text-brand-tertiary: var(--color-brand-midnight-100);
+  --semantic-color-text-on-danger-primary: var(--color-system-danger-100);
+  --semantic-color-text-on-danger-secondary: var(--color-system-danger-700);
+  --semantic-color-text-on-danger-tertiary: var(--color-system-danger-700);
   --semantic-color-text-danger-primary: var(--color-system-danger-700);
   --semantic-color-text-danger-secondary: var(--color-system-danger-600);
   --semantic-color-text-danger-tertiary: var(--color-system-danger-500);
@@ -203,36 +221,42 @@
   --semantic-color-text-secondary: var(--color-neutral-600);
   --semantic-color-text-tertiary: var(--color-neutral-400);
   --semantic-color-text-disabled-disabled: var(--color-neutral-400);
-  --semantic-color-text-disabled-on-disabled: var(--color-neutral-400);
-  --semantic-color-text-positive-on-positive-secondary: var(--color-system-positive-800);
-  --semantic-color-text-positive-on-positive-tertiary: var(--color-system-positive-800);
-  --semantic-color-text-positive-on-positive: var(--color-system-positive-100);
+  --semantic-color-text-on-disabled: var(--color-neutral-400);
+  --semantic-color-text-on-positive-primary: var(--color-system-positive-100);
+  --semantic-color-text-on-positive-secondary: var(--color-system-positive-800);
+  --semantic-color-text-on-positive-tertiary: var(--color-system-positive-800);
   --semantic-color-text-positive-primary: var(--color-system-positive-800);
   --semantic-color-text-positive-secondary: var(--color-system-positive-600);
   --semantic-color-text-positive-tertiary: var(--color-system-positive-500);
   --semantic-color-text-utilities-on-measurement: #8a226f;
   --semantic-color-text-utilities-on-overlay: #0c0c0d;
-  --semantic-color-text-warning-on-warning-primary: var(--color-system-warning-1000);
-  --semantic-color-text-warning-on-warning-secondary: var(--color-system-warning-800);
-  --semantic-color-text-warning-on-warning-tertiary: var(--color-system-warning-900);
+  --semantic-color-text-on-warning-primary: var(--color-system-warning-1000);
+  --semantic-color-text-on-warning-secondary: var(--color-system-warning-800);
+  --semantic-color-text-on-warning-tertiary: var(--color-system-warning-900);
   --semantic-color-text-warning-primary: var(--color-system-warning-900);
   --semantic-color-text-warning-secondary: var(--color-system-warning-700);
   --semantic-color-text-warning-tertiary: var(--color-system-warning-600);
 }
 
 .dark {
-  --semantic-color-background-brand-primary-hover: var(--color-brand-blue-500);
-  --semantic-color-background-brand-primary: var(--color-regal-blue-900);
+  --semantic-color-background-brand-primary-hover: var(--color-brand-midnight-600);
+  --semantic-color-background-brand-primary: var(--color-brand-midnight-700);
   --semantic-color-background-brand-secondary-hover: var(--color-brand-orange-500);
   --semantic-color-background-brand-secondary: var(--color-brand-orange-600);
-  --semantic-color-background-brand-tertiary-hover: var(--color-brand-blue-200);
-  --semantic-color-background-brand-tertiary: var(--color-brand-blue-100);
+  --semantic-color-background-brand-tertiary-hover: var(--color-brand-midnight-200);
+  --semantic-color-background-brand-tertiary: var(--color-brand-midnight-100);
   --semantic-color-background-danger-primary-hover: var(--color-system-danger-700);
   --semantic-color-background-danger-primary: var(--color-system-danger-600);
   --semantic-color-background-danger-secondary-hover: var(--color-system-danger-900);
   --semantic-color-background-danger-secondary: var(--color-system-danger-800);
   --semantic-color-background-danger-tertiary-hover: var(--color-system-danger-1000);
   --semantic-color-background-danger-tertiary: var(--color-system-danger-900);
+  --semantic-color-background-primary-hover: var(--color-neutral-900);
+  --semantic-color-background-primary: var(--color-neutral-950);
+  --semantic-color-background-secondary-hover: var(--color-neutral-800);
+  --semantic-color-background-secondary: var(--color-neutral-900);
+  --semantic-color-background-tertiary-hover: var(--color-neutral-700);
+  --semantic-color-background-tertiary: var(--color-neutral-800);
   --semantic-color-background-disabled: var(--color-neutral-700);
   --semantic-color-background-positive-primary-hover: var(--color-system-positive-800);
   --semantic-color-background-positive-primary: var(--color-system-positive-700);
@@ -240,12 +264,6 @@
   --semantic-color-background-positive-secondary: var(--color-system-positive-800);
   --semantic-color-background-positive-tertiary-hover: var(--color-system-positive-1000);
   --semantic-color-background-positive-tertiary: var(--color-system-positive-900);
-  --semantic-color-background-primary-hover: var(--color-neutral-900);
-  --semantic-color-background-primary: var(--color-neutral-950);
-  --semantic-color-background-secondary-hover: var(--color-neutral-800);
-  --semantic-color-background-secondary: var(--color-neutral-900);
-  --semantic-color-background-tertiary-hover: var(--color-neutral-700);
-  --semantic-color-background-tertiary: var(--color-neutral-800);
   --semantic-color-background-utilities-blanket: rgba(0, 0, 0, 0.7);
   --semantic-color-background-utilities-measurement: #8a226f;
   --semantic-color-background-utilities-overlay: rgba(0, 0, 0, 0.5);
@@ -256,83 +274,86 @@
   --semantic-color-background-warning-secondary: var(--color-system-warning-800);
   --semantic-color-background-warning-tertiary-hover: var(--color-system-warning-1000);
   --semantic-color-background-warning-tertiary: var(--color-system-warning-900);
-  --semantic-color-border-brand-primary: var(--color-brand-blue-500);
+
+  --semantic-color-border-brand-primary: var(--color-brand-midnight-600);
   --semantic-color-border-brand-secondary: var(--color-brand-orange-600);
-  --semantic-color-border-brand-tertiary: var(--color-brand-blue-200);
+  --semantic-color-border-brand-tertiary: var(--color-brand-midnight-200);
   --semantic-color-border-danger-primary: var(--color-system-danger-200);
   --semantic-color-border-danger-secondary: var(--color-system-danger-400);
   --semantic-color-border-danger-tertiary: var(--color-system-danger-500);
+  --semantic-color-border-primary: var(--color-neutral-600);
+  --semantic-color-border-secondary: var(--color-neutral-500);
+  --semantic-color-border-tertiary: var(--color-neutral-400);
   --semantic-color-border-disabled: var(--color-neutral-400);
   --semantic-color-border-positive-primary: var(--color-system-positive-200);
   --semantic-color-border-positive-secondary: var(--color-system-positive-400);
   --semantic-color-border-positive-tertiary: var(--color-system-positive-600);
-  --semantic-color-border-primary: var(--color-neutral-600);
-  --semantic-color-border-secondary: var(--color-neutral-500);
-  --semantic-color-border-tertiary: var(--color-neutral-400);
   --semantic-color-border-utilities-measurement: #d732a8;
   --semantic-color-border-utilities-swatch: rgba(255, 255, 255, 0.24);
   --semantic-color-border-warning-primary: var(--color-system-warning-200);
   --semantic-color-border-warning-secondary: var(--color-system-warning-400);
   --semantic-color-border-warning-tertiary: var(--color-system-warning-600);
-  --semantic-color-icon-brand-primary: var(--color-brand-blue-500);
-  --semantic-color-icon-brand-secondary: var(--color-brand-orange-600);
-  --semantic-color-icon-brand-tertiary: var(--color-brand-blue-200);
-  --semantic-color-icon-danger-primary: var(--color-system-danger-200);
-  --semantic-color-icon-danger-secondary: var(--color-system-danger-400);
-  --semantic-color-icon-danger-tertiary: var(--color-system-danger-500);
-  --semantic-color-icon-disabled: var(--color-neutral-500);
+
   --semantic-color-icon-on-brand-primary: var(--color-neutral-0);
   --semantic-color-icon-on-brand-secondary: var(--color-neutral-0);
-  --semantic-color-icon-on-brand-tertiary: var(--color-brand-blue-800);
+  --semantic-color-icon-on-brand-tertiary: var(--color-brand-midnight-700);
+  --semantic-color-icon-brand-primary: var(--color-brand-midnight-600);
+  --semantic-color-icon-brand-secondary: var(--color-brand-orange-600);
+  --semantic-color-icon-brand-tertiary: var(--color-brand-midnight-200);
   --semantic-color-icon-on-danger-primary: var(--color-system-danger-100);
   --semantic-color-icon-on-danger-secondary: var(--color-system-danger-100);
   --semantic-color-icon-on-danger-tertiary: var(--color-system-danger-100);
+  --semantic-color-icon-danger-primary: var(--color-system-danger-200);
+  --semantic-color-icon-danger-secondary: var(--color-system-danger-400);
+  --semantic-color-icon-danger-tertiary: var(--color-system-danger-500);
+  --semantic-color-icon-primary: var(--color-neutral-0);
+  --semantic-color-icon-secondary: var(--color-neutral-300);
+  --semantic-color-icon-tertiary: var(--color-neutral-500);
+  --semantic-color-icon-disabled: var(--color-neutral-500);
   --semantic-color-icon-on-disabled: var(--color-neutral-400);
   --semantic-color-icon-on-positive-primary: var(--color-system-positive-100);
   --semantic-color-icon-on-positive-secondary: var(--color-system-positive-100);
   --semantic-color-icon-on-positive-tertiary: var(--color-system-positive-100);
-  --semantic-color-icon-on-warning-primary: var(--color-system-warning-1000);
-  --semantic-color-icon-on-warning-secondary: var(--color-system-warning-100);
-  --semantic-color-icon-on-warning-tertiary: var(--color-system-warning-100);
   --semantic-color-icon-positive-primary: var(--color-system-positive-200);
   --semantic-color-icon-positive-secondary: var(--color-system-positive-400);
   --semantic-color-icon-positive-tertiary: var(--color-system-positive-600);
-  --semantic-color-icon-primary: var(--color-neutral-0);
-  --semantic-color-icon-secondary: var(--color-neutral-300);
-  --semantic-color-icon-tertiary: var(--color-neutral-500);
   --semantic-color-icon-utilities-measurement: #f19edc;
   --semantic-color-icon-utilities-on-measurement: #fae1fa;
+  --semantic-color-icon-on-warning-primary: var(--color-system-warning-1000);
+  --semantic-color-icon-on-warning-secondary: var(--color-system-warning-100);
+  --semantic-color-icon-on-warning-tertiary: var(--color-system-warning-100);
   --semantic-color-icon-warning-primary: var(--color-system-warning-200);
   --semantic-color-icon-warning-secondary: var(--color-system-warning-400);
   --semantic-color-icon-warning-tertiary: var(--color-system-warning-600);
-  --semantic-color-text-brand-primary: var(--color-brand-blue-500);
-  --semantic-color-text-brand-secondary: var(--color-regal-blue-900);
-  --semantic-color-text-brand-tertiary: var(--color-brand-blue-200);
-  --semantic-color-text-danger-primary: var(--color-system-danger-200);
-  --semantic-color-text-danger-secondary: var(--color-system-danger-400);
-  --semantic-color-text-danger-tertiary: var(--color-system-danger-500);
-  --semantic-color-text-disabled: var(--color-neutral-500);
+
   --semantic-color-text-on-brand-primary: var(--color-neutral-0);
   --semantic-color-text-on-brand-secondary: var(--color-neutral-0);
-  --semantic-color-text-on-brand-tertiary: var(--color-brand-blue-800);
+  --semantic-color-text-on-brand-tertiary: var(--color-brand-midnight-700);
+  --semantic-color-text-brand-primary: var(--color-brand-midnight-600);
+  --semantic-color-text-brand-secondary: var(--color-brand-orange-600);
+  --semantic-color-text-brand-tertiary: var(--color-brand-midnight-200);
   --semantic-color-text-on-danger-primary: var(--color-system-danger-100);
   --semantic-color-text-on-danger-secondary: var(--color-system-danger-100);
   --semantic-color-text-on-danger-tertiary: var(--color-system-danger-100);
-  --semantic-color-text-on-disabled: var(--color-neutral-500);
-  --semantic-color-text-on-positive-secondary: var(--color-system-positive-100);
-  --semantic-color-text-on-positive-tertiary: var(--color-system-positive-100);
-  --semantic-color-text-on-positive: var(--color-system-positive-100);
-  --semantic-color-text-on-warning-primary: var(--color-system-warning-1000);
-  --semantic-color-text-on-warning-secondary: var(--color-system-warning-100);
-  --semantic-color-text-on-warning-tertiary: var(--color-system-warning-100);
-  --semantic-color-text-positive-primary: var(--color-system-positive-200);
-  --semantic-color-text-positive-secondary: var(--color-system-positive-400);
-  --semantic-color-text-positive-tertiary: var(--color-system-positive-600);
+  --semantic-color-text-danger-primary: var(--color-system-danger-200);
+  --semantic-color-text-danger-secondary: var(--color-system-danger-400);
+  --semantic-color-text-danger-tertiary: var(--color-system-danger-500);
   --semantic-color-text-primary: var(--color-neutral-0);
   --semantic-color-text-secondary: var(--color-neutral-400);
   --semantic-color-text-tertiary: var(--color-neutral-500);
+  --semantic-color-text-disabled-disabled: var(--color-neutral-500);
+  --semantic-color-text-on-disabled: var(--color-neutral-500);
+  --semantic-color-text-on-positive-primary: var(--color-system-positive-100);
+  --semantic-color-text-on-positive-secondary: var(--color-system-positive-100);
+  --semantic-color-text-on-positive-tertiary: var(--color-system-positive-100);
+  --semantic-color-text-positive-primary: var(--color-system-positive-200);
+  --semantic-color-text-positive-secondary: var(--color-system-positive-400);
+  --semantic-color-text-positive-tertiary: var(--color-system-positive-600);
   --semantic-color-text-utilities-on-measurement: #fae1fa;
   --semantic-color-text-utilities-on-overlay: #ffffff;
+  --semantic-color-text-on-warning-primary: var(--color-system-warning-1000);
+  --semantic-color-text-on-warning-secondary: var(--color-system-warning-100);
+  --semantic-color-text-on-warning-tertiary: var(--color-system-warning-100);
   --semantic-color-text-warning-primary: var(--color-system-warning-200);
   --semantic-color-text-warning-secondary: var(--color-system-warning-400);
   --semantic-color-text-warning-tertiary: var(--color-system-warning-600);
@@ -351,6 +372,10 @@
 
 @utility border-* {
   border-color: --value(--semantic-color-border-*);
+}
+
+@utility outline-* {
+  outline-color: --value(--semantic-color-border-*);
 }
 
 @utility icon-* {
@@ -473,7 +498,7 @@
   } */
 
   body {
-    @apply bg-primary text-primary;
+    @apply bg-secondary text-primary;
   }
 }
 
@@ -483,6 +508,10 @@
 
 @utility uppertitle {
   @apply text-brand-blue-600 text-xs tracking-wider uppercase;
+}
+
+@utility subheading {
+  @apply text-3xl font-medium;
 }
 
 @layer components {
