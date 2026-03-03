@@ -69,10 +69,6 @@ export const fetchPaginatedPostsByCategory = async (categoryId: number, page: nu
   return data;
 };
 
-//
-//
-//
-
 export async function fetchPostsByTagSlug(slug: string, limit: number, excludeIds: (string | number)[] = []): Promise<Post[]> {
   const { isEnabled: draft } = await draftMode();
 
@@ -134,21 +130,24 @@ export async function fetchPostsByCategorySlug(slug: string, limit: number, excl
 
   return posts.docs;
 }
+type FetchLatestPostsProps = {
+  excludeIds?: (string | number)[];
+  limit?: number;
+};
 
-export const fetchLatestPostsWithoutFeatureds = async (excludeIds: (string | number)[], page: number = 1): Promise<PaginatedDocs<Post>> => {
+export const fetchLatestPosts = async ({ excludeIds = [], limit = 9 }: FetchLatestPostsProps = {}): Promise<Post[]> => {
   const { isEnabled: draft } = await draftMode();
 
   const posts = await payload.find({
     collection: "posts",
     depth: 2,
     draft,
-    limit: 9,
-    page,
+    limit,
     sort: "-publishedDate",
     where: {
       and: [...(excludeIds.length > 0 ? [{ id: { not_in: excludeIds } }] : []), ...(draft ? [] : [{ _status: { equals: "published" } }])],
     },
   });
 
-  return posts;
+  return posts.docs;
 };

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { createMetadata } from "@/utilities/create-metadata";
 
 import { fetchPostBySlug } from "@/collections/Posts/data";
-import MostRead from "@/components/MostRead";
+import { MostRead } from "@/components/MostRead";
 import { PayloadImage } from "@/components/Payload/Image";
 import { RichText } from "@/components/RichText";
 import { Facebook, LinkedIn, Threads, WhatsApp, X } from "@/components/SocialIcon";

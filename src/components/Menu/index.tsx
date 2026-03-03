@@ -5,13 +5,12 @@ import { RefObject, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { MenuIcon, Search, X } from "lucide-react";
+import { MenuIcon, X } from "lucide-react";
 
 import { useEscapeKey } from "@/hooks/useEscapeKey";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { Category } from "@/payload-types";
 import { Button } from "../Button";
-import { Input } from "../ui/input";
 
 type MenuProps = {
   categories: Category[];
@@ -66,12 +65,12 @@ export function Menu({ categories }: MenuProps) {
             <nav id="main-navigation" className={`basis-full items-center lg:basis-auto lg:justify-center lg:py-0 ${isOpen ? "pt-10" : ""}`}>
               {/* Desktop Menu */}
               <ul className="hidden max-w-3xl justify-center pt-6 lg:flex lg:flex-wrap lg:items-center">
-                <li>
+                {/* <li>
                   <div className="relative">
                     <Input placeholder="Pesquisar" />
                     <Search className="absolute top-1/2 right-3 size-4 -translate-y-1/2" />
                   </div>
-                </li>
+                </li> */}
                 {categories.map((category) => (
                   <li key={category.id} className="mb-2 lg:mb-0">
                     <Button className="max-lg:w-full max-lg:justify-start" size="lg" variant="ghost" asChild>
@@ -83,12 +82,12 @@ export function Menu({ categories }: MenuProps) {
 
               {/* Mobile Menu */}
               <ul className={`-ml-3 lg:hidden ${isOpen ? "block" : "hidden"}`}>
-                <li>
+                {/* <li>
                   <div className="relative mb-3">
                     <Input placeholder="Pesquisar" />
                     <Search className="absolute top-1/2 right-3 size-4 -translate-y-1/2" />
                   </div>
-                </li>
+                </li> */}
                 {categories.map((category) => (
                   <li key={category.id} className="">
                     <Button className="max-lg:w-full max-lg:justify-start" size="lg" variant="ghost" asChild>

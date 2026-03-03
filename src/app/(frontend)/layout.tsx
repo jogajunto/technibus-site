@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.variable} grid min-h-screen grid-rows-[auto_1fr] antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         <Header />
         {children}
         {process.env.NEXT_PUBLIC_ENV === "production" && <GoogleTagManager gtmId="GTM-" />}

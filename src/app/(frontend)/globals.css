@@ -15,6 +15,9 @@
   --text-4xl: 2.5rem;
   --text-6xl: 4rem;
 
+  --color-latbus-blue: #3d5793;
+  --color-latbus-green: #dbdc84;
+
   --color-brand-orange-50: #fff8ee;
   --color-brand-orange-100: #fde7c2;
   --color-brand-orange-200: #fbcf90;
@@ -238,7 +241,7 @@
   --semantic-color-text-warning-tertiary: var(--color-system-warning-600);
 }
 
-.dark {
+[data-theme="dark"] {
   --semantic-color-background-brand-primary-hover: var(--color-brand-midnight-600);
   --semantic-color-background-brand-primary: var(--color-brand-midnight-700);
   --semantic-color-background-brand-secondary-hover: var(--color-brand-orange-500);
@@ -512,6 +515,10 @@
 
 @utility subheading {
   @apply text-3xl font-medium;
+}
+
+@utility heading {
+  @apply text-4xl font-medium tracking-tighter;
 }
 
 @layer components {
