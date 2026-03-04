@@ -10,7 +10,7 @@ export async function MostRead() {
       <ol className="space-y-2">
         {posts.map((post, index) => (
           <div className="flex" key={index}>
-            {index}
+            {index + 1}
             <Card {...post} disable={{ image: true, excerpt: true }} key={post.id} size="sm" />
           </div>
         ))}
