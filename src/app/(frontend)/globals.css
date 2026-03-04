@@ -506,7 +506,7 @@
 }
 
 @utility container {
-  @apply mx-auto max-w-[75rem] px-6;
+  @apply mx-auto max-w-[1400px] px-6;
 }
 
 @utility uppertitle {

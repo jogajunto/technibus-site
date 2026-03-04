@@ -1,6 +1,7 @@
 import { createMetadata } from "@/utilities/create-metadata";
 
 import { fetchLatestPosts, fetchPostsByCategorySlug, fetchPostsByTagSlug } from "@/collections/Posts/data";
+import Ads from "@/components/Ads";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Countdown } from "@/components/Countdown";
@@ -39,48 +40,55 @@ export default async function Page() {
   return (
     <main>
       <section className="relative z-0 min-w-0 pt-10 pb-24">
-        <div className="container grid gap-10 lg:grid-cols-12">
-          <div className="space-y-10 lg:col-span-9">
-            <div className="space-y-3">
-              {/* <h2 className="subheading border-secondary text-brand-primary border-b pb-3">Destaques</h2> */}
-              <div className="mb-8 grid gap-3 lg:grid-cols-12">
-                <div className="min-w-0 lg:col-span-8">
-                  <FeaturedPosts posts={featuredPosts} />
+        <h1 className="sr-only">A mais tradicional revista brasileira dedicada ao transporte de passageiros por ônibus.</h1>
+        <div className="container space-y-10">
+          <Ads className="mx-auto max-w-5xl" position="main" />
+          <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
+            <div className="space-y-10">
+              <div className="space-y-3">
+                <h2 className="subheading border-secondary text-brand-primary sr-only border-b pb-3">Destaques</h2>
+                <div className="mb-8 grid gap-3 lg:grid-cols-12">
+                  <div className="min-w-0 lg:col-span-8">
+                    <FeaturedPosts posts={featuredPosts} />
+                  </div>
+                  <div className="grid gap-3 max-lg:grid-cols-2 max-md:grid-cols-1 lg:col-span-4">
+                    {secondaryFeaturedPosts.map((post) => (
+                      <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
+                    ))}
+                  </div>
                 </div>
-                <div className="grid gap-3 max-lg:grid-cols-2 max-md:grid-cols-1 lg:col-span-4">
-                  {secondaryFeaturedPosts.map((post) => (
+              </div>
+
+              <div className="grid items-start gap-x-3 gap-y-10 md:grid-cols-2">
+                <div className="space-y-3">
+                  <h2 className="text-brand-primary border-secondary max-md:subheading border-b pb-3 text-xl font-medium">Technibus na história</h2>
+                  {technibusHistoryPosts.map((post) => (
+                    <Card {...post} key={post.id} size="lg" />
+                  ))}
+                </div>
+                <div className="space-y-3">
+                  <h2 className="text-brand-primary border-secondary max-md:subheading border-b pb-3 text-xl font-medium">Entrevista & Opinião</h2>
+                  {interviewAndOpinionPosts.map((post) => (
+                    <Card {...post} key={post.id} size="lg" />
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-brand-primary border-secondary subheading border-b pb-3">Últimas publicações</h2>
+                <div className="grid auto-rows-min gap-3 sm:grid-cols-2 md:grid-cols-3">
+                  {latestPosts.map((post) => (
                     <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
                   ))}
                 </div>
               </div>
             </div>
-
-            <div className="grid items-start gap-x-3 gap-y-10 md:grid-cols-2">
-              <div className="space-y-3">
-                <h2 className="text-brand-primary border-secondary max-md:subheading border-b pb-3 text-xl font-medium">Technibus na história</h2>
-                {technibusHistoryPosts.map((post) => (
-                  <Card {...post} key={post.id} size="lg" />
-                ))}
-              </div>
-              <div className="space-y-3">
-                <h2 className="text-brand-primary border-secondary max-md:subheading border-b pb-3 text-xl font-medium">Entrevista & Opinião</h2>
-                {interviewAndOpinionPosts.map((post) => (
-                  <Card {...post} key={post.id} size="lg" />
-                ))}
-              </div>
+            <div className="space-y-6">
+              <Ads position="sidebar-top" />
+              <MostRead />
+              <Ads position="sidebar-middle" />
+              <Ads position="sidebar-bottom-premium" />
             </div>
-
-            <div className="space-y-3">
-              <h2 className="text-brand-primary border-secondary subheading border-b pb-3">Últimas publicações</h2>
-              <div className="grid auto-rows-min gap-3 sm:grid-cols-2 md:grid-cols-3">
-                {latestPosts.map((post) => (
-                  <Card {...post} key={post.id} size="sm" />
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="lg:col-span-3">
-            <MostRead />
           </div>
         </div>
       </section>
