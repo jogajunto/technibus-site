@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Category, Media, Post } from "@/payload-types";
+import { Category, Media, Post, Search } from "@/payload-types";
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { PayloadImage } from "@/components/Payload/Image";
@@ -31,7 +31,7 @@ type CardProps = {
     image?: boolean;
     excerpt?: boolean;
   };
-} & Post &
+} & (Post | Search) &
   CardVariants;
 
 export function Card({ category, title, excerpt, image, relPermalink, size, disable = { image: false, excerpt: false } }: CardProps) {
