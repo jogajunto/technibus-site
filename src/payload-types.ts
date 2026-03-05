@@ -74,6 +74,7 @@ export interface Config {
     tags: Tag;
     latBusExibithors: LatBusExibithor;
     latBusCategories: LatBusCategory;
+    search: Search;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -98,6 +99,7 @@ export interface Config {
     tags: TagsSelect<false> | TagsSelect<true>;
     latBusExibithors: LatBusExibithorsSelect<false> | LatBusExibithorsSelect<true>;
     latBusCategories: LatBusCategoriesSelect<false> | LatBusCategoriesSelect<true>;
+    search: SearchSelect<false> | SearchSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -285,6 +287,30 @@ export interface LatBusCategory {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * This is a collection of automatically created search results. These results are used by the global site search and will be updated automatically as documents in the CMS are created or updated.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "search".
+ */
+export interface Search {
+  id: number;
+  title?: string | null;
+  priority?: number | null;
+  doc: {
+    relationTo: 'posts';
+    value: number | Post;
+  };
+  relPermalink: string;
+  category: (number | Category)[];
+  image?: (number | null) | Media;
+  author?: (number | null) | User;
+  content?: string | null;
+  publishedDate?: string | null;
+  excerpt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -335,6 +361,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'latBusCategories';
         value: number | LatBusCategory;
+      } | null)
+    | ({
+        relationTo: 'search';
+        value: number | Search;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -490,6 +520,24 @@ export interface LatBusCategoriesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "search_select".
+ */
+export interface SearchSelect<T extends boolean = true> {
+  title?: T;
+  priority?: T;
+  doc?: T;
+  relPermalink?: T;
+  category?: T;
+  image?: T;
+  author?: T;
+  content?: T;
+  publishedDate?: T;
+  excerpt?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
