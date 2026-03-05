@@ -87,7 +87,7 @@ export function NewsletterForm() {
       <footer className="mt-4 space-y-4">
         <p className="text-woodsmoke-lighter">
           Ao submeter os dados, você concorda com a nossa{" "}
-          <Link className="hover:text-brand-primary underline transition-colors duration-300" href="https://otmeditora.com/politica-de-privacidade">
+          <Link className="link" href="https://otmeditora.com/politica-de-privacidade">
             Política de Privacidade
           </Link>
           .

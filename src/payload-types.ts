@@ -151,8 +151,10 @@ export interface User {
   id: number;
   slug?: string | null;
   relPermalink: string;
-  name?: string | null;
+  name: string;
+  role?: string | null;
   bio?: string | null;
+  image?: (number | null) | Media;
   posts?: {
     docs?: (number | Post)[];
     hasNextPage?: boolean;
@@ -169,6 +171,27 @@ export interface User {
   lockUntil?: string | null;
   password?: string | null;
   collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt?: string | null;
+  caption?: string | null;
+  blurhash?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -238,27 +261,6 @@ export interface Category {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt?: string | null;
-  caption?: string | null;
-  blurhash?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -426,7 +428,9 @@ export interface UsersSelect<T extends boolean = true> {
   slug?: T;
   relPermalink?: T;
   name?: T;
+  role?: T;
   bio?: T;
+  image?: T;
   posts?: T;
   updatedAt?: T;
   createdAt?: T;

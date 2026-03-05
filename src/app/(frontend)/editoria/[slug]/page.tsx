@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { notFound } from "next/navigation";
 
 import { fetchCategoryBySlug } from "@/collections/Categories/data";
 import { fetchPaginatedPostsByCategory } from "@/collections/Posts/data";
@@ -33,6 +34,10 @@ export default async function Page({ params }: PageArgs) {
   const category = await fetchCategoryBySlug(slug);
   const posts = await fetchPaginatedPostsByCategory(category.id);
 
+  if (!posts.totalDocs) {
+    notFound();
+  }
+
   return (
     <>
       <Head>
@@ -53,7 +58,7 @@ export default async function Page({ params }: PageArgs) {
                   <Card {...post} disable={{ excerpt: true }} key={post.id} size="sm" />
                 ))}
               </PostArchive>
-              <Pagination page={posts.page} totalPages={posts.totalPages} path={`/editoria/${slug}`} />
+              <Pagination page={posts.page} totalPages={posts.totalPages} path={category.relPermalink} />
             </div>
             <Sidebar />
           </div>

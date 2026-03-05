@@ -61,7 +61,7 @@ export default async function Page({ params: paramsPromise }: PageArgs) {
                   <Card {...post} disable={{ excerpt: true }} key={post.id} size="sm" />
                 ))}
               </PostArchive>
-              <Pagination page={posts.page} totalPages={posts.totalPages} path={`/editoria/${slug}`} />
+              <Pagination page={posts.page} totalPages={posts.totalPages} path={category.relPermalink} />
             </div>
             <Sidebar />
           </div>

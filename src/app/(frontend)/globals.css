@@ -506,7 +506,11 @@
 }
 
 @utility container {
-  @apply mx-auto max-w-[1400px] px-6;
+  @apply mx-auto max-w-7xl px-6;
+}
+
+@utility link {
+  @apply text-brand-primary hover:text-brand-secondary underline transition-colors duration-300;
 }
 
 @utility uppertitle {

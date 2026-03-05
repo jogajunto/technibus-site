@@ -12,6 +12,7 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: "email",
     group: "Globais",
+    preview: ({ relPermalink }) => `${relPermalink}`,
   },
   auth: { useSessions: false },
   fields: [
@@ -19,7 +20,7 @@ export const Users: CollectionConfig = {
     relPermalinkField({
       overrides: {
         hooks: {
-          beforeChange: [generateRelPeramlinkWithSlug("/editoria")],
+          beforeChange: [generateRelPeramlinkWithSlug("/autor")],
         },
       },
     }),
@@ -27,11 +28,23 @@ export const Users: CollectionConfig = {
       name: "name",
       type: "text",
       label: "Nome",
+      required: true,
+    },
+    {
+      name: "role",
+      type: "text",
+      label: "Cargo",
     },
     {
       type: "textarea",
       label: "Bioagrafia",
       name: "bio",
+    },
+    {
+      name: "image",
+      label: "Imagem",
+      type: "upload",
+      relationTo: "media",
     },
     {
       label: "Publicações relacionadas",

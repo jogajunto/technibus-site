@@ -1,9 +1,11 @@
 import Head from "next/head";
+import { notFound } from "next/navigation";
 
 import { fetchPaginatedPostsByAuthor } from "@/collections/Posts/data";
 import { fetchUserBySlug } from "@/collections/Users/data";
 import { createMetadata } from "@/utilities/create-metadata";
 
+import AuthorBio from "@/components/AutorBio";
 import { Card } from "@/components/Card";
 import { Pagination } from "@/components/Pagination";
 import { PaginationRange } from "@/components/PostRange";
@@ -33,6 +35,10 @@ export default async function Page({ params }: PageArgs) {
   const author = await fetchUserBySlug(slug);
   const posts = await fetchPaginatedPostsByAuthor(author.id);
 
+  if (!posts.totalDocs) {
+    notFound();
+  }
+
   return (
     <>
       <Head>
@@ -45,15 +51,16 @@ export default async function Page({ params }: PageArgs) {
           <div className="container grid gap-10 lg:grid-cols-[1fr_300px]">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h2 className="text-brand-primary border-secondary subheading border-b pb-3 max-sm:text-center">{author.name}</h2>
+                <AuthorBio {...author} />
                 <PaginationRange currentPage={posts.page || 1} totalPages={posts.totalPages} totalDocs={posts.totalDocs} />
               </div>
+
               <PostArchive>
                 {posts.docs.map((post) => (
                   <Card {...post} disable={{ excerpt: true }} key={post.id} size="sm" />
                 ))}
               </PostArchive>
-              <Pagination page={posts.page} totalPages={posts.totalPages} path={`/editoria/${slug}`} />
+              <Pagination page={posts.page} totalPages={posts.totalPages} path={author.relPermalink} />
             </div>
             <Sidebar />
           </div>

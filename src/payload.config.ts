@@ -128,8 +128,7 @@ export default buildConfig({
       collections: ["posts"],
       searchOverrides: {
         admin: {
-          // remove hidden to execute reindex for collections
-          hidden: true,
+          //   hidden: true,
         },
         fields: ({ defaultFields }) => [
           ...defaultFields,

@@ -44,11 +44,11 @@ export async function Footer() {
               <h2 className="font-semibold">Redação, Administração, Publicidade e Correspondência:</h2>
               <p>Av. Vereador José Diniz, 3300, 7° andar, cj. 707, Campo Belo. CEP 04604-006 – São Paulo / SP</p>
               <p>
-                <a className="text-brand-primary underline" href="tel:+551150968104">
+                <a className="link" href="tel:+551150968104">
                   Tel. (11) 5096-8104 (sequencial)
                 </a>
                 <br />
-                <a className="text-brand-primary underline" href="mailto:otmeditora@otmeditora.com">
+                <a className="link" href="mailto:otmeditora@otmeditora.com">
                   otmeditora@otmeditora.com
                 </a>
               </p>
@@ -59,7 +59,7 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">CEO</h2>
               <p>
                 Marcelo Ricardo Fontana <br />
-                <a className="text-brand-primary underline" href="mailto:marcelofontana@otmeditora.com">
+                <a className="link" href="mailto:marcelofontana@otmeditora.com">
                   marcelofontana@otmeditora.com
                 </a>
               </p>
@@ -68,7 +68,7 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">Editora</h2>
               <p>
                 Márcia Pinna Raspanti <br />
-                <a className="text-brand-primary underline" href="mailto:marciapinna@otmeditora.com">
+                <a className="link" href="mailto:marciapinna@otmeditora.com">
                   marciapinna@otmeditora.com
                 </a>
               </p>
@@ -81,13 +81,13 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">Executivo de contas</h2>
               <p>
                 Tânia Nascimento <br />
-                <a className="text-brand-primary underline" href="mailto:tanianascimento@otmeditora.com">
+                <a className="link" href="mailto:tanianascimento@otmeditora.com">
                   tanianascimento@otmeditora.com
                 </a>
               </p>
               <p>
                 Raul Urrutia <br />
-                <a className="text-brand-primary underline" href="mailto:raulurrutia@otmeditora.com">
+                <a className="link" href="mailto:raulurrutia@otmeditora.com">
                   raulurrutia@otmeditora.com
                 </a>
               </p>
@@ -96,7 +96,7 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">Financeiro</h2>
               <p>
                 Vidal Rodrigues <br />
-                <a className="text-brand-primary underline" href="mailto:vidalrodrigues@otmeditora.com">
+                <a className="link" href="mailto:vidalrodrigues@otmeditora.com">
                   vidalrodrigues@otmeditora.com
                 </a>
               </p>
@@ -107,7 +107,7 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">Eventos corporativos / Marketing</h2>
               <p>
                 Barbara Chelen <br />
-                <a className="text-brand-primary underline" href="mailto:barbaraghelen@otmeditora.com">
+                <a className="link" href="mailto:barbaraghelen@otmeditora.com">
                   barbaraghelen@otmeditora.com
                 </a>
               </p>
@@ -116,7 +116,7 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">Publicidade</h2>
               <p>
                 Karoline Jones <br />
-                <a className="text-brand-primary underline" href="mailto:karolinejones@otmeditora.com">
+                <a className="link" href="mailto:karolinejones@otmeditora.com">
                   karolinejones@otmeditora.com
                 </a>
               </p>
@@ -128,7 +128,7 @@ export async function Footer() {
             <div className="space-y-2">
               <h2 className="border-secondary border-b pb-2 font-semibold">Design gráfico e editoração</h2>
               <p>
-                <a className="text-brand-primary underline" href="https://www.instagram.com/awdesign_____/">
+                <a className="link" href="https://www.instagram.com/awdesign_____/">
                   aw I branding & design
                 </a>
               </p>
@@ -137,13 +137,13 @@ export async function Footer() {
               <h2 className="border-secondary border-b pb-2 font-semibold">Representante região Sul (PR/RS/SC)</h2>
               <p>
                 Gilberto A. Paulin <br />
-                <a className="text-brand-primary underline" href="tel:+554130290563">
+                <a className="link" href="tel:+554130290563">
                   Tel.: (41) 3029-0563
                 </a>
               </p>
               <p>
                 João Batista A. Silva <br />
-                <a className="text-brand-primary underline" href="mailto:joaobatistaasilva@gmail.com">
+                <a className="link" href="mailto:joaobatistaasilva@gmail.com">
                   joaobatistaasilva@gmail.com
                 </a>
               </p>

@@ -35,7 +35,7 @@ export function SectionLatestMagazines() {
               <Link
                 key={index}
                 href={magazine.url}
-                className="group hover:bg-primary max-sm:bg-primary relative flex w-[80vw] min-w-0 flex-col gap-2 rounded-lg p-2 transition-all duration-300 hover:shadow-lg max-sm:shadow-lg sm:w-[250px]"
+                className="group hover:bg-primary max-sm:bg-primary relative flex w-[80vw] min-w-0 flex-col gap-2 rounded-lg p-2 transition-all duration-300 hover:shadow-lg max-sm:shadow-lg sm:w-[226px]"
               >
                 <div className="relative">
                   <Image className="bg-tertiary-hover aspect-3/4 w-full rounded-sm object-cover" src={magazine.thumb} alt={magazine.title} width={858} height={977} />

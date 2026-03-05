@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { Category, Media, User } from "@/payload-types";
 import { createMetadata } from "@/utilities/create-metadata";
+import { generateMetaDescription } from "@/utilities/generate-meta-description";
 
 import { fetchPostBySlug } from "@/collections/Posts/data";
 import { MostRead } from "@/components/MostRead";
 import { PayloadImage } from "@/components/Payload/Image";
 import { RichText } from "@/components/RichText";
 import { Facebook, LinkedIn, Threads, WhatsApp, X } from "@/components/SocialIcon";
-import { Category, Media } from "@/payload-types";
 
 type PageArgs = {
   params: Promise<{
@@ -22,8 +23,8 @@ export async function generateMetadata({ params }: PageArgs) {
 
   return createMetadata({
     path: `/blog/${slug}`,
-    title: post.meta?.title || process.env.SITE_URL!,
-    description: post.meta?.description || "",
+    title: post.title,
+    description: post.excerpt || generateMetaDescription(post.content),
   });
 }
 
@@ -38,7 +39,7 @@ export default async function Page({ params }: PageArgs) {
 
   return (
     <main>
-      <article className="pt-10 pb-24">
+      <article className="pt-4 pb-24">
         <div className="container space-y-16">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="space-y-8 lg:col-span-9">
@@ -58,10 +59,15 @@ export default async function Page({ params }: PageArgs) {
                   </p>
                   <h1 className="text-primary text-4xl font-medium">{post.title}</h1>
                 </div>
-                <p className="text-secondary">{post.excerpt}</p>
+                {post.excerpt && <p className="text-secondary text-pretty">{post.excerpt}</p>}
               </div>
-              <div className="flex justify-between">
-                <p className="text-secondary">Publicado em {new Date(post.publishedDate).toLocaleDateString("pt-BR")}</p>
+              <div className="flex flex-wrap justify-between gap-4">
+                <p className="text-secondary">
+                  Publicado em {new Date(post.publishedDate).toLocaleDateString("pt-BR")} por{" "}
+                  <Link className="link" href={(post.author as User).relPermalink}>
+                    {(post.author as User).name}
+                  </Link>
+                </p>
                 <ul className="flex gap-4">
                   <li>
                     <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(!post.permalink)}`} target="_blank" rel="noopener noreferrer">
@@ -94,7 +100,7 @@ export default async function Page({ params }: PageArgs) {
                   </li>
                 </ul>
               </div>
-              <PayloadImage className="w-full rounded-md" image={post.image as Media} />
+              {post.image && <PayloadImage className="border-secondary bg-secondary w-full rounded-md border" image={post.image as Media} />}
               {post.content && <RichText data={post.content} />}
             </div>
             <div className="lg:col-span-3">
