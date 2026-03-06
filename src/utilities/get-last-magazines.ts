@@ -37,7 +37,7 @@ export const getLastMagazines = async () => {
 
   if (data.success) {
     revistas = data.data;
-    return revistas.reverse();
+    return revistas;
   } else {
     return revistas;
   }
