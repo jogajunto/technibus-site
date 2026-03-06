@@ -1,13 +1,12 @@
+import Head from "next/head";
 import { notFound } from "next/navigation";
 
+import { fetchPaginatedSearch } from "@/collections/Search/data";
 import { createMetadata } from "@/utilities/create-metadata";
 
-import { fetchPaginatedSearch } from "@/collections/Search/data";
-import { Pagination } from "@/components/Pagination";
-import { PaginationRange } from "@/components/PostRange";
-import { PostArchive } from "@/components/PostsArchive";
-import { SearchArea } from "@/components/SerachArea";
-import Head from "next/head";
+import { PostArchive, PostArchiveFeed, PostArchiveHeader } from "@/components/PostArchive";
+import { SearchForm } from "@/components/SearchForm";
+import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
 
 type PageArgs = {
   params: Promise<{ pageNumber: string }>;
@@ -20,45 +19,46 @@ export async function generateMetadata({ params, searchParams }: PageArgs) {
 
   return createMetadata({
     path: `/pesquisar/pagina/${pageNumber}`,
-    title: `Pesquisar "${s || "Todos os posts"}" (Página ${pageNumber})`,
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: `Pesquisar: "${s || "Todos os posts"}" (Página ${pageNumber})`,
+    description: `Resultados de busca para ${s || "Todos os posts"} - página ${pageNumber}.`,
   });
 }
 
 export default async function Page({ params, searchParams }: PageArgs) {
   const { pageNumber } = await params;
   const { s: searchTerm } = await searchParams;
-
   const sanitizedPageNumber = Number(pageNumber);
 
-  const where = searchTerm
-    ? {
-        or: [{ title: { like: searchTerm } }, { content: { like: searchTerm } }],
-      }
-    : undefined;
+  if (!Number.isInteger(sanitizedPageNumber) || sanitizedPageNumber < 1) {
+    notFound();
+  }
 
+  const where = searchTerm ? { or: [{ title: { like: searchTerm } }, { content: { like: searchTerm } }] } : undefined;
   const posts = await fetchPaginatedSearch(sanitizedPageNumber, where);
 
-  if (!Number.isInteger(sanitizedPageNumber) || !posts) {
+  if (!posts) {
     notFound();
   }
 
   return (
     <>
       <Head>
-        {posts.page && posts.page > 1 && <link rel="prev" href={`${process.env.SITE_URL}/pagina/${posts.page - 1}`} />}
-        {posts.page && posts.totalPages > 1 && <link rel="next" href={`${process.env.SITE_URL}/pagina/${posts.page + 1}`} />}
+        {posts.page && posts.page > 1 && <link rel="prev" href={`${process.env.SITE_URL}/pesquisar/pagina/${posts.page - 1}${searchTerm ? `?s=${searchTerm}` : ""}`} />}
+        {posts.page && posts.totalPages > 1 && <link rel="next" href={`${process.env.SITE_URL}/pesquisar/pagina/${posts.page + 1}${searchTerm ? `?s=${searchTerm}` : ""}`} />}
       </Head>
 
       <main>
-        <section className="py-24">
-          <div className="container space-y-10">
-            <SearchArea searchTerm={searchTerm || ""} />
-            <PaginationRange currentPage={posts.page || 1} totalPages={posts.totalPages} totalDocs={posts.totalDocs} />
-            <PostArchive posts={posts.docs} />
-            <Pagination page={posts.page} totalPages={posts.totalPages} path={`/pesquisar`} />
-          </div>
-        </section>
+        <PostArchive>
+          <PostArchiveHeader currentPage={posts.page || 1} totalPages={posts.totalPages} totalDocs={posts.totalDocs}>
+            <SectionHeading>
+              <SectionHeadingTitle size="lg" asChild>
+                <h1>Resultados para &ldquo;{searchTerm || "Todos os posts"}&rdquo;</h1>
+              </SectionHeadingTitle>
+            </SectionHeading>
+            <SearchForm searchTerm={searchTerm || ""} />
+          </PostArchiveHeader>
+          <PostArchiveFeed posts={posts.docs} page={posts.page} totalPages={posts.totalPages} path="/pesquisar" query={searchTerm} />
+        </PostArchive>
       </main>
     </>
   );

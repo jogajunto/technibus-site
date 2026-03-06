@@ -18,11 +18,11 @@ const postArchiveVariants = cva("grid auto-rows-min gap-x-6 gap-y-8", {
   },
 });
 
-type PostArchiveProps = {
+type PostGridProps = {
   children: ReactNode;
   className?: string;
 } & VariantProps<typeof postArchiveVariants>;
 
-export function PostArchive({ children, variant, className }: PostArchiveProps) {
+export function PostGrid({ children, variant, className }: PostGridProps) {
   return <div className={cn(postArchiveVariants({ variant }), className)}>{children}</div>;
 }

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const MENU_TECHNIBUS = [
   { label: "Anuncie", url: "https://otmeditora.com/publicidade/technibus" },
-  { label: "Canal no WhatsApp", url: "/" },
+  { label: "Canal no WhatsApp", url: "https://whatsapp.com/channel/0029VatKJymGufIo6ZNsYt2H" },
   { label: "Fale com a redação", url: "mailto:otmeditora@otmeditora.com" },
   { label: "Newsletter", url: "/" },
   { label: "Revistas Technibus", url: "https://acervodigitalotm.com.br/todas-publicacoes?page=1&publication=Technibus" },
@@ -18,7 +18,7 @@ const MENU_SOCIAL = [
   { label: "Instagram (Transporte Moderno)", url: "https://www.instagram.com/transportemodernooficial/" },
   { label: "Linkedin", url: "https://www.linkedin.com/in/otm-editora-a23367a5/" },
   { label: "Spotify", url: "https://open.spotify.com/show/7301YGnaZ08ViGvWoc8RBd" },
-  { label: "Canal no WhatsApp", url: "/" },
+  { label: "Canal no WhatsApp", url: "https://whatsapp.com/channel/0029VatKJymGufIo6ZNsYt2H" },
   { label: "Youtube (OTM Editora)", url: "https://www.youtube.com/@otmeditora" },
   { label: "Youtube (Videocast)", url: "https://www.youtube.com/@videocasttransportemoderno" },
 ];

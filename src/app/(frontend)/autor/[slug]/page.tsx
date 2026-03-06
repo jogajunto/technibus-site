@@ -5,12 +5,8 @@ import { fetchPaginatedPostsByAuthor } from "@/collections/Posts/data";
 import { fetchUserBySlug } from "@/collections/Users/data";
 import { createMetadata } from "@/utilities/create-metadata";
 
-import AuthorBio from "@/components/AutorBio";
-import { Card } from "@/components/Card";
-import { Pagination } from "@/components/Pagination";
-import { PaginationRange } from "@/components/PostRange";
-import { PostArchive } from "@/components/PostsArchive";
-import { Sidebar } from "@/components/Sidebar";
+import { AuthorBio } from "@/components/AutorBio";
+import { PostArchive, PostArchiveFeed, PostArchiveHeader } from "@/components/PostArchive";
 
 type PageArgs = {
   params: Promise<{
@@ -47,24 +43,12 @@ export default async function Page({ params }: PageArgs) {
       </Head>
 
       <main>
-        <section className="relative z-0 pt-4 pb-24">
-          <div className="container grid gap-10 lg:grid-cols-[1fr_300px]">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <AuthorBio {...author} />
-                <PaginationRange currentPage={posts.page || 1} totalPages={posts.totalPages} totalDocs={posts.totalDocs} />
-              </div>
-
-              <PostArchive>
-                {posts.docs.map((post) => (
-                  <Card {...post} disable={{ excerpt: true }} key={post.id} size="sm" />
-                ))}
-              </PostArchive>
-              <Pagination page={posts.page} totalPages={posts.totalPages} path={author.relPermalink} />
-            </div>
-            <Sidebar />
-          </div>
-        </section>
+        <PostArchive>
+          <PostArchiveHeader currentPage={posts.page || 1} totalPages={posts.totalPages} totalDocs={posts.totalDocs}>
+            <AuthorBio {...author} />
+          </PostArchiveHeader>
+          <PostArchiveFeed posts={posts.docs} page={posts.page} totalPages={posts.totalPages} path={author.relPermalink} />
+        </PostArchive>
       </main>
     </>
   );

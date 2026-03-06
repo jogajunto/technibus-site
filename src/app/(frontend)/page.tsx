@@ -7,7 +7,7 @@ import { Card } from "@/components/Card";
 import { FeaturedPosts } from "@/components/FeaturedPosts";
 import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
 
-import { PostArchive } from "@/components/PostsArchive";
+import { PostGrid } from "@/components/PostGrid";
 import { Sidebar } from "@/components/Sidebar";
 import { SectionLatbus } from "@/sections/Latbus";
 import { SectionLatestMagazines } from "@/sections/LatestMagazines";
@@ -45,7 +45,7 @@ export default async function Page() {
           <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
             <div className="space-y-10">
               <div className="space-y-3">
-                <PostArchive variant="none" className="lg:grid-cols-12">
+                <PostGrid variant="none" className="lg:grid-cols-12">
                   <div className="min-w-0 lg:col-span-8">
                     <FeaturedPosts posts={featuredPosts} />
                   </div>
@@ -54,9 +54,9 @@ export default async function Page() {
                       <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
                     ))}
                   </div>
-                </PostArchive>
+                </PostGrid>
               </div>
-              <PostArchive variant="2-cols">
+              <PostGrid variant="2-cols">
                 <div className="space-y-6">
                   <SectionHeading>
                     <SectionHeadingTitle>Technibus na história</SectionHeadingTitle>
@@ -73,16 +73,16 @@ export default async function Page() {
                     <Card {...post} key={post.id} size="lg" />
                   ))}
                 </div>
-              </PostArchive>
+              </PostGrid>
               <div className="space-y-6">
                 <SectionHeading>
                   <SectionHeadingTitle>Últimas publicações</SectionHeadingTitle>
                 </SectionHeading>
-                <PostArchive>
+                <PostGrid>
                   {latestPosts.map((post) => (
                     <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
                   ))}
-                </PostArchive>
+                </PostGrid>
               </div>
             </div>
             <Sidebar />

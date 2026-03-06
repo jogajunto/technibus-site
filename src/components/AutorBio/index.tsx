@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type AuthorBioProps = User;
 
-export default function AuthorBio({ image, name, role, bio }: AuthorBioProps) {
+export function AuthorBio({ image, name, role, bio }: AuthorBioProps) {
   return (
     <div className="border-secondary space-y-4 border-b pb-6">
       <div className="flex gap-4 max-sm:flex-col sm:items-center">

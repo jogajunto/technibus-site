@@ -15,6 +15,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Category } from "@/payload-types";
 import { NewsletterDialogButton } from "@/providers/newsletter-dialog";
 import Image from "next/image";
+import { SearchForm } from "../SearchForm";
 
 type MenuProps = {
   categories: Category[];
@@ -90,7 +91,9 @@ export function Menu({ categories }: MenuProps) {
               </li>
               <li>
                 <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Revistas</Link>
+                  <Link href="https://acervodigitalotm.com.br/" target="_blank" rel="noopener">
+                    Revistas
+                  </Link>
                 </Button>
               </li>
               <li>
@@ -100,18 +103,28 @@ export function Menu({ categories }: MenuProps) {
               </li>
               <li>
                 <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Canal no Whatsapp</Link>
+                  <Link href="https://whatsapp.com/channel/0029VatKJymGufIo6ZNsYt2H" target="_blank" rel="noopener">
+                    Canal no Whatsapp
+                  </Link>
                 </Button>
               </li>
               <li>
                 <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Anuncie</Link>
+                  <Link href="https://otmeditora.com/publicidade/technibus" target="_blank" rel="noopener">
+                    Anuncie
+                  </Link>
                 </Button>
+              </li>
+              <li className="pl-2">
+                <SearchForm searchTerm="" />
               </li>
             </ul>
 
             {/* Mobile */}
             <ul className={`items-center lg:hidden ${isOpen ? "block" : "hidden"}`}>
+              <li className="pb-4">
+                <SearchForm searchTerm="" />
+              </li>
               <li>
                 <Button variant="ghost" asChild>
                   <span>Editorias</span>
@@ -128,22 +141,28 @@ export function Menu({ categories }: MenuProps) {
               </li>
               <li>
                 <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Revistas</Link>
+                  <Link href="https://acervodigitalotm.com.br/" target="_blank" rel="noopener">
+                    Revistas
+                  </Link>
+                </Button>
+              </li>
+              <li>
+                <NewsletterDialogButton variant="ghost" onClick={closeMenu} asChild>
+                  Newsletter
+                </NewsletterDialogButton>
+              </li>
+              <li>
+                <Button variant="ghost" onClick={closeMenu} asChild>
+                  <Link href="https://whatsapp.com/channel/0029VatKJymGufIo6ZNsYt2H" target="_blank" rel="noopener">
+                    Canal no Whatsapp
+                  </Link>
                 </Button>
               </li>
               <li>
                 <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Newsletter</Link>
-                </Button>
-              </li>
-              <li>
-                <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Canal no Whatsapp</Link>
-                </Button>
-              </li>
-              <li>
-                <Button variant="ghost" onClick={closeMenu} asChild>
-                  <Link href="/blog">Anuncie</Link>
+                  <Link href="https://otmeditora.com/publicidade/technibus" target="_blank" rel="noopener">
+                    Anuncie
+                  </Link>
                 </Button>
               </li>
             </ul>

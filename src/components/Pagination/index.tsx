@@ -11,17 +11,21 @@ type PaginationProps = {
   page?: number;
   totalPages: number;
   path: string;
+  query?: string;
 };
 
-export function Pagination({ className, page, path, totalPages }: PaginationProps) {
+export function Pagination({ className, page, path, totalPages, query }: PaginationProps) {
   if (!page || totalPages <= 1) return null;
 
   const hasNextPage = page < totalPages;
   const hasPrevPage = page > 1;
 
   const getPageHref = (targetPage: number) => {
-    if (targetPage <= 1) return path;
-    return `${path}/pagina/${targetPage}`;
+    const base = targetPage <= 1 ? path : `${path}/pagina/${targetPage}`;
+
+    if (!query) return base;
+
+    return `${base}?s=${encodeURIComponent(query)}`;
   };
 
   return (

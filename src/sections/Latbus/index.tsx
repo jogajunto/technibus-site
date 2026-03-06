@@ -4,7 +4,7 @@ import Link from "next/link";
 import { fetchPostsByCategorySlug } from "@/collections/Posts/data";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
-import { PostArchive } from "@/components/PostsArchive";
+import { PostGrid } from "@/components/PostGrid";
 import { SectionHeading, SectionHeadingActions, SectionHeadingTitle } from "@/components/TitleWithDivider";
 
 export async function SectionLatbus() {
@@ -23,14 +23,14 @@ export async function SectionLatbus() {
             </Button>
           </SectionHeadingActions>
         </SectionHeading>
-        <PostArchive variant="4-cols">
+        <PostGrid variant="4-cols">
           <div className="flex">
             <Image className="h-auto w-full rounded" src="/latbus-banner.svg" alt="" width={236} height={351} />
           </div>
           {posts.map((post) => (
             <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
           ))}
-        </PostArchive>
+        </PostGrid>
       </div>
     </section>
   );
