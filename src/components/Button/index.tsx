@@ -15,7 +15,7 @@ const buttonVariants = cva(
         outline: "",
         neutral: "bg-primary hover:bg-primary text-primary border border-primary hover:border-brand-tertiary text-brand-primary",
         // secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:text-on-brand-tertiary hover:bg-brand-tertiary-hover",
+        ghost: "text-primary hover:text-on-brand-tertiary hover:bg-brand-tertiary-hover",
         subtle: "text-brand-primary hover:text-on-brand-tertiary",
         // link: "text-primary underline-offset-4 hover:underline",
       },

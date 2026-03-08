@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Search, XCircle } from "lucide-react";
 
 type SearchAreaProps = {
-  searchTerm: string;
+  searchTerm?: string;
 };
 
 export function SearchForm({ searchTerm }: SearchAreaProps) {
