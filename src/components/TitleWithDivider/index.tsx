@@ -42,7 +42,7 @@ SectionHeadingTitle.displayName = "SectionHeadingTitle";
 type SectionHeadingActionsProps = React.HTMLAttributes<HTMLDivElement>;
 
 const SectionHeadingActions = React.forwardRef<HTMLDivElement, SectionHeadingActionsProps>(({ className, ...props }, ref) => {
-  return <div ref={ref} className={cn("ml-auto", className)} {...props} />;
+  return <div ref={ref} className={cn("ml-auto shrink-0", className)} {...props} />;
 });
 
 SectionHeadingActions.displayName = "SectionHeadingActions";
