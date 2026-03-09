@@ -46,11 +46,11 @@ Ensure you have the following installed:
 5. To import database dumps:
 
    ```sh
-   // text file
+   // sql file
    docker exec -i $(docker compose ps -q postgres) pg_restore -U admin -d database-technibus --clean --if-exists --no-owner < dump.sql
 
-   // sql file
-   docker exec -i $(docker compose ps -q postgres) psql -U admin -d database-technibus < dump.sql
+   // text file
+   docker exec -i $(docker compose ps -q postgres) psql -U admin -d database-technibus < dump.dump
    ```
 
 6. Start the development server:
