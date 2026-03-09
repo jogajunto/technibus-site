@@ -26,6 +26,7 @@ import { pt } from "@payloadcms/translations/languages/pt";
 
 import { YouTubeEmbedBlock } from "@/blocks/YoutubeEmbed";
 
+import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { s3Storage } from "@payloadcms/storage-s3";
 
@@ -124,6 +125,18 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.SMTP_FROM_ADDRESS!,
+    defaultFromName: process.env.SMTP_FROM_NAME!,
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+  }),
   sharp,
   plugins: [
     seoPlugin({}),
