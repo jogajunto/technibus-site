@@ -19,7 +19,7 @@ export async function MostRead() {
       <ol className="space-y-2">
         {posts.map((post, index) => (
           <div className="flex gap-2" key={index}>
-            <span className="translate-y-0.5 pt-5 font-semibold">{index + 1}.</span>
+            <span className="font-semibold">{index + 1}.</span>
             <Card {...post} disable={{ image: true, excerpt: true }} key={post.id} size="sm" />
           </div>
         ))}
