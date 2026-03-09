@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload";
 
 import { relPermalinkField } from "@/fields/relpermalink";
 import { slugField } from "@/fields/slug";
+import { revalidatePath } from "next/cache";
 
 export const Posts: CollectionConfig = {
   slug: "posts",
@@ -18,6 +19,15 @@ export const Posts: CollectionConfig = {
     drafts: {
       autosave: true,
     },
+  },
+  hooks: {
+    afterChange: [
+      ({ operation }) => {
+        if (operation === "update") {
+          revalidatePath("/", "layout");
+        }
+      },
+    ],
   },
   fields: [
     relPermalinkField(),

@@ -1,5 +1,6 @@
 import { phoneNumberField } from "@/fields/phoneNumber/field";
 import { isValidUrl } from "@/utilities/is-valid-url";
+import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
 
 export const LatBusExibithors: CollectionConfig = {
@@ -17,6 +18,15 @@ export const LatBusExibithors: CollectionConfig = {
     drafts: {
       autosave: true,
     },
+  },
+  hooks: {
+    afterChange: [
+      ({ operation }) => {
+        if (operation === "update") {
+          revalidatePath("/", "layout");
+        }
+      },
+    ],
   },
   fields: [
     {
