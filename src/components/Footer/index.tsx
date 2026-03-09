@@ -9,7 +9,7 @@ import { ArrowUp } from "lucide-react";
 import { LinkedIn } from "../SocialIcon";
 
 const MENU_TECHNIBUS = [
-  { label: "Anuncie", url: "https://otmeditora.com/publicidade/technibus" },
+  { label: "Anuncie", url: "https://drive.google.com/file/d/1wni4LYDSQLuVfAqOwpokSJ5em5j1swRI/view?usp=sharing" },
   { label: "Canal no WhatsApp", url: "https://whatsapp.com/channel/0029VatKJymGufIo6ZNsYt2H" },
   { label: "Fale com a redação", url: "mailto:otmeditora@otmeditora.com" },
   { label: "Revistas Technibus", url: "https://acervodigitalotm.com.br/todas-publicacoes?page=1&publication=Technibus" },

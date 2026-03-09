@@ -94,7 +94,7 @@ export function Menu({ categories }: MenuProps) {
                 </li>
                 <li>
                   <Button variant="ghost" onClick={closeMenu} asChild>
-                    <Link href="https://acervodigitalotm.com.br/" target="_blank" rel="noopener">
+                    <Link href="https://acervodigitalotm.com.br/todas-publicacoes?page=1&publication=Technibus" target="_blank" rel="noopener">
                       Revistas
                     </Link>
                   </Button>
@@ -113,7 +113,7 @@ export function Menu({ categories }: MenuProps) {
                 </li>
                 <li>
                   <Button variant="ghost" onClick={closeMenu} asChild>
-                    <Link href="https://otmeditora.com/publicidade/technibus" target="_blank" rel="noopener">
+                    <Link href="https://drive.google.com/file/d/1wni4LYDSQLuVfAqOwpokSJ5em5j1swRI/view?usp=sharing" target="_blank" rel="noopener">
                       Anuncie
                     </Link>
                   </Button>
@@ -147,7 +147,7 @@ export function Menu({ categories }: MenuProps) {
                 </li>
                 <li>
                   <Button variant="ghost" onClick={closeMenu} asChild>
-                    <Link href="https://acervodigitalotm.com.br/" target="_blank" rel="noopener">
+                    <Link href="https://acervodigitalotm.com.br/todas-publicacoes?page=1&publication=Technibus" target="_blank" rel="noopener">
                       Revistas
                     </Link>
                   </Button>
@@ -166,7 +166,7 @@ export function Menu({ categories }: MenuProps) {
                 </li>
                 <li>
                   <Button variant="ghost" onClick={closeMenu} asChild>
-                    <Link href="https://otmeditora.com/publicidade/technibus" target="_blank" rel="noopener">
+                    <Link href="https://drive.google.com/file/d/1wni4LYDSQLuVfAqOwpokSJ5em5j1swRI/view?usp=sharing" target="_blank" rel="noopener">
                       Anuncie
                     </Link>
                   </Button>
