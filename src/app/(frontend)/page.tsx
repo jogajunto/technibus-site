@@ -74,9 +74,7 @@ export default async function Page() {
                   </SectionHeadingActions>
                 </SectionHeading>
                 <PostGrid variant="3-cols">
-                  <div className="flex">
-                    <Image className="h-auto w-full rounded" src="/latbus-banner.svg" alt="" width={236} height={351} />
-                  </div>
+                  <Image className="h-auto w-full rounded" src="/latbus-banner.svg" alt="" width={236} height={351} />
                   {latbusPosts.map((post) => (
                     <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
                   ))}
@@ -84,7 +82,7 @@ export default async function Page() {
                 <div className="bg-primary flex flex-col items-center gap-4 rounded-lg p-6 text-center">
                   <h3 className="text-xl font-semibold">Guia dos expositores Lat.Bus 2026</h3>
                   <Button size="sm" variant="secondary" asChild>
-                    <Link href="/guia-de-expositores-lat-bus-2026">Ver todas publicações</Link>
+                    <Link href="/guia-de-expositores-lat-bus-2026">Ver todos expositores</Link>
                   </Button>
                 </div>
               </div>

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 import { cn } from "@/utilities/cn";
 
-const postArchiveVariants = cva("grid auto-rows-min itens-center gap-x-6 gap-y-8", {
+const postArchiveVariants = cva("grid auto-rows-min itens-start gap-x-6 gap-y-8", {
   variants: {
     variant: {
       none: "",
