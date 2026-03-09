@@ -10,6 +10,9 @@ export const YouTubeEmbedBlock: Block = {
       type: "text",
       label: "URL",
       required: true,
+      admin: {
+        placeholder: "https://www.youtube.com/watch?v=example",
+      },
       validate: (value: string | undefined | null) => {
         if (value && !isYouTubeUrl(value)) {
           return "O link informado não é um URL válido do YouTube. Verifique e tente novamente.";
@@ -21,6 +24,9 @@ export const YouTubeEmbedBlock: Block = {
       name: "title",
       type: "text",
       label: "Title",
+      admin: {
+        placeholder: "Título do vídeo",
+      },
       required: true,
     },
   ],
