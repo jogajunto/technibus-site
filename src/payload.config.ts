@@ -27,6 +27,7 @@ import { pt } from "@payloadcms/translations/languages/pt";
 import { YouTubeEmbedBlock } from "@/blocks/YoutubeEmbed";
 
 import { seoPlugin } from "@payloadcms/plugin-seo";
+import { s3Storage } from "@payloadcms/storage-s3";
 
 import { Categories } from "@/collections/Categories/config";
 import { LatBusCategories } from "@/collections/LatBusCategories/config";
@@ -126,20 +127,20 @@ export default buildConfig({
   sharp,
   plugins: [
     seoPlugin({}),
-    // s3Storage({
-    //   collections: {
-    //     media: true,
-    //   },
-    //   bucket: process.env.CLOUDFLARE_R2_BUCKET!,
-    //   config: {
-    //     endpoint: process.env.CLOUDFLARE_R2_ENDPOINT!,
-    //     credentials: {
-    //       accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
-    //       secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!,
-    //     },
-    //     region: "auto",
-    //   },
-    // }),
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.CLOUDFLARE_R2_BUCKET!,
+      config: {
+        endpoint: process.env.CLOUDFLARE_R2_ENDPOINT!,
+        credentials: {
+          accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!,
+        },
+        region: "auto",
+      },
+    }),
     searchPlugin,
   ],
 });
