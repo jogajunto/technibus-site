@@ -45,7 +45,7 @@ export default async function Page({ params }: PageArgs) {
       <main>
         <PostArchive>
           <PostArchiveHeader currentPage={posts.page || 1} totalPages={posts.totalPages} totalDocs={posts.totalDocs}>
-            <SectionHeading>
+            <SectionHeading className="max-sm:justify-center">
               <SectionHeadingTitle size="lg" asChild>
                 <h1>{category.title}</h1>
               </SectionHeadingTitle>
