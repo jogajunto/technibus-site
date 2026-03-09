@@ -26,10 +26,10 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
-      {
-        source: "/_next/static/:path*",
-        headers: [{ key: "Cache-Control", value: `public, max-age=${ONE_YEAR}, s-maxage=${ONE_YEAR}, immutable` }],
-      },
+      //   {
+      //     source: "/_next/static/:path*",
+      //     headers: [{ key: "Cache-Control", value: `public, max-age=${ONE_YEAR}, s-maxage=${ONE_YEAR}, immutable` }],
+      //   },
       {
         source: "/_next/image",
         headers: [
@@ -70,15 +70,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/((?!_next/static|_next/image|_next/data|assets|api|favicon.ico|admin).*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
-          },
-        ],
-      },
+      //   {
+      //     source: "/((?!_next/static|_next/image|_next/data|assets|api|favicon.ico|admin).*)",
+      //     headers: [
+      //       {
+      //         key: "Cache-Control",
+      //         value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
+      //       },
+      //     ],
+      //   },
       {
         source: "/api/((?!media).*)",
         headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, must-revalidate" }],
