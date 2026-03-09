@@ -395,7 +395,11 @@
   }
 
   body {
-    @apply bg-primary text-primary;
+    @apply bg-primary text-primary min-w-0;
+  }
+
+  main {
+    @apply min-w-0;
   }
 }
 

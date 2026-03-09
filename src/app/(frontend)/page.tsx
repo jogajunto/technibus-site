@@ -9,6 +9,7 @@ import { SectionHeading, SectionHeadingActions, SectionHeadingTitle } from "@/co
 
 import { Ads } from "@/components/Ads";
 import { Button } from "@/components/Button";
+import { LatbusMarquee } from "@/components/LatbusMarquee";
 import { PostGrid } from "@/components/PostGrid";
 import { Sidebar } from "@/components/Sidebar";
 import { SectionLatestMagazines } from "@/sections/LatestMagazines";
@@ -46,7 +47,7 @@ export default async function Page() {
         <h1 className="sr-only">A mais tradicional revista brasileira dedicada ao transporte de passageiros por ônibus.</h1>
         <div className="container">
           <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
-            <div className="flex flex-col gap-10">
+            <div className="flex min-w-0 flex-col gap-10">
               {/* Featured */}
               <div className="space-y-3">
                 <PostGrid variant="none" className="lg:grid-cols-12">
@@ -62,7 +63,7 @@ export default async function Page() {
               </div>
 
               {/* Lat.Bus */}
-              <div className="bg-brand-tertiary space-y-6 rounded-xl p-6 md:p-8">
+              <div className="bg-brand-tertiary min-w-0 space-y-6 rounded-xl p-6 md:p-8">
                 <SectionHeading className="border-brand-tertiary">
                   <SectionHeadingTitle size="lg">Lat.Bus</SectionHeadingTitle>
                   <SectionHeadingActions>
@@ -77,11 +78,14 @@ export default async function Page() {
                     <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
                   ))}
                 </PostGrid>
-                <div className="bg-primary flex flex-col items-center gap-4 rounded-lg p-6 text-center">
-                  <h3 className="text-xl font-semibold">Guia dos expositores Lat.Bus 2026</h3>
-                  <Button size="sm" variant="secondary" asChild>
-                    <Link href="/guia-de-expositores-lat-bus-2026">Ver todos expositores</Link>
-                  </Button>
+                <div className="bg-primary flex flex-col items-center gap-2 overflow-hidden rounded-lg pt-8 pb-2 text-center">
+                  <div className="flex flex-wrap items-center justify-center gap-4 px-6">
+                    <h3 className="text-xl font-semibold">Guia dos expositores Lat.Bus 2026</h3>
+                    <Button className="shrink-0" size="sm" variant="secondary" asChild>
+                      <Link href="/guia-de-expositores-lat-bus-2026">Ver todos expositores</Link>
+                    </Button>
+                  </div>
+                  <LatbusMarquee />
                 </div>
               </div>
 
