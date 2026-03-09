@@ -1,9 +1,12 @@
 import { fetchAllLatBusCategories } from "@/collections/LatBusCategories/data";
 import { fetchExibithors } from "@/collections/LatBusExibithors/data";
+import { Button } from "@/components/Button";
 import { FilterExibithors } from "@/components/FilterExibithors";
 import { PayloadImage } from "@/components/Payload/Image";
 import { WhatsApp } from "@/components/SocialIcon";
+
 import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { LatBusCategory, Media } from "@/payload-types";
 import { createMetadata } from "@/utilities/create-metadata";
 import { Mail } from "lucide-react";
@@ -67,7 +70,8 @@ export default async function Exibithors({ searchParams }: PageArgs) {
           <div className="mx-auto max-w-2xl space-y-3 p-12 text-center">
             <p className="subheading text-brand-primary text-2xl">Nenhum expositor encontrado</p>
             <p className="text-secondary">
-              Não encontramos algo que corresponda aos seus critérios de busca. <br /> Tente ajustar os filtros ou a palavra-chave para encontrar o que procura.
+              Não encontramos algo que corresponda aos seus critérios de busca. <br />
+              Tente ajustar os filtros ou a palavra-chave para encontrar o que procura.
             </p>
           </div>
         ) : (
@@ -77,7 +81,7 @@ export default async function Exibithors({ searchParams }: PageArgs) {
               const categoryTitle = typeof firstCategory === "object" && firstCategory !== null ? firstCategory.title : "Sem Categoria";
 
               return (
-                <div key={exibithor.id} className="flex h-full flex-col gap-4 rounded-xl duration-200">
+                <div key={exibithor.id} className="flex h-full flex-col gap-4 rounded-xl">
                   <div className="bg-secondary flex items-center justify-center rounded-lg p-6">
                     {exibithor.logo ? (
                       <PayloadImage image={exibithor.logo as Media} alt={exibithor.title} disableCaption className="aspect-[4/3] object-contain p-[15%]" />
@@ -86,11 +90,10 @@ export default async function Exibithors({ searchParams }: PageArgs) {
                     )}
                   </div>
 
-                  {/* Informações Principais */}
-                  <div className="flex-1">
+                  <div className="flex flex-1 flex-col">
                     <span className="uppertitle">{categoryTitle}</span>
-                    <h2 className="text-brand-primary mb-2 line-clamp-1 text-lg font-semibold">{exibithor.title}</h2>
-                    <p className="mb-2 line-clamp-5 text-sm leading-relaxed text-gray-500">{exibithor.description}</p>
+                    <h2 className="text-brand-primary mb-2 line-clamp-2 text-lg font-semibold">{exibithor.title}</h2>
+
                     {exibithor.website && (
                       <a href={exibithor.website} target="_blank" rel="noopener noreferrer" className="link block truncate text-sm">
                         {exibithor.website.replace(/^https?:\/\//, "")}
@@ -98,27 +101,59 @@ export default async function Exibithors({ searchParams }: PageArgs) {
                     )}
                   </div>
 
-                  <hr className="border-secondary max-w-16" />
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="primary" className="w-full">
+                        Ver detalhes <span className="sr-only">sobre {exibithor.title}</span>
+                      </Button>
+                    </DialogTrigger>
 
-                  <div className="mt-auto space-y-2">
-                    {exibithor.contact?.name && <p className="truncate text-sm font-semibold text-gray-800">{exibithor.contact.name}</p>}
+                    <DialogContent className="max-h-[90svh] overflow-y-auto sm:max-w-[640px]">
+                      <DialogHeader className="space-y-4">
+                        <div className="bg-secondary flex max-w-32 items-center justify-center rounded-lg p-6">
+                          {exibithor.logo ? (
+                            <PayloadImage image={exibithor.logo as Media} alt={exibithor.title} disableCaption className="aspect-[4/3] max-h-52 object-contain" />
+                          ) : (
+                            <span className="grid aspect-[4/3] w-full place-items-center text-center text-base font-semibold text-balance text-[#0a1e3f]">{exibithor.title}</span>
+                          )}
+                        </div>
+                        <DialogTitle className="text-brand-primary text-xl">{exibithor.title}</DialogTitle>
+                      </DialogHeader>
 
-                    {exibithor.contact?.whatsapp && (
-                      <div className="link flex items-center gap-2 text-sm">
-                        <WhatsApp className="size-4" />
-                        {exibithor.contact.whatsapp}
+                      <div className="space-y-6">
+                        <div className="space-y-2">
+                          <p className="uppertitle">{categoryTitle}</p>
+
+                          {exibithor.description && <p className="text-sm leading-relaxed text-gray-600">{exibithor.description}</p>}
+
+                          {exibithor.website && (
+                            <a href={exibithor.website} target="_blank" rel="noopener noreferrer" className="link block text-sm">
+                              {exibithor.website}
+                            </a>
+                          )}
+                        </div>
+
+                        <div className="border-secondary space-y-3 border-t pt-4">
+                          {exibithor.contact?.name && <p className="text-primary text-sm font-semibold">{exibithor.contact.name} (Contato comercial)</p>}
+                          {exibithor.contact?.whatsapp && (
+                            <div className="link flex items-center gap-2 text-sm">
+                              <WhatsApp className="size-4" />
+                              <span>{exibithor.contact.whatsapp}</span>
+                            </div>
+                          )}
+
+                          {exibithor.contact?.email && (
+                            <div className="link flex items-center gap-2 text-sm">
+                              <Mail className="size-4" />
+                              <a href={`mailto:${exibithor.contact.email}`} className="truncate hover:text-blue-600">
+                                {exibithor.contact.email}
+                              </a>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    )}
-
-                    {exibithor.contact?.email && (
-                      <div className="link flex items-center gap-2 text-sm">
-                        <Mail className="size-4" />
-                        <a href={`mailto:${exibithor.contact.email}`} className="truncate hover:text-blue-600">
-                          {exibithor.contact.email}
-                        </a>
-                      </div>
-                    )}
-                  </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               );
             })}
