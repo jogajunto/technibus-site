@@ -1,4 +1,5 @@
-import { fetchAllLatBusCategories, fetchExibithorsSearch } from "@/collections/LatBusExibithors/data";
+import { fetchAllLatBusCategories } from "@/collections/LatBusCategories/data";
+import { fetchExibithorsSearch } from "@/collections/LatBusExibithors/data";
 import { FilterExibithors } from "@/components/FilterExibithors";
 import { createMetadata } from "@/utilities/create-metadata";
 import Image from "next/image";
