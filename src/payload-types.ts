@@ -209,7 +209,7 @@ export interface Post {
   excerpt: string;
   hat?: string | null;
   tag?: (number | Tag)[] | null;
-  category: (number | Category)[];
+  category?: (number | Category)[] | null;
   image?: (number | null) | Media;
   publishedDate: string;
   content: {

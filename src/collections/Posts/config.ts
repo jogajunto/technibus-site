@@ -63,7 +63,7 @@ export const Posts: CollectionConfig = {
       label: "Categoria",
       type: "relationship",
       relationTo: "categories",
-      required: true,
+      //   required: true,
       hasMany: true,
       admin: {
         position: "sidebar",

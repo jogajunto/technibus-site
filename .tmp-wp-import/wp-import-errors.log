@@ -1,0 +1,304 @@
+[2026-03-09T05:51:23.963Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=os-numeros-do-mercado-automobilistico-inspiram-otimismo-e-cautela#31601 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:25.033Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=mulheres-ampliam-presenca-no-transporte-publico-de-guarulhos#31591 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:27.629Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=busscar-entrega-do-onibus-panoramico-dd-nb1-a-famtur-turismo#31586 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:28.480Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=embu-das-artes-implementa-novo-sistema-de-bilhetagem-com-tecnologia-da-autopass#31583 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:29.495Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=uma-politica-nacional-para-evitar-atrasos-na-eletromobilidade#31571 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:30.220Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=sancetur-e-grande-campinas-vencem-licitacao-do-transporte-publico-de-campinas#31578 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:31.105Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=viacao-urbana-de-bebedouro-sp-adquire-5-apache-vip-da-caio#31567 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:31.720Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=tecnologia-avanca-sem-esperar-votacao-do-marco-legal#31564 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:32.609Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=salvador-inicia-testes-com-o-e-volksbus#31561 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:33.609Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=onibus-eletricos-superarticulados-do-brt-abc#31557 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:34.482Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=viacao-aguia-branca-destaca-15-anos-de-onibus-tematicos#31550 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:41.657Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=spheros-participa-da-expo-foro-movilidad-2026#31547 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:42.436Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=emplacamentos-de-onibus-recuam-no-primeiro-bimestre#31541 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:43.113Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=busscar-entrega-panoramico-dd-nb1-a-galiotto-na-argentina#31538 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:43.963Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=aracaju-amplia-subsidio-e-mantem-tarifa-do-transporte-coletivo-congelada#31535 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:45.000Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=tic-trens-recebe-veiculo-inedito-para-manutencao-de-rede-aerea#31530 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:46.361Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=linha-5-lilas-disponibiliza-acesso-a-internet-em-todas-as-estacoes#31523 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:47.081Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=fnde-suspende-pregao-para-compra-de-75-mil-onibus-escolares#31526 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:48.209Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=como-as-cidades-brasileiras-podem-enfrentar-as-ameacas-climaticas#31508 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:49.450Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=novo-centro-administrativo-de-sp-preve-terminal-de-onibus#31496 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:50.384Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=busup-encerra-2025-com-faturamento-de-r-285-milhoes-e-crescimento-de-50#31493 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:52.601Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=caio-entrega-64-apache-vip-a-urbi-mobilidade-do-distrito-federal#31477 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:53.619Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=eletricidade-garantira-tarifa-zero-em-capitais-nordestinas-preve-ex-presidente-da-petrobras#31436 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:54.664Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=tic-trens-define-layout-dos-novos-veiculos-do-trem-intercidades-eixo-norte#31469 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:55.896Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=trivia-antecipa-pacote-de-obras-em-23-estacoes-das-linhas-11-12-e-13-antes-do-inicio-da-operacao#31464 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:56.731Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=viacao-aguia-branca-inaugura-agencia-modelo-na-nova-rodoviaria-de-salvador#31458 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:57.626Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=circular-da-saude-de-santo-andre-transporta-200-mil-pessoas-em-quatro-meses-de-operacao#31446 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:58.353Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=aprobio-e-abiove-anunciam-a-criacao-da-aliancabiodiesel#31431 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:59.141Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=transporte-coletivo-de-curitiba-registrou-178-milhao-de-integracoes-temporais-em-2025#31428 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:51:59.913Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=pesquisa-da-unb-visa-tornar-a-producao-de-hidrogenio-verde-mais-viavel#31424 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:00.839Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=mulheres-representam-53-dos-passageiros-no-transporte-coletivo-paulistano#31413 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:01.712Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=fresp-celebra-avanco-do-pl-4311-2023-que-anistia-taxa-da-antt#31400 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:02.594Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=braulio-de-carvalho-ceo-da-maxtrack-nosso-papel-e-transformar-dados-em-inteligencia-operacional#31396 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:03.433Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=mercedes-benz-apresenta-sprinter-com-transmissao-automatica#31391 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:04.255Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=para-eletra-mobilidade-eletrica-traz-mais-qualidade-de-vida-as-cidades#31376 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:05.402Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=mascarello-apresenta-onibus-urbano-eletrico-com-chassi-byd#31372 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:06.705Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=marcopolo-anuncia-resultados-recordes-impulsionados-pelo-mercado-externo#31369 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
+[2026-03-09T05:52:07.536Z] PAYLOAD_USER_UPSERT_ERROR [upsertUser] post=estacoes-tubo-e-onibus-de-curitiba-voltam-a-aceitar-pagamento-por-celular#31365 - Cannot read properties of undefined (reading 'normalize')
+DETAILS:
+{
+  "name": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'normalize')",
+  "stack": "TypeError: Cannot read properties of undefined (reading 'normalize')\n    at slugify (/home/matheus/git/technibus-new-site/src/utilities/slugify.ts:3:6)\n    at <anonymous> (/home/matheus/git/technibus-new-site/src/utilities/payload/format-slug.ts:8:14)\n    at promise (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/promise.ts:289:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async traverseFields (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/traverseFields.ts:88:3)\n    at async beforeValidate (/home/matheus/git/technibus-new-site/node_modules/payload/src/fields/hooks/beforeValidate/index.ts:40:3)\n    at async createOperation (/home/matheus/git/technibus-new-site/node_modules/payload/src/collections/operations/create.ts:181:12)\n    at async upsertUser (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:369:13)\n    at async run (/home/matheus/git/technibus-new-site/scripts/import-post-from-wordpress-to-payload-cms.ts:879:20)"
+}
+
