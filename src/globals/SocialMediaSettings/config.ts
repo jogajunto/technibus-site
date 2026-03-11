@@ -7,6 +7,9 @@ export const SocialMediaSettings: GlobalConfig = {
     read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
   },
+  admin: {
+    hidden: true,
+  },
   fields: [
     {
       name: "zapierEndpointUrl",
