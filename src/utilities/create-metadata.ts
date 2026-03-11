@@ -4,12 +4,13 @@ type CreateMetadataProps = {
   path: string;
   title: string;
   description: string;
+  ogImageUrl?: string;
   prev?: string;
   next?: string;
   noIndex?: boolean;
 };
 
-export function createMetadata({ path, title, description, prev, next, noIndex = false }: CreateMetadataProps): Metadata {
+export function createMetadata({ path, title, description, prev, next, ogImageUrl, noIndex = false }: CreateMetadataProps): Metadata {
   const baseUrl = process.env.SITE_URL!;
   const siteTitle = process.env.SITE_TITLE!;
   const url = `${baseUrl}${path}`;
@@ -27,7 +28,7 @@ export function createMetadata({ path, title, description, prev, next, noIndex =
       url,
       images: [
         {
-          url: `${baseUrl}/opengraph-image.png`,
+          url: ogImageUrl || `${baseUrl}/opengraph-image.png`,
           width: 1200,
           height: 630,
           alt: siteTitle,

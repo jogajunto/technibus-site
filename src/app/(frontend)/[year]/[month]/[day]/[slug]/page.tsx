@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageArgs) {
     path: post.relPermalink,
     title: post.title,
     description: post.excerpt || generateMetaDescription(post.content),
+    ogImageUrl: post.image ? ((post.image as Media).url ?? undefined) : undefined,
   });
 }
 
