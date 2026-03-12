@@ -209,7 +209,7 @@ export interface Post {
   id: number;
   relPermalink: string;
   slug: string;
-  author?: (number | null) | User;
+  author: number | User;
   title: string;
   /**
    * Breve descrição da publicação, usada para SEO e pré-visualizações. Recomenda-se entre 120-160 caracteres.

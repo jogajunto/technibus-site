@@ -1,20 +1,27 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Category, User } from "@/payload-types";
+import { Category, Media, User } from "@/payload-types";
+
+import config from "@payload-config";
+
 import { createMetadata } from "@/utilities/create-metadata";
 import { generateMetaDescription } from "@/utilities/generate-meta-description";
+import { articleSchema } from "@/utilities/schema";
+
+import RefreshRouteOnSave from "@/components/Payload/LivePreviewListener";
 
 import { fetchPostBySlug, fetchPostsByCategorySlug } from "@/collections/Posts/data";
 import { Ads } from "@/components/Ads";
 import { Card } from "@/components/Card";
-import RefreshRouteOnSave from "@/components/Payload/LivePreviewListener";
 import { PostGrid } from "@/components/PostGrid";
 import { RichText } from "@/components/RichText";
 import { Sidebar } from "@/components/Sidebar";
 import { Facebook, LinkedIn, Threads, WhatsApp, X } from "@/components/SocialIcon";
 import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
-import { articleSchema } from "@/utilities/schema";
+
+import { headers as getHeaders } from "next/headers";
+import { getPayload } from "payload";
 
 type PageArgs = {
   params: Promise<{
@@ -30,14 +37,19 @@ export async function generateMetadata({ params }: PageArgs) {
     path: post.relPermalink,
     title: post.title,
     description: post.excerpt || generateMetaDescription(post.content),
-    // image: post.image ? ((post.image as Media) ?? undefined) : undefined,
+    image: post.image ? ((post.image as Media) ?? undefined) : undefined,
   });
 }
 
 export default async function Page({ params }: PageArgs) {
   const { slug } = await params;
 
-  const post = await fetchPostBySlug(slug);
+  const payload = await getPayload({ config });
+  const headers = await getHeaders();
+
+  const { user } = await payload.auth({ headers });
+
+  const post = await fetchPostBySlug(slug, Boolean(user));
 
   if (!post) {
     notFound();

@@ -12,24 +12,26 @@ export const Posts: CollectionConfig = {
     singular: "Publicação",
     plural: "Publicações",
   },
+  access: {
+    read: ({ req }) => {
+      if (req.user && req.user?.collection === "users") return true;
+      return {
+        _status: { equals: "published" },
+        publishedDate: { less_than_equal: new Date().toISOString() },
+      };
+    },
+  },
   admin: {
     useAsTitle: "title",
     group: "Conteúdo",
     preview: ({ relPermalink }) => `${relPermalink}`,
-
     livePreview: {
       url: ({ data }) => {
-        if (!data.slug || !data.publishedDate) {
+        if (!data.relPermalink || !data.publishedDate || !data.excerpt || data.author.length === 0 || data.category.length === 0) {
           return undefined;
         }
-
-        const date = new Date(data.publishedDate);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const day = String(date.getDate()).padStart(2, "0");
-
         const baseUrl = process.env.SITE_URL || "http://localhost:3000";
-        return `${baseUrl}/${year}/${month}/${day}/${data.slug}`;
+        return `${baseUrl}${data.relPermalink}`;
       },
     },
   },
@@ -69,6 +71,7 @@ export const Posts: CollectionConfig = {
       label: "Autor",
       type: "relationship",
       relationTo: "users",
+      required: true,
       admin: {
         position: "sidebar",
       },

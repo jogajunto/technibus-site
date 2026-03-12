@@ -24,16 +24,15 @@ function getPublishedWhere(draft: boolean): Where[] {
   ];
 }
 
-export const fetchPostBySlug = async (slug: string): Promise<Post> => {
-  const { isEnabled: draft } = await draftMode();
-
+export const fetchPostBySlug = async (slug: string, overrideAccess?: boolean): Promise<Post> => {
   const data = await payload.find({
     collection: "posts",
     depth: 1,
     draft: true,
     limit: 1,
+    overrideAccess: overrideAccess,
     where: {
-      and: [{ slug: { equals: slug } }, ...getPublishedWhere(draft)],
+      and: [{ slug: { equals: slug } }],
     },
   });
 
