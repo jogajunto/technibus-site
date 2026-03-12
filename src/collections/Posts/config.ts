@@ -16,25 +16,28 @@ export const Posts: CollectionConfig = {
     useAsTitle: "title",
     group: "Conteúdo",
     preview: ({ relPermalink }) => `${relPermalink}`,
-    // livePreview: {
-    //   url: ({ data }) => {
-    //     if (!data.slug || !data.publishedDate) {
-    //       return undefined;
-    //     }
 
-    //     const date = new Date(data.publishedDate);
-    //     const year = date.getFullYear();
-    //     const month = String(date.getMonth() + 1).padStart(2, "0");
-    //     const day = String(date.getDate()).padStart(2, "0");
+    livePreview: {
+      url: ({ data }) => {
+        if (!data.slug || !data.publishedDate) {
+          return undefined;
+        }
 
-    //     const baseUrl = process.env.SITE_URL || "http://localhost:3000";
-    //     return `${baseUrl}/${year}/${month}/${day}/${data.slug}`;
-    //   },
-    // },
+        const date = new Date(data.publishedDate);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+
+        const baseUrl = process.env.SITE_URL || "http://localhost:3000";
+        return `${baseUrl}/${year}/${month}/${day}/${data.slug}`;
+      },
+    },
   },
   versions: {
     drafts: {
-      autosave: true,
+      autosave: {
+        interval: 100,
+      },
     },
   },
   hooks: {

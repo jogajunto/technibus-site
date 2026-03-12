@@ -30,7 +30,7 @@ export const fetchPostBySlug = async (slug: string): Promise<Post> => {
   const data = await payload.find({
     collection: "posts",
     depth: 1,
-    draft,
+    draft: true,
     limit: 1,
     where: {
       and: [{ slug: { equals: slug } }, ...getPublishedWhere(draft)],

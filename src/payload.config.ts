@@ -52,6 +52,17 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    livePreview: {
+      collections: ["posts"],
+      breakpoints: [
+        { label: "Desktop", name: "desktop", width: 1440, height: 1080 },
+        { label: "Mobile", name: "mobile", width: 375, height: 667 },
+      ],
+      //   url: ({ data }) => {
+      //     const siteURL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+      //     return `${siteURL}${data.relPermalink}`;
+      //   },
+    },
     meta: {
       titleSuffix: `| ${process.env.SITE_TITLE}`,
       icons: [
