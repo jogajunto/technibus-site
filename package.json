@@ -42,6 +42,7 @@
     "ogl": "^1.0.11",
     "p-limit": "^7.3.0",
     "payload": "^3.79.0",
+    "payload-plugin-cloudflare-purge": "^2.4.0",
     "plaiceholder": "^3.0.0",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
