@@ -107,53 +107,55 @@ export default async function Page({ params }: PageArgs) {
                       <span>{(post.author as User)?.name || "Autor desconhecido"}</span>
                     )}
                   </p>
-                  <ul className="flex gap-4">
-                    <li>
-                      <Link
-                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <LinkedIn className="icon-brand-primary size-6" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Facebook className="icon-brand-primary size-6" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={`https://x.com/intent/tweet?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}&text=${encodeURIComponent(post.title)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <X className="icon-brand-primary size-6" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Threads className="icon-brand-primary size-6" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <WhatsApp className="icon-brand-primary size-6" />
-                      </Link>
-                    </li>
-                  </ul>
+                  {post.relPermalink && (
+                    <ul className="flex gap-4">
+                      <li>
+                        <Link
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <LinkedIn className="icon-brand-primary size-6" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Facebook className="icon-brand-primary size-6" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={`https://x.com/intent/tweet?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}&text=${encodeURIComponent(post.title)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <X className="icon-brand-primary size-6" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Threads className="icon-brand-primary size-6" />
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <WhatsApp className="icon-brand-primary size-6" />
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
                 </div>
                 {post.image && <PayloadImage className="border-secondary bg-secondary w-full rounded-md border" image={post.image as Media} />}
                 <div className="grid gap-8 sm:grid-cols-2 lg:hidden">
