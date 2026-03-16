@@ -227,10 +227,6 @@ export interface Post {
    * Marque esta opção se a publicação já tiver sido compartilhada nas redes sociais. Isso ajuda a evitar compartilhamentos duplicados.
    */
   socialPublished?: boolean | null;
-  /**
-   * Número de vezes que a publicação foi visualizada.
-   */
-  viewCount?: number | null;
   image?: (number | null) | Media;
   /**
    * Para agendar uma publicação, escolha uma data posterior à atual.
@@ -512,7 +508,6 @@ export interface PostsSelect<T extends boolean = true> {
   tag?: T;
   category?: T;
   socialPublished?: T;
-  viewCount?: T;
   image?: T;
   publishedDate?: T;
   content?: T;

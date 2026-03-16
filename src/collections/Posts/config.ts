@@ -148,16 +148,6 @@ export const Posts: CollectionConfig = {
       },
     },
     {
-      name: "viewCount",
-      label: "Contagem de visualizações",
-      type: "number",
-      admin: {
-        position: "sidebar",
-        description: "Número de vezes que a publicação foi visualizada.",
-        readOnly: true,
-      },
-    },
-    {
       name: "image",
       label: "Imagem",
       type: "upload",
