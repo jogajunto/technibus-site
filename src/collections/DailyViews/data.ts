@@ -2,6 +2,7 @@ import { Post } from "@/payload-types";
 import configPromise from "@payload-config";
 import { getPayload } from "payload";
 
+// TODO: Criar uma global para poder configurar o numero de dias
 export async function getTopPosts(daysAgo: number = 15, limit: number = 5) {
   const payload = await getPayload({ config: configPromise });
 

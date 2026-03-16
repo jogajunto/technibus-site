@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
     return [{ source: "/author/:slug", destination: "/autor/:slug", permanent: true }];
   },
   async headers() {
+    // TODO: Rever com o Matheus antes de ativar o cache da CloudFlare
+    // TODO: Adicionar regras para requisições RSC
     return [
       {
         source: "/(.*)",
