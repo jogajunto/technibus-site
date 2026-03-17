@@ -88,17 +88,6 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
-      // 1. Force o Vary em TODAS as páginas antes de qualquer regra de cache longo
-      {
-        source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
-        headers: [
-          {
-            key: "Vary",
-            value: "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
-          },
-        ],
-      },
-      // 2. Aplique as regras restritivas para quando o header RSC estiver presente
       ...(RSCValidate() as Header[]),
       {
         source: "/_next/static/:path*",
