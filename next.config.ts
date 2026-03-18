@@ -29,6 +29,16 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/:path*",
+        has: [{ type: "header", key: "RSC" }],
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+          },
+        ],
+      },
+      {
         source: "/_next/static/:path*",
         headers: [{ key: "Cache-Control", value: `public, max-age=${ONE_YEAR}, s-maxage=${ONE_YEAR}, immutable` }],
       },
