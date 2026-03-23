@@ -66,7 +66,7 @@ export default async function Page({ params }: PageArgs) {
 
   return (
     <>
-      <RefreshRouteOnSave />
+      {user && <RefreshRouteOnSave />}
 
       <TrackView postId={post.id} />
 
