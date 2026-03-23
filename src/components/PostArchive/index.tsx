@@ -31,9 +31,9 @@ type PostArchiveFeedProps = {
 export function PostArchive({ children }: PostArchiveProps) {
   return (
     <>
-      <section className="relative z-0 pt-4 pb-24">
+      <section className="relative z-0 min-w-0 pt-4 pb-24">
         <div className="container grid gap-10 lg:grid-cols-[1fr_300px]">
-          <div className="space-y-8">{children}</div>
+          <div className="min-w-0 space-y-8">{children}</div>
           <Sidebar />
         </div>
       </section>
