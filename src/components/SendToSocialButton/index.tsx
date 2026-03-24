@@ -1,16 +1,22 @@
 "use client";
 
 import { useDocumentInfo, useFormFields } from "@payloadcms/ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.scss";
 
 export default function SendToSocialButton() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  // Garante que a leitura dos campos só ocorra no Client-Side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Pegamos os campos do formulário para saber o ID e se já foi publicado
   const { id } = useDocumentInfo() || {};
-
+  const status = useFormFields(([fields]) => fields._status?.value) as string;
   const socialPublished = useFormFields(([fields]) => fields.socialPublished?.value) as boolean;
 
   const handleSend = async () => {
@@ -40,8 +46,17 @@ export default function SendToSocialButton() {
     }
   };
 
-  // Se o post ainda não foi salvo (novo post sem ID), não mostramos o botão
-  if (!id) return null;
+  if (!mounted) return null;
+
+  if (!id || status !== "published") {
+    return (
+      <div style={{ padding: "10px 0", borderTop: "1px solid var(--theme-elevation-100)" }}>
+        <h4 style={{ marginBottom: "10px", fontSize: "14px", color: "var(--theme-elevation-400)" }}>Integração Social - Facebook</h4>
+        <p style={{ fontSize: "13px", color: "var(--theme-elevation-500)", fontStyle: "italic", margin: 0 }}>⚠️ Publique este post para habilitar o envio ao Facebook.</p>
+        <span style={{ fontSize: "10px", opacity: 0.3 }}>Status atual lido: {status || "nenhum"}</span>
+      </div>
+    );
+  }
 
   return (
     <div style={{ padding: "10px 0", borderTop: "1px solid var(--theme-elevation-100)" }}>
