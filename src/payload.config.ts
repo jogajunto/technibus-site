@@ -43,6 +43,7 @@ import { Topbar } from "@/globals/Topbar/config";
 import plugins from "@/plugins";
 import { DailyViews } from "./collections/DailyViews/config";
 import { SocialMediaSettings } from "./globals/SocialMediaSettings/config";
+import { tasks } from "./tasks";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -131,6 +132,29 @@ export default buildConfig({
   }),
   collections: [Users, DailyViews, Posts, Media, Categories, Tags, LatBusExibithors, LatBusCategories],
   globals: [Topbar, SocialMediaSettings],
+  jobs: {
+    tasks: tasks,
+    autoRun: [
+      {
+        cron: "* * * * *",
+        queue: "cloudflarePurgeTask",
+      },
+    ],
+    shouldAutoRun: async (payload) => {
+      // Tell Payload if it should run jobs or not. This function is optional and will return true by default.
+      // This function will be invoked each time Payload goes to pick up and run jobs.
+      // If this function ever returns false, the cron schedule will be stopped.
+      return true;
+    },
+    jobsCollectionOverrides: ({ defaultJobsCollection }) => {
+      if (!defaultJobsCollection.admin) {
+        defaultJobsCollection.admin = {};
+      }
+
+      defaultJobsCollection.admin.hidden = false;
+      return defaultJobsCollection;
+    },
+  },
   hooks: {
     afterError: [
       (args: AfterErrorHookArgs) => {

@@ -42,13 +42,12 @@ const plugins: Plugin[] = [
         if (doc.relPermalink) {
           urlsToPurge.add(`${baseUrl}${doc.relPermalink}`);
         }
-        return Array.from(urlsToPurge);
       }
 
       // ==========================================
       // LÓGICA 2: QUANDO UM POST É ALTERADO
       // ==========================================
-      if (collectionSlug === "posts") {
+      else if (collectionSlug === "posts") {
         const POSTS_PER_PAGE = 12;
 
         // Limpa Home, Busca e a própria URL do Post
@@ -97,17 +96,37 @@ const plugins: Plugin[] = [
 
           await Promise.all(categoryPromises);
         }
-
-        return Array.from(urlsToPurge);
       }
 
       // ==========================================
       // LÓGICA 3: QUANDO EXPOSITOR OU CATEGORIA LAT.BUS É ALTERADO
       // ==========================================
-      if (collectionSlug === "latBusExibithors" || collectionSlug === "latBusCategories") {
+      else if (collectionSlug === "latBusExibithors" || collectionSlug === "latBusCategories") {
         urlsToPurge.add(`${baseUrl}/guia-de-expositores-lat-bus-2026`);
+      }
 
-        return Array.from(urlsToPurge);
+      // ==========================================
+      // EXECUÇÃO DA TASK (O HACK DO R2)
+      // TODO: Após atualização do plugin modificar esse comportamento
+      // ==========================================
+      const finalUrls = Array.from(urlsToPurge);
+
+      if (finalUrls.length > 0) {
+        try {
+          // Despacha para a fila do Payload com 5 segundos de atraso
+          await req.payload.jobs.queue({
+            task: "cloudflarePurgeTask",
+            input: {
+              urls: finalUrls.map((url) => ({ url })),
+              purgeEverything: false,
+              delayMs: 5000, // 👈 Tempo essencial para o R2 processar as imagens
+            },
+            queue: "cloudflarePurgeTask",
+          });
+          req.payload.logger.info(`Task de purge enfileirada com sucesso para ${finalUrls.length} URLs.`);
+        } catch (err) {
+          console.error("Erro ao enfileirar a task de purge:", err);
+        }
       }
 
       return [];
