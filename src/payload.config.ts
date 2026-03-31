@@ -146,14 +146,14 @@ export default buildConfig({
       // If this function ever returns false, the cron schedule will be stopped.
       return true;
     },
-    jobsCollectionOverrides: ({ defaultJobsCollection }) => {
-      if (!defaultJobsCollection.admin) {
-        defaultJobsCollection.admin = {};
-      }
+    // jobsCollectionOverrides: ({ defaultJobsCollection }) => {
+    //   if (!defaultJobsCollection.admin) {
+    //     defaultJobsCollection.admin = {};
+    //   }
 
-      defaultJobsCollection.admin.hidden = false;
-      return defaultJobsCollection;
-    },
+    //   defaultJobsCollection.admin.hidden = false;
+    //   return defaultJobsCollection;
+    // },
   },
   hooks: {
     afterError: [
