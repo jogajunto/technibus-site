@@ -8,7 +8,7 @@ export async function MostRead() {
   return (
     <div className="space-y-8">
       <SectionHeading>
-        <SectionHeadingTitle>Mais lidos</SectionHeadingTitle>
+        <SectionHeadingTitle>As mais lidas</SectionHeadingTitle>
       </SectionHeading>
       <ol className="space-y-2">
         {posts.map(({ post }, index) => {

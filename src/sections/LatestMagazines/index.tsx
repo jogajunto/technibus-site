@@ -14,7 +14,7 @@ export async function SectionLatestMagazines() {
     <section className="bg-primary relative pb-24 max-md:pb-16">
       <div className="container flex flex-col gap-8 px-0">
         <SectionHeading className="mx-6">
-          <SectionHeadingTitle size="lg">Revistas mais recentes</SectionHeadingTitle>
+          <SectionHeadingTitle size="lg">Revistas</SectionHeadingTitle>
           <SectionHeadingActions>
             <Button size="sm" asChild>
               <Link href="https://acervodigitalotm.com.br/" target="_blank" rel="noopener">

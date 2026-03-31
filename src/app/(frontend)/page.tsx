@@ -93,7 +93,7 @@ export default async function Page() {
               {/* Latest */}
               <div className="space-y-6">
                 <SectionHeading>
-                  <SectionHeadingTitle size="lg">Últimas publicações</SectionHeadingTitle>
+                  <SectionHeadingTitle size="lg">Últimas notícias</SectionHeadingTitle>
                 </SectionHeading>
                 <PostGrid>
                   {latestPosts.map((post) => (
@@ -112,7 +112,7 @@ export default async function Page() {
               <PostGrid variant="2-cols">
                 <div className="space-y-6">
                   <SectionHeading>
-                    <SectionHeadingTitle size="lg">Technibus na história</SectionHeadingTitle>
+                    <SectionHeadingTitle size="lg">Technibus na História</SectionHeadingTitle>
                   </SectionHeading>
                   {technibusHistoryPosts.map((post) => (
                     <Card {...post} key={post.id} size="lg" />
