@@ -109,7 +109,15 @@ const plugins: Plugin[] = [
       // EXECUÇÃO DA TASK (O HACK DO R2)
       // TODO: Após atualização do plugin modificar esse comportamento
       // ==========================================
-      const finalUrls = Array.from(urlsToPurge);
+
+      // Converte o Set em Array e duplica cada URL para incluir a versão RSC (JSON)
+      const finalUrls = Array.from(urlsToPurge).flatMap((url) => {
+        const hasQuery = url.includes("?");
+        // Reproduz a exata concatenação que a Transform Rule faz na Cloudflare
+        const rscUrl = hasQuery ? `${url}&_cf_rsc=1` : `${url}?&_cf_rsc=1`;
+
+        return [url, rscUrl];
+      });
 
       if (finalUrls.length > 0) {
         try {
