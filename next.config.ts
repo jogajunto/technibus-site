@@ -17,8 +17,6 @@ const nextConfig: NextConfig = {
     return [{ source: "/author/:slug", destination: "/autor/:slug", permanent: true }];
   },
   async headers() {
-    // TODO: Rever com o Matheus antes de ativar o cache da CloudFlare
-    // TODO: Adicionar regras para requisições RSC
     return [
       {
         source: "/(.*)",
@@ -29,20 +27,20 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
-      {
-        source: "/:path*",
-        has: [{ type: "header", key: "RSC" }],
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
-          },
-          {
-            key: "Vary",
-            value: "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
-          },
-        ],
-      },
+    //   {
+    //     source: "/:path*",
+    //     has: [{ type: "header", key: "RSC" }],
+    //     headers: [
+    //       {
+    //         key: "Cache-Control",
+    //         value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+    //       },
+    //       {
+    //         key: "Vary",
+    //         value: "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    //       },
+    //     ],
+    //   },
       {
         source: "/((?!_next/static|_next/image|_next/data|assets|api|favicon.ico|admin|pesquisar).*)",
         headers: [
@@ -76,7 +74,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: `public, max-age=0, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_WEEK}`,
+            value: `public, max-age=${ONE_DAY}, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_WEEK}`,
           },
         ],
       },
@@ -86,15 +84,6 @@ const nextConfig: NextConfig = {
           {
             key: "Cache-Control",
             value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
-          },
-        ],
-      },
-      {
-        source: "/imagens/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: `public, max-age=${ONE_DAY}, s-maxage=${ONE_WEEK}`,
           },
         ],
       },
