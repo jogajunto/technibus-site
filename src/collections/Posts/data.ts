@@ -27,7 +27,7 @@ function getPublishedWhere(draft: boolean): Where[] {
 export const fetchPostBySlug = async (slug: string, draft: boolean = false): Promise<Post | undefined> => {
   const data = await payload.find({
     collection: "posts",
-    depth: 2,
+    depth: 1,
     draft: draft,
     limit: 1,
     overrideAccess: true,
@@ -76,7 +76,7 @@ export const fetchPaginatedPostsByCategory = async (categoryId: number, page: nu
 
   return payload.find({
     collection: "posts",
-    depth: 2,
+    depth: 1,
     draft,
     limit: 12,
     sort: "-publishedDate",
@@ -92,7 +92,7 @@ export const fetchPaginatedPostsByAuthor = async (userId: number, page: number =
 
   return payload.find({
     collection: "posts",
-    depth: 2,
+    depth: 1,
     draft,
     limit: 12,
     sort: "-publishedDate",
@@ -117,7 +117,7 @@ export async function fetchPostsByTagSlug(slug: string, limit: number, excludeId
 
   const posts = await payload.find({
     collection: "posts",
-    depth: 2,
+    depth: 1,
     draft,
     limit,
     sort: "-publishedDate",
@@ -145,7 +145,7 @@ export async function fetchPostsByCategorySlug(slug: string, limit: number, excl
 
   const posts = await payload.find({
     collection: "posts",
-    depth: 2,
+    depth: 1,
     draft,
     limit,
     sort: "-publishedDate",
@@ -167,7 +167,7 @@ export const fetchLatestPosts = async ({ excludeIds = [], limit = 9 }: FetchLate
 
   const posts = await payload.find({
     collection: "posts",
-    depth: 2,
+    depth: 1,
     draft,
     limit,
     sort: "-publishedDate",
