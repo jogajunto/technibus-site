@@ -12,15 +12,6 @@ export const Posts: CollectionConfig = {
     singular: "Publicação",
     plural: "Publicações",
   },
-  //   access: {
-  //     read: ({ req }) => {
-  //       if (req.user && req.user?.collection === "users") return true;
-  //       return {
-  //         _status: { equals: "published" },
-  //         publishedDate: { less_than_equal: new Date().toISOString() },
-  //       };
-  //     },
-  //   },
   admin: {
     useAsTitle: "title",
     group: "Conteúdo",
@@ -30,8 +21,8 @@ export const Posts: CollectionConfig = {
         if (!data.relPermalink || !data.publishedDate || !data.excerpt || data.author.length === 0 || data.category.length === 0) {
           return undefined;
         }
-        const baseUrl = process.env.SITE_URL || "http://localhost:3000";
-        return `${baseUrl}${data.relPermalink}`;
+        const baseUrl = `${process.env.SITE_URL || "http://localhost:3000"}`;
+        return `${baseUrl}/api/draft?url=${data.relPermalink}`;
       },
     },
   },

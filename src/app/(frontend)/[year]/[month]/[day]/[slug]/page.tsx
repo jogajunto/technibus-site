@@ -1,29 +1,22 @@
+import { draftMode } from "next/headers";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { Category, Media, User } from "@/payload-types";
-
-import config from "@payload-config";
-
 import { createMetadata } from "@/utilities/create-metadata";
 import { generateMetaDescription } from "@/utilities/generate-meta-description";
 import { articleSchema } from "@/utilities/schema";
 
-import RefreshRouteOnSave from "@/components/Payload/LivePreviewListener";
-
-import { fetchPostBySlug, fetchPostsByCategorySlug } from "@/collections/Posts/data";
+import { fetchPostBySlug } from "@/collections/Posts/data";
 import { Ads } from "@/components/Ads";
-import { Card } from "@/components/Card";
-import { PostGrid } from "@/components/PostGrid";
+import { PayloadImage } from "@/components/Payload/Image";
+import RefreshRouteOnSave from "@/components/Payload/LivePreviewListener";
+import { RelatedPosts, SkeletonRelatedPosts } from "@/components/RelatedPosts";
 import { RichText } from "@/components/RichText";
 import { Sidebar } from "@/components/Sidebar";
 import { Facebook, LinkedIn, Threads, WhatsApp, X } from "@/components/SocialIcon";
-import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
-
-import { PayloadImage } from "@/components/Payload/Image";
 import { TrackView } from "@/components/TrackView";
-import { headers as getHeaders } from "next/headers";
-import { getPayload } from "payload";
 
 type PageArgs = {
   params: Promise<{
@@ -31,13 +24,15 @@ type PageArgs = {
   }>;
 };
 
+function SkeletonSidebar() {
+  return <div className="h-[800px] w-full animate-pulse rounded-lg bg-neutral-200"></div>;
+}
+
 export async function generateMetadata({ params }: PageArgs) {
   const { slug } = await params;
   const post = await fetchPostBySlug(slug);
 
-  if (!post) {
-    return {};
-  }
+  if (!post) return {};
 
   return createMetadata({
     path: post.relPermalink,
@@ -50,23 +45,19 @@ export async function generateMetadata({ params }: PageArgs) {
 export default async function Page({ params }: PageArgs) {
   const { slug } = await params;
 
-  const payload = await getPayload({ config });
-  const headers = await getHeaders();
+  const { isEnabled: isDraftMode } = await draftMode();
 
-  const { user } = await payload.auth({ headers });
-
-  const post = await fetchPostBySlug(slug, Boolean(user));
+  const post = await fetchPostBySlug(slug, isDraftMode);
 
   if (!post) {
     notFound();
   }
 
-  const firstCategory = (post.category as Category[])[0];
-  const relatedPosts = firstCategory ? await fetchPostsByCategorySlug(firstCategory.slug, 3, [post.id]) : [];
+  const firstCategory = (post.category as Category[])?.[0];
 
   return (
     <>
-      {user && <RefreshRouteOnSave />}
+      {isDraftMode && <RefreshRouteOnSave />}
 
       <TrackView postId={post.id} />
 
@@ -114,27 +105,47 @@ export default async function Page({ params }: PageArgs) {
                   {post.relPermalink && (
                     <ul className="flex gap-4">
                       <li>
-                        <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`} target="_blank" rel="noopener noreferrer">
+                        <Link
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <LinkedIn className="icon-brand-primary size-6" />
                         </Link>
                       </li>
                       <li>
-                        <Link href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`} target="_blank" rel="noopener noreferrer">
+                        <Link
+                          href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Facebook className="icon-brand-primary size-6" />
                         </Link>
                       </li>
                       <li>
-                        <Link href={`https://x.com/intent/tweet?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer">
+                        <Link
+                          href={`https://x.com/intent/tweet?url=${encodeURIComponent(process.env.SITE_URL! + post.relPermalink)}&text=${encodeURIComponent(post.title)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <X className="icon-brand-primary size-6" />
                         </Link>
                       </li>
                       <li>
-                        <Link href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`} target="_blank" rel="noopener noreferrer">
+                        <Link
+                          href={`https://www.threads.net/intent/post?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Threads className="icon-brand-primary size-6" />
                         </Link>
                       </li>
                       <li>
-                        <Link href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`} target="_blank" rel="noopener noreferrer">
+                        <Link
+                          href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + " " + process.env.SITE_URL! + post.relPermalink)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <WhatsApp className="icon-brand-primary size-6" />
                         </Link>
                       </li>
@@ -147,20 +158,15 @@ export default async function Page({ params }: PageArgs) {
                   <Ads variant="sidebarMeio" />
                 </div>
                 {post.content && <RichText data={post.content} />}
-                {/* <Ads className="lg:hidden" variant="sidebarMeio2" /> */}
-                <div className="space-y-6">
-                  <SectionHeading>
-                    <SectionHeadingTitle>Publicações relacionadas</SectionHeadingTitle>
-                  </SectionHeading>
-                  <PostGrid>
-                    {relatedPosts.map((post) => (
-                      <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
-                    ))}
-                  </PostGrid>
-                </div>
-                {/* <Ads className="lg:hidden" variant="sidebarBase" /> */}
+                {firstCategory && (
+                  <Suspense fallback={<SkeletonRelatedPosts />}>
+                    <RelatedPosts categorySlug={firstCategory.slug!} postId={post.id} />
+                  </Suspense>
+                )}
               </div>
-              <Sidebar />
+              <Suspense fallback={<SkeletonSidebar />}>
+                <Sidebar />
+              </Suspense>
             </div>
           </div>
         </article>

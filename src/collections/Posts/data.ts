@@ -24,17 +24,17 @@ function getPublishedWhere(draft: boolean): Where[] {
   ];
 }
 
-export const fetchPostBySlug = async (slug: string, user?: boolean): Promise<Post | undefined> => {
+export const fetchPostBySlug = async (slug: string, draft: boolean = false): Promise<Post | undefined> => {
   const data = await payload.find({
     collection: "posts",
     depth: 2,
-    draft: user,
+    draft: draft,
     limit: 1,
-    // overrideAccess: overrideAccess,
+    overrideAccess: true,
     where: {
-      and: [{ slug: { equals: slug } }],
+      and: [{ slug: { equals: slug } }, ...getPublishedWhere(draft)],
     },
-    ...(user && { next: { revalidate: 0 } }),
+    ...(draft && { next: { revalidate: 0 } }),
   });
 
   return data.docs[0];
