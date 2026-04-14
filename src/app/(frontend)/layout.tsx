@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Ads } from "@/components/Ads";
 import { NewsletterDialogProvider } from "@/providers/newsletter-dialog";
 
+import { Suspense } from "react";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,8 +36,13 @@ export default function RootLayout({
         <NewsletterDialogProvider>
           <Header />
           <div className="container" id="conteudo">
-            <Ads className="mx-auto mb-6 max-w-5xl max-md:hidden" variant="principalDesktop" />
-            <Ads className="mx-auto mb-6 max-w-5xl md:hidden" variant="principalMobile" />
+            <Suspense fallback={<div className="mx-auto mb-6 h-[90px] w-full max-w-5xl animate-pulse rounded bg-neutral-200 max-md:hidden" />}>
+              <Ads className="mx-auto mb-6 max-w-5xl max-md:hidden" variant="principalDesktop" />
+            </Suspense>
+
+            <Suspense fallback={<div className="mx-auto mb-6 h-[250px] w-full max-w-5xl animate-pulse rounded bg-neutral-200 md:hidden" />}>
+              <Ads className="mx-auto mb-6 max-w-5xl md:hidden" variant="principalMobile" />
+            </Suspense>
           </div>
           {children}
           {process.env.NEXT_PUBLIC_ENV === "production" && <GoogleTagManager gtmId="GTM-58L35CT" />}

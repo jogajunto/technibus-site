@@ -1,21 +1,19 @@
-import { createMetadata } from "@/utilities/create-metadata";
+import Image from "next/image";
+import Link from "next/link";
+import { Suspense } from "react";
 
 import { fetchLatestPosts, fetchPostsByCategorySlug, fetchPostsByTagSlug } from "@/collections/Posts/data";
+import { createMetadata } from "@/utilities/create-metadata";
 import { getPostIds } from "@/utilities/get-post-ids";
 
+import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { FeaturedPosts } from "@/components/FeaturedPosts";
-import { SectionHeading, SectionHeadingActions, SectionHeadingTitle } from "@/components/TitleWithDivider";
-
-import { Button } from "@/components/Button";
 import { LatbusMarquee } from "@/components/LatbusMarquee";
 import { PostGrid } from "@/components/PostGrid";
 import { Sidebar } from "@/components/Sidebar";
+import { SectionHeading, SectionHeadingActions, SectionHeadingTitle } from "@/components/TitleWithDivider";
 import { SectionLatestMagazines } from "@/sections/LatestMagazines";
-import Image from "next/image";
-import Link from "next/link";
-
-export const dynamic = "force-dynamic";
 
 export function generateMetadata() {
   return createMetadata({
@@ -25,15 +23,47 @@ export function generateMetadata() {
   });
 }
 
-export default async function Page() {
-  const featuredPosts = await fetchPostsByTagSlug("destaque", 3);
-  const secondaryFeaturedPosts = await fetchPostsByTagSlug("subdestaque", 2, getPostIds(featuredPosts));
-  const technibusHistoryPosts = await fetchPostsByCategorySlug("technibus-na-historia", 1);
-  const interviewAndOpinionPosts = await fetchPostsByCategorySlug("entrevista-e-opiniao", 1);
-  const latbusPosts = await fetchPostsByCategorySlug("latbus", 2);
+// ----------------------------------------------------------------------
+// SKELETON LOADERS
+// ----------------------------------------------------------------------
+function SkeletonSidebar() {
+  return <div className="h-[800px] w-full animate-pulse rounded-lg bg-neutral-200"></div>;
+}
 
+function SkeletonMagazines() {
+  return <div className="mt-12 h-[400px] w-full animate-pulse bg-neutral-200"></div>;
+}
+
+// ----------------------------------------------------------------------
+// PÁGINA PRINCIPAL
+// ----------------------------------------------------------------------
+
+export default async function Page() {
+  // 1. Buscamos os destaques principais (Precisamos deles primeiro para os subdestaques)
+  const featuredPosts = await fetchPostsByTagSlug("destaque", 3);
+  const featuredIds = getPostIds(featuredPosts);
+
+  // 2. Buscamos todas as outras seções ESPECÍFICAS paralelamente (Máxima Performance)
+  const [secondaryFeaturedPosts, technibusHistoryPosts, interviewAndOpinionPosts, latbusPosts] = await Promise.all([
+    fetchPostsByTagSlug("subdestaque", 2, featuredIds),
+    fetchPostsByCategorySlug("technibus-na-historia", 1),
+    fetchPostsByCategorySlug("entrevista-e-opiniao", 1),
+    fetchPostsByCategorySlug("latbus", 2),
+  ]);
+
+  // 3. Juntamos TODOS os IDs das seções acima em uma única lista
+  const allUsedIds = [
+    ...featuredIds,
+    ...getPostIds(secondaryFeaturedPosts),
+    ...getPostIds(technibusHistoryPosts),
+    ...getPostIds(interviewAndOpinionPosts),
+    ...getPostIds(latbusPosts),
+  ];
+
+  // 4. Buscamos as Últimas Notícias EXCLUINDO os IDs já utilizados
   const latestPosts = await fetchLatestPosts({
-    excludeIds: [...getPostIds(featuredPosts), ...getPostIds(secondaryFeaturedPosts), ...getPostIds(technibusHistoryPosts), ...getPostIds(interviewAndOpinionPosts), ...getPostIds(latbusPosts)],
+    excludeIds: allUsedIds,
+    limit: 6, // Adicionei um limite para não puxar o banco inteiro
   });
 
   return (
@@ -128,12 +158,19 @@ export default async function Page() {
                 </div>
               </PostGrid>
             </div>
-            <Sidebar />
+
+            {/* Mantemos o Suspense apenas na Sidebar, pois ela roda de forma isolada! */}
+            <Suspense fallback={<SkeletonSidebar />}>
+              <Sidebar />
+            </Suspense>
           </div>
         </div>
       </section>
 
-      <SectionLatestMagazines />
+      {/* Mantemos o Suspense nas Revistas! */}
+      <Suspense fallback={<SkeletonMagazines />}>
+        <SectionLatestMagazines />
+      </Suspense>
     </main>
   );
 }
