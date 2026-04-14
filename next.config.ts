@@ -7,7 +7,6 @@ const ONE_WEEK = ONE_DAY * 7;
 const ONE_YEAR = ONE_DAY * 365;
 
 const nextConfig: NextConfig = {
-  turbopack: {},
   productionBrowserSourceMaps: true,
   poweredByHeader: false,
   images: {
