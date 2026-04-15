@@ -34,6 +34,10 @@ const plugins: Plugin[] = [
     urlBuilder: async ({ doc, req, collectionSlug, baseUrl }) => {
       const urlsToPurge = new Set<string>();
 
+      // TODO: Adicionar a collection de Users e fazer como na limpeza da página de categoria dos posts, pois as views dos users contém as listagens que cada um fez,
+      // e quando um usuário é atualizado ou deletado, essas listagens ficam desatualizadas.
+      // Pensar também se tem mais algum lugar que precisa ser limpo quando um user é alterado.
+
       // ==========================================
       // LÓGICA 1: QUANDO UMA CATEGORIA É ALTERADA
       // ==========================================
