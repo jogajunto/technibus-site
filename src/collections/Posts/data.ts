@@ -4,6 +4,7 @@ import config from "@payload-config";
 import { getPayload, PaginatedDocs, Where } from "payload";
 
 import { Post } from "@/payload-types";
+import { cache } from "react";
 
 const payload = await getPayload({ config });
 
@@ -23,6 +24,19 @@ function getPublishedWhere(draft: boolean): Where[] {
     },
   ];
 }
+
+export const fetchPostsForBuild = cache(async () => {
+  const data = await payload.find({
+    collection: "posts",
+    limit: 200,
+    depth: 0,
+    select: { slug: true, publishedDate: true },
+    sort: "-publishedDate",
+    pagination: false,
+  });
+
+  return data.docs;
+});
 
 export const fetchPostBySlug = async (slug: string, draft: boolean = false): Promise<Post | undefined> => {
   const data = await payload.find({
@@ -55,9 +69,7 @@ export const fetchPaginatedPosts = async (page: number = 1): Promise<PaginatedDo
   });
 };
 
-export const fetchAllPosts = async (): Promise<Post[]> => {
-  const { isEnabled: draft } = await draftMode();
-
+export const fetchAllPosts = cache(async (draft: boolean = false): Promise<Post[]> => {
   const data = await payload.find({
     collection: "posts",
     depth: 1,
@@ -69,7 +81,7 @@ export const fetchAllPosts = async (): Promise<Post[]> => {
   });
 
   return data.docs;
-};
+});
 
 export const fetchPaginatedPostsByCategory = async (categoryId: number, page: number = 1): Promise<PaginatedDocs<Post>> => {
   const { isEnabled: draft } = await draftMode();

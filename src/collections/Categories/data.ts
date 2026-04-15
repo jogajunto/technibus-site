@@ -1,18 +1,15 @@
-import { draftMode } from "next/headers";
-
 import config from "@payload-config";
 import { getPayload } from "payload";
 
 import { Category } from "@/payload-types";
+import { cache } from "react";
 
 const payload = await getPayload({ config });
 
-export const fetchAllCategories = async (): Promise<Category[]> => {
-  const { isEnabled: draft } = await draftMode();
-
+export const fetchAllCategories = cache(async (draft: boolean = false): Promise<Category[]> => {
   const { docs: categories } = await payload.find({
     collection: "categories",
-    depth: 2,
+    depth: 1,
     draft,
     limit: 0,
     sort: "title",
@@ -27,10 +24,9 @@ export const fetchAllCategories = async (): Promise<Category[]> => {
   });
 
   return filtered;
-};
+});
 
-export const fetchCategoryBySlug = async (slug: string): Promise<Category> => {
-  const { isEnabled: draft } = await draftMode();
+export const fetchCategoryBySlug = async (slug: string, draft: boolean = false): Promise<Category> => {
   const data = await payload.find({
     collection: "categories",
     depth: 1,
