@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { notFound } from "next/navigation";
 
-import { fetchCategoryBySlug } from "@/collections/Categories/data";
+import { fetchAllCategories, fetchCategoryBySlug } from "@/collections/Categories/data";
 import { fetchPaginatedPostsByCategory } from "@/collections/Posts/data";
 import { createMetadata } from "@/utilities/create-metadata";
 
@@ -9,6 +9,7 @@ import { Button } from "@/components/Button";
 import { LatbusMarquee } from "@/components/LatbusMarquee";
 import { PostArchive, PostArchiveFeed, PostArchiveHeader } from "@/components/PostArchive";
 import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
+import { draftMode } from "next/headers";
 import Link from "next/link";
 
 type PageArgs = {
@@ -28,10 +29,22 @@ export async function generateMetadata({ params }: PageArgs) {
   });
 }
 
+export async function generateStaticParams() {
+  const categories = await fetchAllCategories();
+
+  // Se não houver categorias, retorna um array vazio para não quebrar o build
+  if (!categories || categories.length === 0) return [];
+
+  return categories.map((category) => ({
+    slug: category.slug,
+  }));
+}
+
 export default async function Page({ params }: PageArgs) {
   const { slug } = await params;
+  const { isEnabled: isDraftMode } = await draftMode();
 
-  const category = await fetchCategoryBySlug(slug);
+  const category = await fetchCategoryBySlug(slug, isDraftMode);
   const posts = await fetchPaginatedPostsByCategory(category.id);
 
   const isLatbusCategory = category.slug === "latbus";

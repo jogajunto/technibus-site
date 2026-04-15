@@ -8,7 +8,7 @@ import { createMetadata } from "@/utilities/create-metadata";
 import { generateMetaDescription } from "@/utilities/generate-meta-description";
 import { articleSchema } from "@/utilities/schema";
 
-import { fetchPostBySlug } from "@/collections/Posts/data";
+import { fetchPostBySlug, fetchPostsForBuild } from "@/collections/Posts/data";
 import { Ads } from "@/components/Ads";
 import { PayloadImage } from "@/components/Payload/Image";
 import RefreshRouteOnSave from "@/components/Payload/LivePreviewListener";
@@ -40,6 +40,31 @@ export async function generateMetadata({ params }: PageArgs) {
     description: post.excerpt || generateMetaDescription(post.content),
     image: post.image ? ((post.image as Media) ?? undefined) : undefined,
   });
+}
+
+export async function generateStaticParams() {
+  const posts = await fetchPostsForBuild();
+
+  if (!posts || posts.length === 0) return [];
+
+  return posts
+    .map((post) => {
+      // Garante que o slug é uma string. Se por erro for objeto, tenta pegar a propriedade.
+      const slugValue = typeof post.slug === "string" ? post.slug : String(post.slug || "");
+
+      // Se não houver slug, ignore este post para não quebrar o build
+      if (!slugValue) return null;
+
+      const date = post.publishedDate ? new Date(post.publishedDate) : new Date();
+
+      return {
+        year: date.getFullYear().toString(),
+        month: (date.getMonth() + 1).toString().padStart(2, "0"),
+        day: date.getDate().toString().padStart(2, "0"),
+        slug: slugValue,
+      };
+    })
+    .filter(Boolean); // Remove posts que retornaram null por falta de slug
 }
 
 export default async function Page({ params }: PageArgs) {
