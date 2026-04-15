@@ -4,9 +4,11 @@ import { Button } from "@/components/Button";
 import { Menu } from "@/components/Menu";
 import { Topbar } from "@/components/Topbar";
 import { fetchTopbar } from "@/components/Topbar/data";
+import { draftMode } from "next/headers";
 
 export async function Header() {
-  const categories = await fetchAllCategories();
+  const { isEnabled: isDraftMode } = await draftMode();
+  const categories = await fetchAllCategories(isDraftMode);
   const topbar = await fetchTopbar();
 
   return (

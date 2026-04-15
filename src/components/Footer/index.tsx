@@ -6,6 +6,7 @@ import { Button } from "@/components/Button";
 import { NewsletterDialogButton } from "@/providers/newsletter-dialog";
 import { getCurrentYear } from "@/utilities/get-current-year";
 import { ArrowUp } from "lucide-react";
+import { draftMode } from "next/headers";
 import { LinkedIn } from "../SocialIcon";
 
 const MENU_TECHNIBUS = [
@@ -33,7 +34,8 @@ const MENU_OTMEDITORA = [
 ];
 
 export async function Footer() {
-  const categories = await fetchAllCategories();
+  const { isEnabled: isDraftMode } = await draftMode();
+  const categories = await fetchAllCategories(isDraftMode);
 
   return (
     <footer>
