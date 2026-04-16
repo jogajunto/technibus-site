@@ -9,6 +9,12 @@ const ONE_YEAR = ONE_DAY * 365;
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   poweredByHeader: false,
+  experimental: {
+    staleTimes: {
+      dynamic: 0,
+      static: 0,
+    },
+  },
   images: {
     remotePatterns: [new URL("https://acervodigitalotm.com.br/**")],
   },
@@ -26,26 +32,12 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
-    //   {
-    //     source: "/:path*",
-    //     has: [{ type: "header", key: "RSC" }],
-    //     headers: [
-    //       {
-    //         key: "Cache-Control",
-    //         value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
-    //       },
-    //       {
-    //         key: "Vary",
-    //         value: "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
-    //       },
-    //     ],
-    //   },
       {
         source: "/((?!_next/static|_next/image|_next/data|assets|api|favicon.ico|admin|pesquisar).*)",
         headers: [
           {
             key: "Cache-Control",
-            value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
+            value: `public, max-age=0, must-revalidate, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
           },
         ],
       },
