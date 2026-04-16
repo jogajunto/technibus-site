@@ -34,7 +34,14 @@ export const Posts: CollectionConfig = {
   hooks: {
     afterChange: [
       ({ operation }) => {
-        if (operation === "update") {
+        if (["create", "update"].includes(operation)) {
+          revalidatePath("/", "layout");
+        }
+      },
+    ],
+    afterDelete: [
+      ({ doc }) => {
+        if (doc._status === "published") {
           revalidatePath("/", "layout");
         }
       },
