@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
@@ -154,6 +155,23 @@ export default buildConfig({
     //   defaultJobsCollection.admin.hidden = false;
     //   return defaultJobsCollection;
     // },
+  },
+  onInit: async (payload) => {
+    if (process.env.NODE_ENV !== "production") {
+      try {
+        await payload.db.drizzle.execute(sql`
+        CREATE INDEX IF NOT EXISTS search_fts_idx ON "search" USING GIN (
+          (
+            setweight(to_tsvector('portuguese'::regconfig, title::text), 'A') || 
+            setweight(to_tsvector('portuguese'::regconfig, coalesce(content, '')::text), 'B')
+          )
+        );
+      `);
+        console.log("⚡ Índice de busca FTS garantido!");
+      } catch (error) {
+        console.error("Erro ao garantir o índice FTS:", error);
+      }
+    }
   },
   hooks: {
     afterError: [
