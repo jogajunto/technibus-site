@@ -1,0 +1,47 @@
+graph TD
+    classDef ts fill:#3178c6,stroke:#235a97,stroke-width:2px,color:white;
+    classDef drizzle fill:#b4e444,stroke:#8cb332,stroke-width:2px,color:black;
+    classDef sql fill:#336791,stroke:#254d6e,stroke-width:2px,color:white;
+    classDef db fill:#e1bee7,stroke:#8e24aa,stroke-width:2px,color:black;
+
+    subgraph Configuração e Setup
+        A[payload.db.drizzle<br>Motor do Drizzle instanciado<br>pelo Payload]:::ts --> B
+        B[payload.db.tables.search<br>O Mapa / Schema]:::ts
+        B -.-> |Drizzle sabe que 'id' é número<br>e 'title' é texto| B1(Tipagem Forte TypeScript)
+    end
+
+    subgraph A Magia do 'sql' helper
+        C[const queryTerm = sql`...`]:::drizzle
+        D[const ftsVector = sql`...`]:::drizzle
+        E[const matchCondition = sql`...`]:::drizzle
+        
+        C --> F
+        D --> F
+        E --> F
+        F[Drizzle junta os blocos de forma segura<br>Prevenindo SQL Injection nativamente]:::drizzle
+    end
+
+    subgraph O Construtor de Queries Query Builder
+        G[db.select id: searchTable.id ]:::drizzle
+        H[.from searchTable ]:::drizzle
+        I[.where matchCondition ]:::drizzle
+        J[.orderBy rankCalc ]:::drizzle
+        
+        G --> H --> I --> J
+    end
+
+    subgraph Tradução e Execução no Banco
+        J --> |Drizzle compila o TypeScript<br>para SQL Bruto| K
+        K[SELECT id FROM search<br>WHERE vector @@ query<br>ORDER BY rank DESC<br>LIMIT 12 OFFSET X]:::sql
+        
+        K --> L[(PostgreSQL Database)]:::db
+        L -.-> |Usa o Índice GIN<br>Resolve em 0.2ms| M(Retorna Tabela SQL Bruta)
+    end
+
+    subgraph O Retorno
+        M --> |Drizzle mapeia as colunas<br>de volta para objetos| N
+        N[Array Tipado JavaScript<br> id: 45 ,  id: 12 ]:::ts
+    end
+
+    B --> G
+    F --> I

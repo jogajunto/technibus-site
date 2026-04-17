@@ -1,0 +1,33 @@
+graph TD
+    %% Estilização
+    classDef init fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000;
+    classDef decision fill:#ffeb3b,stroke:#fbc02d,stroke-width:2px,color:#000;
+    classDef drizzle fill:#bbdefb,stroke:#1976d2,stroke-width:2px,color:#000;
+    classDef payload fill:#c8e6c9,stroke:#388e3c,stroke-width:2px,color:#000;
+    classDef js fill:#ffe0b2,stroke:#f57c00,stroke-width:2px,color:#000;
+    classDef endNode fill:#e1bee7,stroke:#8e24aa,stroke-width:2px,color:#000;
+
+    A([Início: Usuário faz a busca]):::init --> B{Usuário digitou<br>algum termo?}:::decision
+    
+    %% Fluxo Vazio
+    B -- Não --> C[Payload API: Busca padrão<br>limit: 12, sort: -createdAt]:::payload
+    C --> Z([Fim: Retorna Resultados<br>Paginação Padrão]):::endNode
+
+    %% Fluxo FTS
+    B -- Sim --> D[Prepara Drizzle:<br>Monta Vetores, Match e Rank]:::drizzle
+    D --> E[Drizzle Query 1:<br>COUNT - Conta total de matches]:::drizzle
+    
+    E --> F{totalDocs === 0?}:::decision
+    F -- Sim --> G[Retorna estrutura<br>de paginação vazia]:::js
+    G --> Z
+    
+    F -- Não --> H[Drizzle Query 2:<br>Traz os 12 IDs mais relevantes<br>Ordenados pelo Rank]:::drizzle
+    H --> I[Extrai apenas os IDs<br>ex: 45, 12, 89]:::js
+    
+    I --> J[Payload API Query 3:<br>Busca os documentos<br>where: id in 45, 12, 89<br>depth: 1]:::payload
+    
+    J --> K[JavaScript: Reordena os<br>documentos do Payload para<br>bater com o Rank do Drizzle]:::js
+    K --> L[Matemática: Calcula<br>totalPages, hasNextPage, etc]:::js
+    
+    L --> M[Retorna Objeto PaginatedDocs<br>Perfeito e Hidratado]:::js
+    M --> Z

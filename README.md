@@ -42,6 +42,23 @@ ssh -p 822 <server_username>@<server_address> "dokku postgres:export <dokku_app_
    docker exec -i $(docker compose ps -q postgres) psql -U admin -d database-technibus < dump.dump
    ```
 
+### ⚠️ Important: Full-Text Search (FTS) Index Setup
+
+If you ever delete, rebuild, or start the database from scratch (without importing a dump that already contains it), you **must** manually create the GIN Index required for the Search page's Full-Text Search performance.
+
+Connect to your database client and run the following SQL query:
+
+```sql
+CREATE INDEX search_fts_idx ON "search" USING GIN (
+  (
+    setweight(to_tsvector('portuguese'::regconfig, title::text), 'A') ||
+    setweight(to_tsvector('portuguese'::regconfig, coalesce(content, '')::text), 'B')
+  )
+);
+```
+
+_Tip: You can also run this directly via Docker by connecting to the `psql` CLI (see the Troubleshooting section) and pasting the query above._
+
 6. Start the development server:
 
    ```sh
