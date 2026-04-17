@@ -35,16 +35,20 @@ export const Posts: CollectionConfig = {
     afterChange: [
       ({ operation }) => {
         if (["create", "update"].includes(operation)) {
-          revalidatePath("/", "layout");
-          revalidateTag("search-results", "posts");
+          setTimeout(() => {
+            revalidatePath("/", "layout");
+            revalidateTag("search-results", "posts");
+          }, 0);
         }
       },
     ],
     afterDelete: [
       ({ doc }) => {
         if (doc._status === "published") {
-          revalidatePath("/", "layout");
-          revalidateTag("search-results", "posts");
+          setTimeout(() => {
+            revalidatePath("/", "layout");
+            revalidateTag("search-results", "posts");
+          }, 0);
         }
       },
     ],
