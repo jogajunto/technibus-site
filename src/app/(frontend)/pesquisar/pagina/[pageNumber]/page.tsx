@@ -7,6 +7,12 @@ import { createMetadata } from "@/utilities/create-metadata";
 import { PostArchive, PostArchiveFeed, PostArchiveHeader } from "@/components/PostArchive";
 import { SearchForm } from "@/components/SearchForm";
 import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
+import { unstable_cache } from "next/cache";
+
+const getCachedSearch = unstable_cache(async (page: number, term: string) => fetchPaginatedSearch(page, term), ["search-results-key"], {
+  revalidate: 60,
+  tags: ["search-results"],
+});
 
 type PageArgs = {
   params: Promise<{ pageNumber: string }>;
@@ -35,8 +41,7 @@ export default async function Page({ params, searchParams }: PageArgs) {
     notFound();
   }
 
-  const where = searchTerm ? { or: [{ title: { like: searchTerm } }, { content: { like: searchTerm } }] } : undefined;
-  const posts = await fetchPaginatedSearch(sanitizedPageNumber, where);
+  const posts = await getCachedSearch(sanitizedPageNumber, searchTerm || "");
 
   if (!posts) {
     notFound();

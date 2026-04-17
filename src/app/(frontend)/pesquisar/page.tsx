@@ -6,6 +6,12 @@ import { createMetadata } from "@/utilities/create-metadata";
 import { PostArchive, PostArchiveFeed, PostArchiveHeader } from "@/components/PostArchive";
 import { SearchForm } from "@/components/SearchForm";
 import { SectionHeading, SectionHeadingTitle } from "@/components/TitleWithDivider";
+import { unstable_cache } from "next/cache";
+
+const getCachedSearch = unstable_cache(async (page: number, term: string) => fetchPaginatedSearch(page, term), ["search-results-key"], {
+  revalidate: 60,
+  tags: ["search-results"],
+});
 
 type PageArgs = {
   searchParams: Promise<{
@@ -26,8 +32,7 @@ export async function generateMetadata({ searchParams }: PageArgs) {
 export default async function SearchPage({ searchParams }: PageArgs) {
   const { s: searchTerm } = await searchParams;
   const currentPage = 1;
-  const where = searchTerm ? { or: [{ title: { like: searchTerm } }, { content: { like: searchTerm } }] } : undefined;
-  const posts = await fetchPaginatedSearch(currentPage, where);
+  const posts = await getCachedSearch(currentPage, searchTerm || "");
 
   return (
     <>

@@ -2,7 +2,7 @@ import type { CollectionConfig } from "payload";
 
 import { relPermalinkField } from "@/fields/relpermalink";
 import { slugField } from "@/fields/slug";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { convertImage } from "./endpoints/convert-image";
 import { sendToSocial } from "./endpoints/send-to-social";
 
@@ -36,6 +36,7 @@ export const Posts: CollectionConfig = {
       ({ operation }) => {
         if (["create", "update"].includes(operation)) {
           revalidatePath("/", "layout");
+          revalidateTag("search-results", "posts");
         }
       },
     ],
@@ -43,6 +44,7 @@ export const Posts: CollectionConfig = {
       ({ doc }) => {
         if (doc._status === "published") {
           revalidatePath("/", "layout");
+          revalidateTag("search-results", "posts");
         }
       },
     ],
