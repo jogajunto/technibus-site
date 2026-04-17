@@ -2,7 +2,6 @@ import type { CollectionConfig } from "payload";
 
 import { relPermalinkField } from "@/fields/relpermalink";
 import { slugField } from "@/fields/slug";
-import { revalidatePath, revalidateTag } from "next/cache";
 import { convertImage } from "./endpoints/convert-image";
 import { sendToSocial } from "./endpoints/send-to-social";
 
@@ -35,20 +34,34 @@ export const Posts: CollectionConfig = {
     afterChange: [
       ({ operation }) => {
         if (["create", "update"].includes(operation)) {
-          setTimeout(() => {
-            revalidatePath("/", "layout");
-            revalidateTag("search-results", "posts");
-          }, 0);
+          fetch(`${process.env.SITE_URL}/api/revalidate`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-revalidate-secret": process.env.REVALIDATION_SECRET || "",
+            },
+            body: JSON.stringify({
+              clearAll: true,
+              tags: ["search-results"],
+            }),
+          }).catch((err) => console.error("Erro ao chamar API de revalidação:", err));
         }
       },
     ],
     afterDelete: [
       ({ doc }) => {
         if (doc._status === "published") {
-          setTimeout(() => {
-            revalidatePath("/", "layout");
-            revalidateTag("search-results", "posts");
-          }, 0);
+          fetch(`${process.env.SITE_URL}/api/revalidate`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-revalidate-secret": process.env.REVALIDATION_SECRET || "",
+            },
+            body: JSON.stringify({
+              clearAll: true,
+              tags: ["search-results"],
+            }),
+          }).catch((err) => console.error("Erro ao chamar API de revalidação:", err));
         }
       },
     ],
