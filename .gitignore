@@ -45,3 +45,6 @@ next-env.d.ts
 *.sql
 
 *.csv
+
+auditoria_v2.json
+relatorio_padroes_cta.md
