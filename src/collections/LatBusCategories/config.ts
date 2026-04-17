@@ -1,4 +1,3 @@
-import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
 
 export const LatBusCategories: CollectionConfig = {
@@ -20,7 +19,16 @@ export const LatBusCategories: CollectionConfig = {
     afterChange: [
       ({ operation }) => {
         if (operation === "update" || operation === "create") {
-          revalidatePath("/", "layout");
+          fetch(`${process.env.SITE_URL}/api/revalidate`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-revalidate-secret": process.env.REVALIDATION_SECRET || "",
+            },
+            body: JSON.stringify({
+              clearAll: true,
+            }),
+          }).catch((err) => console.error("Erro ao chamar API de revalidação:", err));
         }
       },
     ],

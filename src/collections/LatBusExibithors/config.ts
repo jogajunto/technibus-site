@@ -1,6 +1,5 @@
 import { phoneNumberField } from "@/fields/phoneNumber/field";
 import { isValidUrl } from "@/utilities/is-valid-url";
-import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
 
 export const LatBusExibithors: CollectionConfig = {
@@ -23,7 +22,16 @@ export const LatBusExibithors: CollectionConfig = {
     afterChange: [
       ({ operation }) => {
         if (operation === "update") {
-          revalidatePath("/", "layout");
+          fetch(`${process.env.SITE_URL}/api/revalidate`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-revalidate-secret": process.env.REVALIDATION_SECRET || "",
+            },
+            body: JSON.stringify({
+              clearAll: true,
+            }),
+          }).catch((err) => console.error("Erro ao chamar API de revalidação:", err));
         }
       },
     ],
