@@ -1,6 +1,6 @@
 import { createMetadata } from "@/utilities/create-metadata";
 
-import { Ads } from "@/components/Ads";
+import AdsSlot from "@/components/AdsSlot";
 
 export function generateMetadata() {
   return createMetadata({
@@ -16,10 +16,10 @@ export default function Page() {
     <main>
       <div className="section pt-4">
         <div className="container flex flex-col gap-4">
-          <Ads variant="sidebarTopo" />
-          <Ads variant="sidebarMeio" />
-          <Ads variant="sidebarMeio2" />
-          <Ads variant="sidebarBase" />
+          <AdsSlot variant="sidebarTopo" slotId="sidebar-topo-ads" />
+          <AdsSlot variant="sidebarMeio" slotId="sidebar-meio-ads" />
+          <AdsSlot variant="sidebarMeio2" slotId="sidebar-meio-2-ads" />
+          <AdsSlot variant="sidebarBase" slotId="sidebar-base-ads" />
         </div>
       </div>
     </main>

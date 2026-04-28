@@ -6,10 +6,10 @@ import { Inter } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
-import { Ads } from "@/components/Ads";
 import { NewsletterDialogProvider } from "@/providers/newsletter-dialog";
 
-import { Suspense } from "react";
+import AdsManager from "@/components/AdsManager";
+import AdsSlot from "@/components/AdsSlot";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,16 +33,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} antialiased`} id="topo">
+        <AdsManager />
         <NewsletterDialogProvider>
           <Header />
           <div className="container" id="conteudo">
-            <Suspense fallback={<div className="mx-auto mb-6 h-[90px] w-full max-w-5xl animate-pulse rounded bg-neutral-200 max-md:hidden" />}>
-              <Ads className="mx-auto mb-6 max-w-5xl max-md:hidden" variant="principalDesktop" />
-            </Suspense>
-
-            <Suspense fallback={<div className="mx-auto mb-6 h-[250px] w-full max-w-5xl animate-pulse rounded bg-neutral-200 md:hidden" />}>
-              <Ads className="mx-auto mb-6 max-w-5xl md:hidden" variant="principalMobile" />
-            </Suspense>
+            <AdsSlot className="mx-auto mb-6 max-w-5xl max-md:hidden" variant="principalDesktop" slotId="layout-principal-desktop" />
+            <AdsSlot className="mx-auto mb-6 max-w-5xl md:hidden" variant="principalMobile" slotId="layout-principal-mobile" />
           </div>
           {children}
           {process.env.NEXT_PUBLIC_ENV === "production" && <GoogleTagManager gtmId="GTM-58L35CT" />}

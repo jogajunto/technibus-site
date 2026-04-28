@@ -9,7 +9,6 @@ import { generateMetaDescription } from "@/utilities/generate-meta-description";
 import { articleSchema } from "@/utilities/schema";
 
 import { fetchPostBySlug, fetchPostsForBuild } from "@/collections/Posts/data";
-import { Ads } from "@/components/Ads";
 import { PayloadImage } from "@/components/Payload/Image";
 import RefreshRouteOnSave from "@/components/Payload/LivePreviewListener";
 import { RelatedPosts, SkeletonRelatedPosts } from "@/components/RelatedPosts";
@@ -179,8 +178,8 @@ export default async function Page({ params }: PageArgs) {
                 </div>
                 {post.image && <PayloadImage className="border-secondary bg-secondary w-full rounded-md border" image={post.image as Media} />}
                 <div className="grid gap-8 sm:grid-cols-2 lg:hidden">
-                  <Ads variant="sidebarTopo" />
-                  <Ads variant="sidebarMeio" />
+                  {/* <AdsSlot variant="sidebarTopo" slotId="sidebar-topo-3" />
+                  <AdsSlot variant="sidebarMeio" slotId="sidebar-meio-3" /> */}
                 </div>
                 {post.content && <RichText data={post.content} />}
                 {firstCategory && (
