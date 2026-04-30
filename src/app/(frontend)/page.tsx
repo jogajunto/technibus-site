@@ -98,7 +98,7 @@ export default async function Page() {
                   </SectionHeadingActions>
                 </SectionHeading>
                 <PostGrid variant="3-cols">
-                  <Image className="h-auto w-full rounded" src="/latbus-banner.svg" alt="" width={236} height={351} />
+                  <Image className="h-auto w-full rounded max-md:row-span-2 md:row-span-2" src="/latbus-banner.svg" alt="" width={236} height={351} />
                   {latbusPosts.map((post) => (
                     <Card disable={{ excerpt: true }} {...post} key={post.id} size="sm" />
                   ))}
