@@ -79,13 +79,18 @@ export function RichText({ data }: RichTextProps) {
 }
 
 function UploadNode({ node }: any) {
-  const { value } = node;
+  const { value, fields } = node;
   if (!value) return null;
 
-  const { url, alt, caption, width, height } = value;
+  const { alt, caption, sizes } = value;
+  const { imageSize, alignment } = fields || { imageSize: null, alignment: null };
+
+  const width = (imageSize && sizes?.[imageSize]?.width) || value.width;
+  const height = (imageSize && sizes?.[imageSize]?.height) || value.height;
+  const url = (imageSize && sizes?.[imageSize]?.url) || value.url;
 
   return (
-    <figure>
+    <figure style={{ maxWidth: `${width}px` }} className={`${alignment === "right" ? "ml-auto" : alignment === "center" ? "mx-auto" : "mr-auto"}`}>
       <img src={url} alt={alt || ""} width={width} height={height} loading="lazy" />
       {caption && <figcaption className="text-secondary pt-2 text-right text-sm italic">{caption}</figcaption>}
     </figure>
