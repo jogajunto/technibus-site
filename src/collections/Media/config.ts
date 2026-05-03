@@ -35,10 +35,65 @@ export const Media: CollectionConfig = {
   hooks: {
     beforeValidate: [generateBlurHash],
     beforeChange: [generateBlurHash],
+    afterChange: [
+      ({ operation, req }) => {
+        if (operation === "update" && !req.context?.skipRevalidate) {
+          fetch(`${process.env.SITE_URL}/api/revalidate`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-revalidate-secret": process.env.REVALIDATION_SECRET || "",
+            },
+            body: JSON.stringify({
+              clearAll: true,
+            }),
+          }).catch((err) => console.error("Erro ao revalidar Next.js via Media Hook:", err));
+        }
+      },
+    ],
   },
   upload: {
     formatOptions: {
       format: "webp",
     },
+    imageSizes: [
+      {
+        name: "thumbnail",
+        width: 300,
+        height: 300,
+        fit: "cover",
+        position: "centre",
+        formatOptions: {
+          format: "webp",
+        },
+      },
+      {
+        name: "medium",
+        width: 768,
+        height: undefined,
+        fit: "inside",
+        formatOptions: {
+          format: "webp",
+        },
+      },
+      {
+        name: "large",
+        width: 1024,
+        height: undefined,
+        fit: "inside",
+        formatOptions: {
+          format: "webp",
+        },
+      },
+      {
+        name: "xlarge",
+        width: 1536,
+        height: undefined,
+        fit: "inside",
+        formatOptions: {
+          format: "webp",
+        },
+      },
+    ],
   },
 };
