@@ -7,27 +7,9 @@ import { postgresAdapter } from "@payloadcms/db-postgres";
 
 import * as Sentry from "@sentry/nextjs";
 
-import {
-  BlockquoteFeature,
-  BlocksFeature,
-  BoldFeature,
-  FixedToolbarFeature,
-  HeadingFeature,
-  ItalicFeature,
-  lexicalEditor,
-  LinkFeature,
-  LinkFields,
-  OrderedListFeature,
-  ParagraphFeature,
-  UnderlineFeature,
-  UnorderedListFeature,
-  UploadFeature,
-} from "@payloadcms/richtext-lexical";
-import { AfterErrorHookArgs, buildConfig, TextFieldSingleValidation } from "payload";
+import { AfterErrorHookArgs, buildConfig } from "payload";
 
 import { pt } from "@payloadcms/translations/languages/pt";
-
-import { YouTubeEmbedBlock } from "@/blocks/YoutubeEmbed";
 
 import { nodemailerAdapter } from "@payloadcms/email-nodemailer";
 
@@ -38,11 +20,11 @@ import { Media } from "@/collections/Media/config";
 import { Posts } from "@/collections/Posts/config";
 import { Tags } from "@/collections/Tags/config";
 import { Users } from "@/collections/Users/config";
-import { SpotifyEmbedBlock } from "./blocks/SpotifyEmbed";
 
 import { Topbar } from "@/globals/Topbar/config";
 import plugins from "@/plugins";
 import { DailyViews } from "./collections/DailyViews/config";
+import editor from "./editor";
 import { SocialMediaSettings } from "./globals/SocialMediaSettings/config";
 import { tasks } from "./tasks";
 
@@ -86,51 +68,7 @@ export default buildConfig({
   i18n: {
     supportedLanguages: { pt },
   },
-  editor: lexicalEditor({
-    features: () => [
-      UploadFeature(),
-      FixedToolbarFeature(),
-      ParagraphFeature(),
-      UnderlineFeature(),
-      BoldFeature(),
-      ItalicFeature(),
-      OrderedListFeature(),
-      UnorderedListFeature(),
-      BlockquoteFeature(),
-      HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4", "h5", "h6"] }),
-      LinkFeature({
-        enabledCollections: ["posts"],
-        fields: ({ defaultFields }) => {
-          const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
-            if ("name" in field && field.name === "url") return false;
-            return true;
-          });
-
-          return [
-            ...defaultFieldsWithoutUrl,
-            {
-              name: "url",
-              type: "text",
-              admin: {
-                condition: (_data, siblingData) => siblingData?.linkType !== "internal",
-              },
-              label: ({ t }) => t("fields:enterURL"),
-              required: true,
-              validate: ((value, options) => {
-                if ((options?.siblingData as LinkFields)?.linkType === "internal") {
-                  return true;
-                }
-                return value ? true : "URL is required";
-              }) as TextFieldSingleValidation,
-            },
-          ];
-        },
-      }),
-      BlocksFeature({
-        blocks: [YouTubeEmbedBlock, SpotifyEmbedBlock],
-      }),
-    ],
-  }),
+  editor,
   collections: [Users, DailyViews, Posts, Media, Categories, Tags, LatBusExibithors, LatBusCategories],
   globals: [Topbar, SocialMediaSettings],
   jobs: {
@@ -157,7 +95,7 @@ export default buildConfig({
     // },
   },
   onInit: async (payload) => {
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env.NODE_ENV !== "production" && !process.env.IS_PLAYWRIGHT) {
       try {
         await payload.db.drizzle.execute(sql`
         CREATE INDEX IF NOT EXISTS search_fts_idx ON "search" USING GIN (
