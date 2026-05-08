@@ -176,7 +176,7 @@ export default async function Page({ params }: PageArgs) {
                     </ul>
                   )}
                 </div>
-                {post.image && <PayloadImage className="border-secondary bg-secondary w-full rounded-md border" image={post.image as Media} />}
+                {post.image && <PayloadImage className="border-secondary bg-secondary w-full rounded-md border" image={post.image as Media} payloadSize="large" />}
                 <div className="grid gap-8 sm:grid-cols-2 lg:hidden">
                   {/* <AdsSlot variant="sidebarTopo" slotId="sidebar-topo-3" />
                   <AdsSlot variant="sidebarMeio" slotId="sidebar-meio-3" /> */}

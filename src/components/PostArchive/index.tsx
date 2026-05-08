@@ -56,7 +56,7 @@ export function PostArchiveFeed({ posts, page, totalPages, path, query, cardDisa
       <PostGrid>
         {posts.map((post, index) => (
           <Fragment key={post.id}>
-            <Card {...post} disable={cardDisable} size="sm" />
+            <Card {...post} disable={cardDisable} size="sm" payloadSize="large" />
             {/* {index === 2 && <Ads className="lg:hidden" variant="sidebarTopo" />}
             {index === 6 && <Ads className="lg:hidden" variant="sidebarMeio" />}
             {index === 7 && <Ads className="lg:hidden" variant="sidebarMeio2" />} */}

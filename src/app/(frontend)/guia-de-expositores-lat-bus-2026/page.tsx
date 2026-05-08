@@ -84,7 +84,7 @@ export default async function Exibithors({ searchParams }: PageArgs) {
                 <div key={exibithor.id} className="flex h-full flex-col gap-4 rounded-xl">
                   <div className="bg-secondary flex items-center justify-center rounded-lg p-6">
                     {exibithor.logo ? (
-                      <PayloadImage image={exibithor.logo as Media} alt={exibithor.title} disableCaption className="aspect-[4/3] object-contain p-[15%]" />
+                      <PayloadImage image={exibithor.logo as Media} alt={exibithor.title} payloadSize="original" disableCaption className="aspect-[4/3] object-contain p-[15%]" />
                     ) : (
                       <span className="grid aspect-[4/3] size-full place-items-center text-center text-lg font-semibold text-balance text-[#0a1e3f]">{exibithor.title}</span>
                     )}
@@ -112,7 +112,7 @@ export default async function Exibithors({ searchParams }: PageArgs) {
                       <DialogHeader className="space-y-4">
                         <div className="bg-secondary flex max-w-32 items-center justify-center rounded-lg p-6">
                           {exibithor.logo ? (
-                            <PayloadImage image={exibithor.logo as Media} alt={exibithor.title} disableCaption className="aspect-[4/3] max-h-52 object-contain" />
+                            <PayloadImage image={exibithor.logo as Media} alt={exibithor.title} payloadSize="original" disableCaption className="aspect-[4/3] max-h-52 object-contain" />
                           ) : (
                             <span className="grid aspect-[4/3] w-full place-items-center text-center text-base font-semibold text-balance text-[#0a1e3f]">{exibithor.title}</span>
                           )}

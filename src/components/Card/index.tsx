@@ -1,7 +1,7 @@
 import { Category, Media, Post, Search } from "@/payload-types";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { PayloadImage } from "@/components/Payload/Image";
+import { PayloadImage, PayloadSize } from "@/components/Payload/Image";
 import Link from "next/link";
 
 const card = tv({
@@ -26,6 +26,7 @@ const card = tv({
 type CardVariants = VariantProps<typeof card>;
 
 export type CardProps = {
+  payloadSize?: PayloadSize;
   disable?: {
     image?: boolean;
     excerpt?: boolean;
@@ -34,7 +35,7 @@ export type CardProps = {
 } & (Post | Search) &
   CardVariants;
 
-export function Card({ category, title, excerpt, image, relPermalink, size, hat, disable = { image: false, excerpt: false, category: false } }: CardProps) {
+export function Card({ category, title, excerpt, image, relPermalink, size, hat, payloadSize = "large", disable = { image: false, excerpt: false, category: false } }: CardProps) {
   const slot = card({ size });
 
   return (
@@ -45,6 +46,7 @@ export function Card({ category, title, excerpt, image, relPermalink, size, hat,
             className="absolute size-full object-cover transition-transform duration-300 group-focus-within:scale-105 group-hover:scale-105"
             image={image as Media}
             disableCaption
+            payloadSize={payloadSize}
           />
         </div>
       )}
