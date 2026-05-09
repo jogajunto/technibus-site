@@ -15,6 +15,8 @@ import { Sidebar } from "@/components/Sidebar";
 import { SectionHeading, SectionHeadingActions, SectionHeadingTitle } from "@/components/TitleWithDivider";
 import { SectionLatestMagazines } from "@/sections/LatestMagazines";
 
+export const revalidate = 60;
+
 export function generateMetadata() {
   return createMetadata({
     path: "/",

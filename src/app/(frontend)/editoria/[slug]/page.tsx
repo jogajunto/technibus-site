@@ -18,6 +18,8 @@ type PageArgs = {
   }>;
 };
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: PageArgs) {
   const { slug } = await params;
   const category = await fetchCategoryBySlug(slug);

@@ -23,6 +23,8 @@ type PageArgs = {
   }>;
 };
 
+export const revalidate = 60;
+
 function SkeletonSidebar() {
   return <div className="h-[800px] w-full animate-pulse rounded-lg bg-neutral-200"></div>;
 }
