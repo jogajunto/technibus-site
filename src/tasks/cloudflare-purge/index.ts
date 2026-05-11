@@ -1,3 +1,4 @@
+// TODO: Implementar no plugin o uso de tasks para o purgue do cache
 import { PayloadRequest, TaskConfig } from "payload";
 
 const cloudflarePurgeTaskHandler: any = async ({ req, input }: { input: { urls: any; purgeEverything: boolean; delayMs: number }; job: any; req: PayloadRequest }) => {
