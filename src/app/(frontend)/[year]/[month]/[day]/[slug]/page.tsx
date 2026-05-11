@@ -16,6 +16,7 @@ import { RichText } from "@/components/RichText";
 import { Sidebar } from "@/components/Sidebar";
 import { Facebook, LinkedIn, Threads, WhatsApp, X } from "@/components/SocialIcon";
 import { TrackView } from "@/components/TrackView";
+import { fetchCTA } from "@/globals/CTA/data";
 
 type PageArgs = {
   params: Promise<{
@@ -71,7 +72,7 @@ export default async function Page({ params }: PageArgs) {
 
   const { isEnabled: isDraftMode } = await draftMode();
 
-  const post = await fetchPostBySlug(slug, isDraftMode);
+  const [post, cta] = await Promise.all([fetchPostBySlug(slug, isDraftMode), fetchCTA(isDraftMode)]);
 
   if (!post) {
     notFound();
@@ -182,6 +183,7 @@ export default async function Page({ params }: PageArgs) {
                   <AdsSlot variant="sidebarMeio" slotId="sidebar-meio-3" /> */}
                 </div>
                 {post.content && <RichText data={post.content} />}
+                {cta?.content && <RichText data={cta.content} />}
                 {firstCategory && (
                   <Suspense fallback={<SkeletonRelatedPosts />}>
                     <RelatedPosts categorySlug={firstCategory.slug!} postId={post.id} />
