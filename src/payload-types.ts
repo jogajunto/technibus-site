@@ -119,10 +119,12 @@ export interface Config {
   globals: {
     topbar: Topbar;
     'social-media-settings': SocialMediaSetting;
+    cta: Cta;
   };
   globalsSelect: {
     topbar: TopbarSelect<false> | TopbarSelect<true>;
     'social-media-settings': SocialMediaSettingsSelect<false> | SocialMediaSettingsSelect<true>;
+    cta: CtaSelect<false> | CtaSelect<true>;
   };
   locale: null;
   widgets: {
@@ -904,6 +906,31 @@ export interface SocialMediaSetting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cta".
+ */
+export interface Cta {
+  id: number;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  _status?: ('draft' | 'published') | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "topbar_select".
  */
 export interface TopbarSelect<T extends boolean = true> {
@@ -922,6 +949,17 @@ export interface TopbarSelect<T extends boolean = true> {
  */
 export interface SocialMediaSettingsSelect<T extends boolean = true> {
   zapierEndpointUrl?: T;
+  _status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cta_select".
+ */
+export interface CtaSelect<T extends boolean = true> {
+  content?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;

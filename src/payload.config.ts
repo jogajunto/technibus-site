@@ -25,6 +25,7 @@ import { Topbar } from "@/globals/Topbar/config";
 import plugins from "@/plugins";
 import { DailyViews } from "./collections/DailyViews/config";
 import editor from "./editor";
+import { CTA } from "./globals/CTA/config";
 import { SocialMediaSettings } from "./globals/SocialMediaSettings/config";
 import { tasks } from "./tasks";
 
@@ -70,7 +71,7 @@ export default buildConfig({
   },
   editor,
   collections: [Users, DailyViews, Posts, Media, Categories, Tags, LatBusExibithors, LatBusCategories],
-  globals: [Topbar, SocialMediaSettings],
+  globals: [Topbar, SocialMediaSettings, CTA],
   jobs: {
     tasks: tasks,
     autoRun: [
