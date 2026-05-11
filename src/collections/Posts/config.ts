@@ -32,7 +32,9 @@ export const Posts: CollectionConfig = {
   },
   hooks: {
     afterChange: [
-      ({ operation }) => {
+      ({ operation, req }) => {
+        if (req.context?.isMigration) return;
+
         if (["create", "update"].includes(operation)) {
           fetch(`${process.env.SITE_URL}/api/revalidate`, {
             method: "POST",
