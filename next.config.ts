@@ -55,7 +55,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-
+      {
+        source: "/pesquisar/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "s-maxage=60, no-store",
+          },
+        ],
+      },
       {
         source: "/_next/static/:path*",
         headers: [{ key: "Cache-Control", value: `public, max-age=${ONE_YEAR}, s-maxage=${ONE_YEAR}, immutable` }],
