@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: `s-maxage=${ONE_DAY}, no-store`,
+            value: `public, max-age=0, s-maxage=${ONE_DAY}`,
           },
         ],
       },
@@ -82,7 +82,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: `s-maxage=${ONE_DAY}, no-store`,
+            value: `public, max-age=0, s-maxage=${ONE_DAY}`,
           },
         ],
       },
