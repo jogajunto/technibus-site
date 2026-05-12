@@ -32,15 +32,15 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
-      //   {
-      //     source: "/((?!_next/static|_next/image|_next/data|assets|api|favicon.ico|admin|pesquisar).*)",
-      //     headers: [
-      //       {
-      //         key: "Cache-Control",
-      //         value: `public, max-age=0, must-revalidate, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
-      //       },
-      //     ],
-      //   },
+      {
+        source: "/((?!_next/static|_next/image|_next/data|assets|api|favicon.ico|admin|pesquisar).*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: `s-maxage=${ONE_DAY}, no-store`,
+          },
+        ],
+      },
       {
         source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
         has: [{ type: "cookie", key: "payload-token" }],
@@ -69,15 +69,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      //   {
-      //     source: "/_next/data/:path*",
-      //     headers: [
-      //       {
-      //         key: "Cache-Control",
-      //         value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
-      //       },
-      //     ],
-      //   },
+      {
+        source: "/_next/data/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: `s-maxage=${ONE_DAY}, no-store`,
+          },
+        ],
+      },
       {
         source: "/favicon.ico",
         headers: [{ key: "Cache-Control", value: `public, max-age=${ONE_WEEK}, s-maxage=${ONE_WEEK}, immutable` }],
