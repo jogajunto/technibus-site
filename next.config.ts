@@ -60,7 +60,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "s-maxage=60, no-store",
+            value: "public, max-age=0, s-maxage=60",
           },
         ],
       },
