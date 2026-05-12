@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
+        source: "/((?!api|_next/static|_next/image|favicon.ico|pesquisar).*)",
         has: [{ type: "cookie", key: "payload-token" }],
         headers: [
           {
