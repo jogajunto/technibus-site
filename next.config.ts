@@ -69,15 +69,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: "/_next/data/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
-          },
-        ],
-      },
+      //   {
+      //     source: "/_next/data/:path*",
+      //     headers: [
+      //       {
+      //         key: "Cache-Control",
+      //         value: `public, max-age=0, s-maxage=${ONE_DAY}, stale-while-revalidate=${ONE_DAY}`,
+      //       },
+      //     ],
+      //   },
       {
         source: "/favicon.ico",
         headers: [{ key: "Cache-Control", value: `public, max-age=${ONE_WEEK}, s-maxage=${ONE_WEEK}, immutable` }],
