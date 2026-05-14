@@ -67,7 +67,7 @@ export default buildConfig({
     },
   },
   i18n: {
-    supportedLanguages: { pt },
+    supportedLanguages: { pt: pt as any },
   },
   editor,
   collections: [Users, DailyViews, Posts, Media, Categories, Tags, LatBusExibithors, LatBusCategories],
