@@ -107,7 +107,7 @@ export async function Footer() {
             <div className="space-y-2">
               <h2 className="border-secondary border-b pb-2 font-semibold">Eventos corporativos / Marketing</h2>
               <p>
-                Barbara Chelen <br />
+                Barbara Ghelen <br />
                 <a className="link" href="mailto:barbaraghelen@otmeditora.com">
                   barbaraghelen@otmeditora.com
                 </a>
