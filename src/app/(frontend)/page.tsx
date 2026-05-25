@@ -47,9 +47,11 @@ export default async function Page() {
   const [secondaryFeaturedPosts, technibusHistoryPosts, interviewAndOpinionPosts, latbusPosts] = await Promise.all([
     fetchPostsByTagSlug("subdestaque", 2, featuredIds),
     fetchPostsByCategorySlug("technibus-na-historia", 1),
-    fetchPostsByCategorySlug("entrevista-e-opiniao", 1),
+    fetchPostsByCategorySlug("entrevista-e-opiniao", 2),
     fetchPostsByCategorySlug("latbus", 2),
   ]);
+
+  console.log("Featured IDs:", interviewAndOpinionPosts);
 
   // 3. Juntamos TODOS os IDs das seções acima em uma única lista
   const allUsedIds = [
@@ -139,24 +141,16 @@ export default async function Page() {
               </PostGrid> */}
 
               {/* Specials */}
-              <PostGrid variant="2-cols">
-                <div className="space-y-6">
-                  <SectionHeading>
-                    <SectionHeadingTitle size="lg">Technibus na História</SectionHeadingTitle>
-                  </SectionHeading>
-                  {technibusHistoryPosts.map((post) => (
-                    <Card {...post} key={post.id} size="lg" />
-                  ))}
-                </div>
-                <div className="space-y-6">
-                  <SectionHeading>
-                    <SectionHeadingTitle size="lg">Entrevista & Opinião</SectionHeadingTitle>
-                  </SectionHeading>
+              <div className="space-y-6">
+                <SectionHeading>
+                  <SectionHeadingTitle size="lg">Entrevista & Opinião</SectionHeadingTitle>
+                </SectionHeading>
+                <PostGrid variant="2-cols">
                   {interviewAndOpinionPosts.map((post) => (
-                    <Card {...post} key={post.id} size="lg" />
+                    <Card disable={{ excerpt: true }} {...post} key={post.id} size="lg" />
                   ))}
-                </div>
-              </PostGrid>
+                </PostGrid>
+              </div>
             </div>
 
             {/* Mantemos o Suspense apenas na Sidebar, pois ela roda de forma isolada! */}
