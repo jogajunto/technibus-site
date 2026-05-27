@@ -36,6 +36,7 @@ export function createMetadata({ path, title, description, prev, next, image, no
           url: imageUrl,
           width: imageWidth,
           height: imageHeight,
+          type: image?.url ? "image/jpeg" : "image/png",
           alt: image?.alt || siteTitle,
         },
       ],
