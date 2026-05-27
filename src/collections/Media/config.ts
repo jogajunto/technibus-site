@@ -86,6 +86,15 @@ export const Media: CollectionConfig = {
         },
       },
       {
+        name: "ogImage",
+        width: 1024,
+        height: undefined,
+        fit: "inside",
+        formatOptions: {
+          format: "jpeg",
+        },
+      },
+      {
         name: "xlarge",
         width: 1536,
         height: undefined,
