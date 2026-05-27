@@ -51,8 +51,6 @@ export default async function Page() {
     fetchPostsByCategorySlug("latbus", 2),
   ]);
 
-  console.log("Featured IDs:", interviewAndOpinionPosts);
-
   // 3. Juntamos TODOS os IDs das seções acima em uma única lista
   const allUsedIds = [
     ...featuredIds,
