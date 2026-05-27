@@ -9,7 +9,12 @@ const plugins: Plugin[] = [
   seoPlugin({}),
   s3Storage({
     collections: {
-      media: true,
+      media: {
+        generateFileURL: ({ filename }) => {
+          const domain = "https://storage.technibus.com.br";
+          return `${domain}/${filename}`;
+        },
+      },
     },
     bucket: process.env.CLOUDFLARE_R2_BUCKET!,
     config: {
