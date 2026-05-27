@@ -68,6 +68,12 @@ export const Media: CollectionConfig = {
         },
       },
       {
+        name: "ogImageSmall",
+        formatOptions: {
+          format: "jpeg",
+        },
+      },
+      {
         name: "medium",
         width: 768,
         height: undefined,
