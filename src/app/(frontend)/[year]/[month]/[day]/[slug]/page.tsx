@@ -36,17 +36,13 @@ export async function generateMetadata({ params }: PageArgs) {
 
   const media = post.image as Media | undefined;
 
-  // Lógica de fallback inteligente:
-  // 1. Tenta pegar a versão grande de 1024px (jpeg)
-  // 2. Se não existir, tenta pegar a pequena convertida (jpeg)
-  // 3. Se tudo falhar, pega a imagem original como último recurso
-  const safeImage = media?.sizes?.ogImage || media?.sizes?.ogImageSmall || media || undefined;
+  const safeImage = media?.sizes?.ogImage?.url ? (media.sizes.ogImage as Media) : media?.sizes?.ogImageSmall?.url ? (media.sizes.ogImageSmall as Media) : media || undefined;
 
   return createMetadata({
     path: post.relPermalink,
     title: post.title,
     description: post.excerpt || generateMetaDescription(post.content),
-    image: (safeImage as Media) ?? undefined,
+    image: safeImage,
   });
 }
 
