@@ -111,16 +111,29 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withSentryConfig(withPayload(nextConfig), {
-  org: process.env.GLITCHTIP_ORG,
-  project: process.env.GLITCHTIP_PROJECT,
-  // OTIMIZAÇÃO DE TEMPO: Não processa node_modules (Build rápido)
-  widenClientFileUpload: false,
-  authToken: process.env.GLITCHTIP_AUTH_TOKEN,
-  sentryUrl: process.env.GLITCHTIP_URL,
-  sourcemaps: {
-    // OTIMIZAÇÃO DE ESPAÇO: Limpa os mapas do container após o upload
-    deleteSourcemapsAfterUpload: true,
-  },
-  telemetry: false,
-});
+// 1. Envelopamos primeiro a config com o Payload, que deve rodar sempre
+const configWithPayload = withPayload(nextConfig);
+
+// 2. Definimos a regra para habilitar o Sentry
+// Geralmente queremos que rode em 'production' E dentro de uma esteira de CI/CD
+// Caso não use uma variável 'CI', você pode usar process.env.NODE_ENV === 'production'
+// e evitar rodar 'next build' localmente com NODE_ENV=production.
+const shouldEnableSentryBuild = process.env.NODE_ENV === "production" && process.env.CI === "true";
+
+// 3. Aplicamos o Sentry condicionalmente
+const finalConfig = shouldEnableSentryBuild
+  ? withSentryConfig(configWithPayload, {
+      org: process.env.GLITCHTIP_ORG,
+      project: process.env.GLITCHTIP_PROJECT,
+      widenClientFileUpload: false,
+      authToken: process.env.GLITCHTIP_AUTH_TOKEN,
+      sentryUrl: process.env.GLITCHTIP_URL,
+      sourcemaps: {
+        deleteSourcemapsAfterUpload: true,
+      },
+      telemetry: false,
+      //   silent: true, // Dica extra: 'true' oculta os logs longos do Sentry durante o build
+    })
+  : configWithPayload;
+
+export default finalConfig;
