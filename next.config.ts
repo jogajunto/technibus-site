@@ -100,7 +100,16 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/api/((?!media).*)",
+        source: "/api/most-read",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, s-maxage=1800, stale-while-revalidate=3600",
+          },
+        ],
+      },
+      {
+        source: "/api/((?!media|most-read).*)",
         headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, must-revalidate" }],
       },
       {
