@@ -44,7 +44,7 @@ export const Posts: CollectionConfig = {
             },
             body: JSON.stringify({
               clearAll: true,
-              tags: ["search-results"],
+              tags: ["search-results", "most-read"],
             }),
           }).catch((err) => console.error("Erro ao chamar API de revalidação:", err));
         }
@@ -61,7 +61,7 @@ export const Posts: CollectionConfig = {
             },
             body: JSON.stringify({
               clearAll: true,
-              tags: ["search-results"],
+              tags: ["search-results", "most-read"],
             }),
           }).catch((err) => console.error("Erro ao chamar API de revalidação:", err));
         }

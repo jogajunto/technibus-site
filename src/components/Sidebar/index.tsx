@@ -9,9 +9,7 @@ export function Sidebar() {
         <AdsSlot variant="sidebarTopo" slotId="sidebar-topo" />
       </Suspense>
 
-      <Suspense fallback={<div className="h-[400px] w-full animate-pulse rounded-lg bg-neutral-200" />}>
-        <MostRead />
-      </Suspense>
+      <MostRead />
 
       <Suspense fallback={<div className="h-[250px] w-full animate-pulse rounded-lg bg-neutral-200" />}>
         <AdsSlot variant="sidebarMeio" slotId="sidebar-meio" />
