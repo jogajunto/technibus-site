@@ -287,6 +287,9 @@ export interface Post {
    * Marque esta opção se a publicação já tiver sido compartilhada nas redes sociais. Isso ajuda a evitar compartilhamentos duplicados.
    */
   socialPublished?: boolean | null;
+  /**
+   * ⚠️ Requisitos da imagem: O tamanho mínimo é de 480px (largura e altura). Imagens com mais de 1920px serão redimensionadas automaticamente para caber neste limite.
+   */
   image?: (number | null) | Media;
   /**
    * Para agendar uma publicação, escolha uma data posterior à atual.

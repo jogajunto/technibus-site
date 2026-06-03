@@ -186,6 +186,10 @@ export const Posts: CollectionConfig = {
       label: "Imagem",
       type: "upload",
       relationTo: "media",
+      admin: {
+        description:
+          "⚠️ Requisitos da imagem: O tamanho mínimo é de 480px (largura e altura). Imagens com mais de 1920px serão redimensionadas automaticamente para caber neste limite.",
+      },
     },
     {
       name: "publishedDate",

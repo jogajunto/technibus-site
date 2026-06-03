@@ -1,5 +1,5 @@
 import { generateBlurHash } from "@/utilities/payload/generate-blur-hash";
-import type { CollectionConfig } from "payload";
+import { APIError, type CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
   slug: "media",
@@ -14,6 +14,15 @@ export const Media: CollectionConfig = {
     read: () => true,
   },
   fields: [
+    {
+      name: "uploadInfo",
+      type: "ui",
+      admin: {
+        components: {
+          Field: "@/components/UploadInfo",
+        },
+      },
+    },
     {
       name: "alt",
       type: "text",
@@ -33,7 +42,21 @@ export const Media: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeValidate: [generateBlurHash],
+    beforeValidate: [
+      (args) => {
+        const { data, req, operation } = args;
+        if ((operation === "create" || operation === "update") && req.file && data) {
+          const width = data.width || 0;
+          const height = data.height || 0;
+
+          if (width < 480 || height < 480) {
+            throw new APIError("A imagem é muito pequena. O tamanho mínimo exigido é de 480px de largura e altura.", 400);
+          }
+        }
+        return data;
+      },
+      generateBlurHash,
+    ],
     beforeChange: [generateBlurHash],
     afterChange: [
       ({ operation, req }) => {
@@ -55,6 +78,12 @@ export const Media: CollectionConfig = {
   upload: {
     formatOptions: {
       format: "webp",
+    },
+    resizeOptions: {
+      width: 1920,
+      height: 1920,
+      fit: "inside",
+      withoutEnlargement: true,
     },
     imageSizes: [
       {
