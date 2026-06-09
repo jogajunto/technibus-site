@@ -97,12 +97,6 @@ export const Media: CollectionConfig = {
         },
       },
       {
-        name: "ogImageSmall",
-        formatOptions: {
-          format: "jpeg",
-        },
-      },
-      {
         name: "medium",
         width: 768,
         height: undefined,
@@ -118,15 +112,6 @@ export const Media: CollectionConfig = {
         fit: "inside",
         formatOptions: {
           format: "webp",
-        },
-      },
-      {
-        name: "ogImage",
-        width: 1024,
-        height: undefined,
-        fit: "inside",
-        formatOptions: {
-          format: "jpeg",
         },
       },
       {

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageArgs) {
 
   const media = post.image as Media | undefined;
 
-  const safeImage = media?.sizes?.ogImage?.url ? (media.sizes.ogImage as Media) : media?.sizes?.ogImageSmall?.url ? (media.sizes.ogImageSmall as Media) : media || undefined;
+  const safeImage = media?.sizes?.xlarge?.url ? (media.sizes.xlarge as Media) : media?.sizes?.large?.url ? (media.sizes.large as Media) : media || undefined;
 
   return createMetadata({
     path: post.relPermalink,
