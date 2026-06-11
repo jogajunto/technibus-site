@@ -41,6 +41,28 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // ignore routes with RSC headers or query parameters, as they are used for client-side data fetching and should not be cached
+      {
+        source: "/((?!_next/static|_next/image|assets|api|favicon.ico|admin).*)",
+        has: [{ type: "header", key: "RSC" }],
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "private, no-cache, no-store, must-revalidate, max-age=0, no-transform",
+          },
+        ],
+      },
+      {
+        source: "/((?!_next/static|_next/image|assets|api|favicon.ico|admin).*)",
+        has: [{ type: "query", key: "_rsc" }],
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "private, no-cache, no-store, must-revalidate, max-age=0, no-transform",
+          },
+        ],
+      },
+      // ─
       {
         source: "/((?!api|_next/static|_next/image|favicon.ico|pesquisar).*)",
         has: [{ type: "cookie", key: "payload-token" }],
