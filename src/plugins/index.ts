@@ -119,14 +119,9 @@ const plugins: Plugin[] = [
       // TODO: Após atualização do plugin modificar esse comportamento
       // ==========================================
 
-      // Converte o Set em Array e duplica cada URL para incluir a versão RSC (JSON)
-      const finalUrls = Array.from(urlsToPurge).flatMap((url) => {
-        const hasQuery = url.includes("?");
-        // Reproduz a exata concatenação que a Transform Rule faz na Cloudflare
-        const rscUrl = hasQuery ? `${url}&_cf_rsc=1` : `${url}?&_cf_rsc=1`;
-
-        return [url, rscUrl];
-      });
+      // Retorna apenas a lista pura de URLs estáticas (Home, Posts, Categorias)
+      // Sem nenhuma duplicação ou sufixo artificial de RSC
+      const finalUrls = Array.from(urlsToPurge);
 
       if (finalUrls.length > 0) {
         try {
