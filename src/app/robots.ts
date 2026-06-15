@@ -4,7 +4,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      allow: ["/", "/api/most-read"],
       disallow: ["/admin", "/api"],
     },
     sitemap: `${process.env.SITE_URL}/sitemap.xml`,
