@@ -24,7 +24,7 @@ export const articleSchema = (props: Post) => {
       name: process.env.SITE_TITLE,
       logo: {
         "@type": "ImageObject",
-        url: `${process.env.SITE_URL}/logo-technibus-negative.svg`,
+        url: `${process.env.SITE_URL}/logo-technibus-positive.svg`,
         width: "377",
         height: "190",
       },
