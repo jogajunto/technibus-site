@@ -62,9 +62,9 @@ export async function generateStaticParams() {
       const date = post.publishedDate ? new Date(post.publishedDate) : new Date();
 
       return {
-        year: date.getFullYear().toString(),
-        month: (date.getMonth() + 1).toString().padStart(2, "0"),
-        day: date.getDate().toString().padStart(2, "0"),
+        year: date.getUTCFullYear().toString(),
+        month: (date.getUTCMonth() + 1).toString().padStart(2, "0"),
+        day: date.getUTCDate().toString().padStart(2, "0"),
         slug: slugValue,
       };
     })
@@ -122,7 +122,7 @@ export default async function Page({ params }: PageArgs) {
                 </div>
                 <div className="flex flex-wrap justify-between gap-4">
                   <p className="text-secondary">
-                    Publicado em {new Date(post.publishedDate).toLocaleDateString("pt-BR")} por{" "}
+                    Publicado em {new Date(post.publishedDate).toLocaleDateString("pt-BR", { timeZone: "UTC" })} por{" "}
                     {(post.author as User)?.relPermalink ? (
                       <Link className="link" href={(post.author as User).relPermalink}>
                         {(post.author as User).name}

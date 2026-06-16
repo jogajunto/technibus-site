@@ -9,6 +9,18 @@ export async function getTopPosts(daysAgo: number = 15, limit: number = 5) {
   pastDate.setDate(pastDate.getDate() - daysAgo);
   const pastDateAtMidnight = new Date(Date.UTC(pastDate.getUTCFullYear(), pastDate.getUTCMonth(), pastDate.getUTCDate())).toISOString();
 
+  const { docs: recentPosts } = await payload.find({
+    collection: "posts",
+    where: {
+      publishedDate: { greater_than_equal: pastDateAtMidnight },
+    },
+    depth: 0,
+    limit: 1000,
+    pagination: false,
+  });
+
+  const recentPostIds = new Set(recentPosts.map((p) => String(p.id)));
+
   const { docs: viewRecords } = await payload.find({
     collection: "daily-views",
     where: {
@@ -24,6 +36,8 @@ export async function getTopPosts(daysAgo: number = 15, limit: number = 5) {
   viewRecords.forEach((record) => {
     const postId = typeof record.post === "object" ? record.post?.id : record.post;
     if (!postId) return;
+
+    if (!recentPostIds.has(String(postId))) return;
 
     if (!aggregatedViews[postId]) {
       aggregatedViews[postId] = 0;
