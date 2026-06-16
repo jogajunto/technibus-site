@@ -18,6 +18,11 @@ type PayloadImageProps = {
   sizes?: string;
 };
 
+const getSanitizedUrl = (url: string) => {
+  if (!url) return "";
+  return encodeURI(decodeURI(url));
+};
+
 export function PayloadImage({ image, className, alt, width, height, loading = "lazy", disableCaption = false, payloadSize = "thumbnail", sizes = "100vw" }: PayloadImageProps) {
   if (!isMediaObject(image)) {
     return null;
@@ -52,7 +57,7 @@ export function PayloadImage({ image, className, alt, width, height, loading = "
     const generatedUrl = `${finalUrl}${separator}w=${requestedWidth}&q=${quality || 75}`;
 
     // Sanitiza a URL gerada no loader eliminando espaços literais e acentos
-    return encodeURI(decodeURI(generatedUrl));
+    return getSanitizedUrl(generatedUrl);
   };
 
   let baseSrc = image.url!;
@@ -68,15 +73,14 @@ export function PayloadImage({ image, className, alt, width, height, loading = "
     }
   }
 
-  // Garante que a URL base inicial do atributo src também esteja devidamente codificada
-  const sanitizedBaseSrc = encodeURI(decodeURI(baseSrc));
+  const finalSrc = getSanitizedUrl(baseSrc);
 
   return (
     <figure>
       <Image
         key={image.id}
         loader={payloadLoader}
-        src={sanitizedBaseSrc}
+        src={finalSrc}
         className={className}
         width={width || imgWidth}
         height={height || imgHeight}
