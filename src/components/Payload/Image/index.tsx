@@ -49,7 +49,10 @@ export function PayloadImage({ image, className, alt, width, height, loading = "
 
     // Retorna a URL escolhida anexando os parâmetros que o Next.js exige
     const separator = finalUrl.includes("?") ? "&" : "?";
-    return `${finalUrl}${separator}w=${requestedWidth}&q=${quality || 75}`;
+    const generatedUrl = `${finalUrl}${separator}w=${requestedWidth}&q=${quality || 75}`;
+
+    // Sanitiza a URL gerada no loader eliminando espaços literais e acentos
+    return encodeURI(decodeURI(generatedUrl));
   };
 
   let baseSrc = image.url!;
@@ -65,12 +68,15 @@ export function PayloadImage({ image, className, alt, width, height, loading = "
     }
   }
 
+  // Garante que a URL base inicial do atributo src também esteja devidamente codificada
+  const sanitizedBaseSrc = encodeURI(decodeURI(baseSrc));
+
   return (
     <figure>
       <Image
         key={image.id}
         loader={payloadLoader}
-        src={baseSrc}
+        src={sanitizedBaseSrc}
         className={className}
         width={width || imgWidth}
         height={height || imgHeight}
