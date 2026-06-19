@@ -34,8 +34,15 @@ const plugins: Plugin[] = [
     apiToken: process.env.CLOUDFLARE_API_TOKEN!,
     baseUrl: process.env.SITE_URL!,
     collections: ["posts", "categories", "latBusExibithors", "latBusCategories"],
+    globals: ["topbar"],
     showButtonPurgeEverything: false,
-    purgeEverything: false,
+    purgeEverything: (args) => {
+      const { globalSlug } = args;
+      if (globalSlug === "topbar") {
+        return true;
+      }
+      return false;
+    },
     urlBuilder: async ({ doc, req, collectionSlug, baseUrl }) => {
       const urlsToPurge = new Set<string>();
 
