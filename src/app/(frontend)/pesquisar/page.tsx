@@ -51,7 +51,7 @@ export default async function SearchPage({ searchParams }: PageArgs) {
             </SectionHeading>
             <SearchForm searchTerm={searchTerm || ""} />
           </PostArchiveHeader>
-          <PostArchiveFeed posts={posts.docs} page={posts.page} totalPages={posts.totalPages} path="/pesquisar" query={searchTerm} />
+          <PostArchiveFeed posts={posts.docs} page={posts.page} totalPages={posts.totalPages} path="/pesquisar" query={searchTerm} key={searchTerm || "todos"} />
         </PostArchive>
       </main>
     </>
