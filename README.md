@@ -42,19 +42,37 @@ ssh -p 822 <server_username>@<server_address> "dokku postgres:export <dokku_app_
    docker exec -i $(docker compose ps -q postgres) psql -U admin -d database-technibus < dump.dump
    ```
 
-### ⚠️ Important: Full-Text Search (FTS) Index Setup
+### ⚠️ Important: Full-Text Search (FTS) Index Setup (with Unaccent)
 
-If you ever delete, rebuild, or start the database from scratch (without importing a dump that already contains it), you **must** manually create the GIN Index required for the Search page's Full-Text Search performance.
+If you ever delete, rebuild, or start the database from scratch (without importing a dump that already contains it), you **must** manually set up the unaccent dictionary and create the GIN Index required for the Search page's Full-Text Search performance. This ensures searches like "Florianópolis" and "florianopolis" yield the same results.
 
-Connect to your database client and run the following SQL query:
+Connect to your database client and run the following SQL block:
 
 ```sql
+-- 1. Enable the unaccent extension
+CREATE EXTENSION IF NOT EXISTS unaccent;
+
+-- 2. Create the custom Portuguese dictionary that ignores accents
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_ts_config WHERE cfgname = 'pt_br_unaccent') THEN
+    CREATE TEXT SEARCH CONFIGURATION public.pt_br_unaccent ( COPY = pg_catalog.portuguese );
+    ALTER TEXT SEARCH CONFIGURATION public.pt_br_unaccent ALTER MAPPING FOR hword, hword_part, word WITH unaccent, portuguese_stem;
+  END IF;
+END
+$$;
+
+-- 3. Ensures that any old index is removed before recreating it.
+DROP INDEX IF EXISTS search_fts_idx;
+
+-- 4. Create the GIN Index using the new dictionary
 CREATE INDEX search_fts_idx ON "search" USING GIN (
   (
-    setweight(to_tsvector('portuguese'::regconfig, title::text), 'A') ||
-    setweight(to_tsvector('portuguese'::regconfig, coalesce(content, '')::text), 'B')
+    setweight(to_tsvector('pt_br_unaccent'::regconfig, title::text), 'A') ||
+    setweight(to_tsvector('pt_br_unaccent'::regconfig, coalesce(content, '')::text), 'B')
   )
 );
+
 ```
 
 _Tip: You can also run this directly via Docker by connecting to the `psql` CLI (see the Troubleshooting section) and pasting the query above._
