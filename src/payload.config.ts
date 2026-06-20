@@ -99,12 +99,26 @@ export default buildConfig({
     if (process.env.NODE_ENV !== "production" && !process.env.IS_PLAYWRIGHT) {
       try {
         await payload.db.drizzle.execute(sql`
-        CREATE INDEX IF NOT EXISTS search_fts_idx ON "search" USING GIN (
-          (
-            setweight(to_tsvector('portuguese'::regconfig, title::text), 'A') || 
-            setweight(to_tsvector('portuguese'::regconfig, coalesce(content, '')::text), 'B')
-          )
-        );
+        -- 1. Garante que a extensão de remover acentos esteja disponível no banco
+          CREATE EXTENSION IF NOT EXISTS unaccent;
+
+          -- 2. Cria o dicionário de forma segura (Idempotente)
+          DO $$
+          BEGIN
+            IF NOT EXISTS (SELECT 1 FROM pg_ts_config WHERE cfgname = 'pt_br_unaccent') THEN
+              CREATE TEXT SEARCH CONFIGURATION public.pt_br_unaccent ( COPY = pg_catalog.portuguese );
+              ALTER TEXT SEARCH CONFIGURATION public.pt_br_unaccent ALTER MAPPING FOR hword, hword_part, word WITH unaccent, portuguese_stem;
+            END IF;
+          END
+          $$;
+
+          -- 3. Cria o Índice GIN apontando para o dicionário customizado
+          CREATE INDEX IF NOT EXISTS search_fts_idx ON "search" USING GIN (
+            (
+              setweight(to_tsvector('pt_br_unaccent'::regconfig, title::text), 'A') || 
+              setweight(to_tsvector('pt_br_unaccent'::regconfig, coalesce(content, '')::text), 'B')
+            )
+          );
       `);
         console.log("⚡ Índice de busca FTS garantido!");
       } catch (error) {
