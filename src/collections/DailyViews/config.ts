@@ -7,6 +7,14 @@ export const DailyViews: CollectionConfig = {
   admin: {
     // hidden: true,
   },
+  access: {
+    read: ({ req: { user } }) => {
+      if (user?.email.includes("@technibus.com.br") || user?.email.includes("@otmeditora.com")) {
+        return false;
+      }
+      return true;
+    },
+  },
   endpoints: [
     {
       path: "/track", // /api/daily-views/track
