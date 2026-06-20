@@ -19,7 +19,13 @@ const nextConfig: NextConfig = {
     remotePatterns: [new URL("https://acervodigitalotm.com.br/**")],
   },
   async redirects() {
-    return [{ source: "/author/:slug", destination: "/autor/:slug", permanent: true }];
+    return [
+        { source: "/author/:slug", destination: "/autor/:slug", permanent: true },
+        { source: "/wp-sitemap-news.xml", destination: "/sitemap.xml", permanent: true },
+        { source: "/wp-sitemap-posts-page-1.xml", destination: "/sitemap.xml", permanent: true },
+        { source: "/wp-sitemap-posts-post-2.xml", destination: "/sitemap.xml", permanent: true },
+        { source: "/wp-sitemap-posts-post-1.xml", destination: "/sitemap.xml", permanent: true },
+    ];
   },
   async headers() {
     return [
