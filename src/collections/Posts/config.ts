@@ -200,8 +200,8 @@ export const Posts: CollectionConfig = {
       admin: {
         description: "Para agendar uma publicação, escolha uma data posterior à atual.",
         date: {
-          pickerAppearance: "dayOnly",
-          displayFormat: "dd/MM/yyyy",
+          pickerAppearance: "dayAndTime",
+          displayFormat: "dd/MM/yyyy HH:mm",
         },
       },
     },

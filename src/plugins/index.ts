@@ -132,17 +132,47 @@ const plugins: Plugin[] = [
 
       if (finalUrls.length > 0) {
         try {
-          // Despacha para a fila do Payload com 5 segundos de atraso
-          await req.payload.jobs.queue({
+          // 1. Verifica se estamos lidando com um post e se a data de publicação é no futuro
+          const isFuturePublish = doc.publishedDate && new Date(doc.publishedDate) > new Date();
+
+          // 2. Define os parâmetros da task base
+          const jobOptions: Parameters<typeof req.payload.jobs.queue>[0] = {
             task: "cloudflarePurgeTask",
             input: {
               urls: finalUrls.map((url) => ({ url })),
               purgeEverything: false,
-              delayMs: 5000, // 👈 Tempo essencial para o R2 processar as imagens
+              // Se for no futuro, o waitUntil já dita o tempo, zeramos o delay do R2.
+              // Se for imediato, mantemos seus 5s para dar tempo do R2 processar imagens.
+              delayMs: isFuturePublish ? 0 : 5000,
             },
             queue: "cloudflarePurgeTask",
-          });
-          req.payload.logger.info(`Task de purge enfileirada com sucesso para ${finalUrls.length} URLs.`);
+          };
+
+          // 🌟 3. O Pulo do Gato: Agendamento Nativo
+          if (isFuturePublish) {
+            jobOptions.waitUntil = new Date(doc.publishedDate);
+          }
+
+          // 4. Despacha para a fila do Payload
+          await req.payload.jobs.queue(jobOptions);
+
+          // Logs informativos no painel
+          if (isFuturePublish) {
+            // Forçamos o fuso horário de Brasília para a exibição no log
+            const dataFormatada = new Date(doc.publishedDate).toLocaleString("pt-BR", {
+              timeZone: "America/Sao_Paulo",
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            });
+
+            req.payload.logger.info(`Task de purge AGENDADA para ${dataFormatada} (${finalUrls.length} URLs).`);
+          } else {
+            req.payload.logger.info(`Task de purge enfileirada com sucesso para ${finalUrls.length} URLs.`);
+          }
         } catch (err) {
           console.error("Erro ao enfileirar a task de purge:", err);
         }
