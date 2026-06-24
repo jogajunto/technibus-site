@@ -23,7 +23,7 @@
   "type": "module",
   "dependencies": {
     "@next/third-parties": "16.2.6",
-    "@payloadcms/db-postgres": "~3.80.0",
+    "@payloadcms/db-postgres": "~3.84.1",
     "@payloadcms/email-nodemailer": "~3.80.0",
     "@payloadcms/live-preview": "~3.80.0",
     "@payloadcms/live-preview-react": "~3.80.0",
